@@ -24,9 +24,13 @@
 <nav class="fixed top-0 z-50 w-full bg-surface/75 backdrop-blur-xl">
 	<div class="mx-auto max-w-7xl px-6 py-4">
 		<div class="flex justify-between items-center gap-4">
-			<a href="{base}/" class="brand-mark focus-ring flex items-center gap-1.5 rounded-xl font-headline text-xl font-black tracking-tight text-primary md:text-2xl">
-				Spieletreff Tecklenburg
-				<span class="brand-icon material-symbols-outlined text-base md:text-lg" aria-hidden="true">casino</span>
+			<a href="{base}/" class="brand-mark focus-ring shrink-0 rounded-xl">
+				<img
+					src="{base}/images/logo.png"
+					alt="Spieletreff Tecklenburger Land"
+					class="h-8 md:h-10 w-auto"
+					style="mix-blend-mode: multiply"
+				/>
 			</a>
 			<div class="hidden md:flex items-center gap-6">
 				{#each navItems as item (item.href)}
@@ -91,16 +95,12 @@
 			opacity 200ms ease;
 	}
 
-	.brand-icon {
-		opacity: 0.55;
-		transition:
-			transform 260ms cubic-bezier(0.25, 1, 0.5, 1),
-			opacity 220ms ease;
+	.brand-mark:hover img {
+		transform: scale(1.03);
 	}
 
-	.brand-mark:hover .brand-icon {
-		opacity: 1;
-		transform: rotate(-12deg) translateY(-1px);
+	.brand-mark img {
+		transition: transform 220ms cubic-bezier(0.25, 1, 0.5, 1);
 	}
 
 	.nav-link {
@@ -144,8 +144,5 @@
 			filter: none !important;
 		}
 
-		.brand-icon {
-			opacity: 1;
-		}
 	}
 </style>

@@ -141,9 +141,12 @@ const hasCalendarSourceData = $derived(calendarStore.events.length > 0);
 				/>
 			</div>
 			<div class="order-1 md:order-2">
-				<h2 class="text-4xl font-extrabold font-headline mb-8 text-on-surface">
-					Wir sind der <br /><span class="text-primary">Spieletreff Tecklenburg</span>
-				</h2>
+				<img
+					src="{base}/images/logo.png"
+					alt="Spieletreff Tecklenburger Land"
+					class="h-20 md:h-24 w-auto mb-8"
+					style="mix-blend-mode: multiply"
+				/>
 				<div class="space-y-6 text-lg text-on-surface-variant leading-relaxed">
 					<p>
 						Eine gemischte Gruppe von rund 50 Brettspiel-Begeisterten, die sich regelmäßig zu Spieleabenden trifft. Ob Gelegenheitsspieler oder Hardcore-Stratege – bei uns findet jeder einen Platz am Tisch.
