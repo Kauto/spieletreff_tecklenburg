@@ -2,15 +2,15 @@
 	import { base } from '$app/paths';
 
 	const photos = [
-		{ src: '/images/gallery/spieleabend-16.jpg', alt: 'Spieleabend – Blick auf die Spieletische' },
-		{ src: '/images/gallery/spieleabend-12.jpg', alt: 'Konzentrierte Runde am Spieltisch' },
-		{ src: '/images/gallery/spieleabend-4.jpg', alt: 'Spieler wählen ihr nächstes Spiel' },
-		{ src: '/images/gallery/spieleabend-6.jpg', alt: 'Gesellige Runde beim Brettspielen' },
-		{ src: '/images/gallery/spieleabend-3.jpg', alt: 'Karten liegen auf dem Tisch' },
-		{ src: '/images/gallery/spieleabend-22.jpg', alt: 'Spieler diskutieren ihren Zug' },
-		{ src: '/images/gallery/spieleabend-78.jpg', alt: 'Abend in lockerer Runde' },
-		{ src: '/images/gallery/spieleabend-17.jpg', alt: 'Brettspiele auf dem Tisch' },
-		{ src: '/images/gallery/spieleabend-76.jpg', alt: 'Gemeinschaft beim Spielen' },
+		{ src: `${base}/images/gallery/spieleabend-16.jpg`, alt: 'Spieleabend – Blick auf die Spieletische' },
+		{ src: `${base}/images/gallery/spieleabend-12.jpg`, alt: 'Konzentrierte Runde am Spieltisch' },
+		{ src: `${base}/images/gallery/spieleabend-4.jpg`, alt: 'Spieler wählen ihr nächstes Spiel' },
+		{ src: `${base}/images/gallery/spieleabend-6.jpg`, alt: 'Gesellige Runde beim Brettspielen' },
+		{ src: `${base}/images/gallery/spieleabend-3.jpg`, alt: 'Karten liegen auf dem Tisch' },
+		{ src: `${base}/images/gallery/spieleabend-22.jpg`, alt: 'Spieler diskutieren ihren Zug' },
+		{ src: `${base}/images/gallery/spieleabend-78.jpg`, alt: 'Abend in lockerer Runde' },
+		{ src: `${base}/images/gallery/spieleabend-17.jpg`, alt: 'Brettspiele auf dem Tisch' },
+		{ src: `${base}/images/gallery/spieleabend-76.jpg`, alt: 'Gemeinschaft beim Spielen' },
 	];
 </script>
 

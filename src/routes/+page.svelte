@@ -112,7 +112,7 @@ const hasCalendarSourceData = $derived(calendarStore.events.length > 0);
 			<div class="lg:col-span-5 relative">
 				<div class="relative rounded-2xl overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500">
 					<img
-						src="/images/spieletreff-hero.jpg"
+						src="{base}/images/spieletreff-hero.jpg"
 						alt="Bunte Brettspiel-Figuren, Karten und Holzwürfel auf einem Holztisch"
 						class="w-full aspect-[4/5] object-cover"
 					/>
@@ -127,12 +127,12 @@ const hasCalendarSourceData = $derived(calendarStore.events.length > 0);
 		<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
 			<div class="order-2 md:order-1 grid grid-cols-2 gap-4">
 				<img
-					src="/images/spieletreff-mitspieler.jpg"
+					src="{base}/images/spieletreff-mitspieler.jpg"
 					alt="Gruppe von Freunden beim Spielen"
 					class="rounded-xl w-full h-64 object-cover shadow-md"
 				/>
 				<img
-					src="/images/spieletreff-spieleabend.jpg"
+					src="{base}/images/spieletreff-spieleabend.jpg"
 					alt="Würfel auf einem Spielbrett"
 					class="rounded-xl w-full h-64 object-cover mt-12 shadow-md"
 				/>
