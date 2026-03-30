@@ -26,10 +26,9 @@
 		<div class="flex justify-between items-center gap-4">
 			<a href="{base}/" class="brand-mark focus-ring shrink-0 rounded-xl">
 				<img
-					src="{base}/images/logo.png"
+					src="{base}/images/logo-transparent.png"
 					alt="Spieletreff Tecklenburger Land"
 					class="h-8 md:h-10 w-auto"
-					style="mix-blend-mode: multiply"
 				/>
 			</a>
 			<div class="hidden md:flex items-center gap-6">
