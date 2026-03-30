@@ -246,11 +246,6 @@ const hasCalendarSourceData = $derived(calendarStore.events.length > 0);
 										{/if}
 									</div>
 								{/if}
-							{#if event.description}
-						<p class="text-sm text-on-surface-variant leading-relaxed whitespace-pre-line line-clamp-3 rounded-lg bg-surface-container px-3 py-2">
-								{event.description}
-							</p>
-							{/if}
 						</div>
 						</div>
 					</div>
