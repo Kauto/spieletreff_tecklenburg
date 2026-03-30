@@ -28,7 +28,7 @@
 				<img
 					src="{base}/images/logo-transparent.png"
 					alt="Spieletreff Tecklenburger Land"
-					class="h-8 md:h-10 w-auto"
+					class="h-10 md:h-12 w-auto"
 				/>
 			</a>
 			<div class="hidden md:flex items-center gap-6">
