@@ -6,12 +6,22 @@ const CALENDAR_ID =
 const ICAL_URL = `https://calendar.google.com/calendar/ical/${encodeURIComponent(CALENDAR_ID)}/public/basic.ics`;
 
 export async function fetchCalendarEvents(): Promise<CalendarEvent[]> {
-	const response = await fetch(ICAL_URL);
-	if (!response.ok) {
-		throw new Error(`Google Calendar fetch failed: ${response.status} ${response.statusText}`);
+	try {
+		const controller = new AbortController();
+		const timeout = setTimeout(() => controller.abort(), 10_000);
+		const response = await fetch(ICAL_URL, { signal: controller.signal });
+		clearTimeout(timeout);
+
+		if (!response.ok) {
+			console.warn(`Google Calendar fetch failed: ${response.status} ${response.statusText}`);
+			return [];
+		}
+		const text = await response.text();
+		return parseIcal(text);
+	} catch (e) {
+		console.warn('Google Calendar fetch error:', e);
+		return [];
 	}
-	const text = await response.text();
-	return parseIcal(text);
 }
 
 // Unfold iCal line continuations (CRLF + whitespace = logical continuation)
