@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+
+# SvelteKit build output
+.svelte-kit/
+build/
+
+# Vite
+dist/
+.vite/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*

@@ -1,0 +1,119 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/plus-jakarta-sans';
+@import '@fontsource-variable/manrope';
+
+@font-face {
+	font-family: 'Material Symbols Outlined';
+	font-style: normal;
+	font-weight: 100 700;
+	font-display: block;
+	src: url('/fonts/material-symbols-outlined.woff2') format('woff2');
+}
+
+@theme {
+	--color-secondary-fixed: #e2725b;
+	--color-surface-bright: #fdf8f1;
+	--color-on-primary-fixed-variant: #3d421d;
+	--color-secondary-container: #f0b1a4;
+	--color-outline-variant: #d2c9b1;
+	--color-on-secondary: #ffffff;
+	--color-tertiary-fixed: #e3d5ca;
+	--color-tertiary-container: #e3d5ca;
+	--color-primary-fixed: #6b705c;
+	--color-primary-container: #a3ad8d;
+	--color-on-secondary-container: #4a1c12;
+	--color-on-surface-variant: #5d5d4d;
+	--color-primary-fixed-dim: #555a46;
+	--color-surface-container-low: #f7f1e6;
+	--color-secondary-fixed-dim: #d9654e;
+	--color-surface-tint: #556b2f;
+	--color-surface-container-high: #efe5d5;
+	--color-tertiary-fixed-dim: #d5c3b6;
+	--color-on-tertiary-fixed: #4a3a2d;
+	--color-error-container: #f9dedc;
+	--color-error: #b3261e;
+	--color-inverse-primary: #cdd6b1;
+	--color-on-error-container: #410e0b;
+	--color-surface-container: #f2e9d9;
+	--color-inverse-surface: #32302a;
+	--color-tertiary: #6b574a;
+	--color-surface-dim: #e5ddd0;
+	--color-tertiary-dim: #8c786a;
+	--color-on-secondary-fixed-variant: #8e3828;
+	--color-primary-dim: #3d421d;
+	--color-surface-variant: #e9e2d4;
+	--color-secondary: #e2725b;
+	--color-surface-container-highest: #e8dfd1;
+	--color-surface: #fdf8f1;
+	--color-surface-container-lowest: #ffffff;
+	--color-on-background: #22211c;
+	--color-background: #fdf8f1;
+	--color-on-primary-fixed: #1d2109;
+	--color-error-dim: #f2b8b5;
+	--color-on-tertiary-fixed-variant: #544439;
+	--color-on-primary-container: #1d2109;
+	--color-on-primary: #fdf8f1;
+	--color-outline: #7a796e;
+	--color-on-tertiary-container: #241a12;
+	--color-on-error: #ffffff;
+	--color-inverse-on-surface: #f7f1e6;
+	--color-primary: #556b2f;
+	--color-on-tertiary: #ffffff;
+	--color-on-surface: #22211c;
+	--color-on-secondary-fixed: #32110b;
+	--color-secondary-dim: #e2725b;
+
+	--font-headline: 'Plus Jakarta Sans', sans-serif;
+	--font-body: 'Manrope', sans-serif;
+	--font-label: 'Manrope', sans-serif;
+
+	--radius: 0.25rem;
+	--radius-lg: 0.5rem;
+	--radius-xl: 0.75rem;
+	--radius-full: 9999px;
+}
+
+.material-symbols-outlined {
+	font-family: 'Material Symbols Outlined';
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	display: inline-block;
+	white-space: nowrap;
+	direction: ltr;
+	letter-spacing: normal;
+	text-transform: none;
+	font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+	vertical-align: middle;
+}
+
+.tonal-shift {
+	background: linear-gradient(to bottom, #f2e9d9, #f7f1e6);
+}
+
+.ui-button {
+	transition:
+		transform 160ms ease,
+		opacity 160ms ease,
+		filter 180ms ease;
+	transform: translateY(0) scale(1);
+	will-change: transform;
+}
+
+.ui-button:hover {
+	transform: translateY(-1px) scale(1.01);
+	filter: brightness(1.03);
+}
+
+.ui-button:active {
+	transform: translateY(0) scale(0.985);
+	opacity: 0.96;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.ui-button {
+		transition-duration: 1ms !important;
+		transform: none !important;
+		filter: none !important;
+	}
+}
