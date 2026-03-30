@@ -68,7 +68,7 @@
 			</p>
 
 			<p>
-				Daher verzichtet die Gruppe auf unnötige Formalien und hat lediglich eine Vereinbarung getroffen: Wer kommen möchte, meldet sich kurz über die WhatsApp-Gruppe – so kann auf Nachzügler Rücksicht genommen werden. Denn sobald die Spielerunden aufgeteilt sind und die Spiele begonnen haben, lässt sich ein laufendes Spiel kaum noch um weitere Teilnehmer erweitern.
+				Daher verzichtet die Gruppe auf unnötige Formalien. Wer mag, gibt kurz in der WhatsApp-Gruppe Bescheid, dass er kommt – so kann auf Nachzügler gewartet werden. Denn sobald die Spielerunden aufgeteilt sind und die Spiele begonnen haben, lässt sich ein laufendes Spiel kaum noch um weitere Teilnehmer erweitern. Eine Pflicht ist das jedoch nicht.
 			</p>
 
 			<p>

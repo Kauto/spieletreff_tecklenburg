@@ -4,17 +4,17 @@
 
 <footer class="w-full bg-surface-container-low font-body">
 	<div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-8 px-8 py-16 md:grid-cols-4 md:px-12">
-		<div class="flex flex-col gap-4">
+		<div class="flex flex-col gap-5">
 			<a href="{base}/" class="inline-block rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2">
 				<img
 					src="{base}/images/logo.png"
 					alt="Spieletreff Tecklenburger Land"
-					class="h-12 w-auto"
+					class="h-16 w-auto"
 					style="mix-blend-mode: multiply"
 				/>
 			</a>
 			<p class="text-base leading-relaxed text-on-surface-variant">
-				Die Gemeinschaft für Brett- und Kartenspiel-Enthusiasten im Teutoburger Wald.
+				Offene Brettspielrunde im Tecklenburger Land – seit 2009. Kostenlos, ohne Anmeldung.
 			</p>
 		</div>
 		<div class="flex flex-col gap-4">

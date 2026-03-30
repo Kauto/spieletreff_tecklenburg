@@ -119,50 +119,6 @@ const hasCalendarSourceData = $derived(calendarStore.events.length > 0);
 						alt="Bunte Brettspiel-Figuren, Karten und Holzwürfel auf einem Holztisch"
 						class="w-full aspect-[4/5] object-cover"
 					/>
-					<div class="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent"></div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- About -->
-	<section class="bg-surface-container py-24 px-8">
-		<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-			<div class="order-2 md:order-1 grid grid-cols-2 gap-4">
-				<img
-					src="{base}/images/spieletreff-mitspieler.jpg"
-					alt="Gruppe von Freunden beim Spielen"
-					class="rounded-xl w-full h-64 object-cover shadow-md"
-				/>
-				<img
-					src="{base}/images/spieletreff-spieleabend.jpg"
-					alt="Würfel auf einem Spielbrett"
-					class="rounded-xl w-full h-64 object-cover mt-12 shadow-md"
-				/>
-			</div>
-			<div class="order-1 md:order-2">
-				<img
-					src="{base}/images/logo.png"
-					alt="Spieletreff Tecklenburger Land"
-					class="h-20 md:h-24 w-auto mb-8"
-					style="mix-blend-mode: multiply"
-				/>
-				<div class="space-y-6 text-lg text-on-surface-variant leading-relaxed">
-					<p>
-						Eine gemischte Gruppe von rund 50 Brettspiel-Begeisterten, die sich regelmäßig zu Spieleabenden trifft. Ob Gelegenheitsspieler oder Hardcore-Stratege – bei uns findet jeder einen Platz am Tisch.
-					</p>
-					<p>
-						Wir spielen entweder in der DRK-Begegnungsstätte Mettingen oder im ev. Gemeindehaus Brochterbeck. Da das Spielen eine gemeinschaftliche Sache ist, gilt natürlich: Je größer die Gruppe, umso schöner der Abend. Wer Lust am Spielen hat, ist bei uns jederzeit herzlich willkommen.
-					</p>
-					<p>
-						Kommt vorbei – ein freier Stuhl ist immer da.
-					</p>
-				<div class="pt-4 flex flex-wrap gap-3">
-					<span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-sm text-sm font-bold">Strategiespiele</span>
-					<span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-sm text-sm font-bold">Eurogames</span>
-					<span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-sm text-sm font-bold">Partyspiele</span>
-					<span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-sm text-sm font-bold">Für alle</span>
-				</div>
 				</div>
 			</div>
 		</div>
@@ -195,10 +151,60 @@ const hasCalendarSourceData = $derived(calendarStore.events.length > 0);
 					<span aria-hidden="true" class="shrink-0 w-9 h-9 rounded-full bg-primary text-on-primary font-extrabold font-headline flex items-center justify-center text-base select-none">3</span>
 					<div>
 						<p class="font-bold font-headline text-on-surface text-lg leading-snug">Im Kontakt bleiben</p>
-						<p class="text-on-surface-variant mt-1.5 leading-relaxed">Wer möchte, tritt unserer WhatsApp-Gruppe bei und verpasst nichts mehr.</p>
+						<p class="text-on-surface-variant mt-1.5 leading-relaxed">Wer möchte, tritt unserer WhatsApp-Gruppe bei und verpasst keine Termine oder spontanen Runden mehr.</p>
+						<a
+							href="https://chat.whatsapp.com/2naM3nPDYs08qymMxBIE8v?mode=gi_t"
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label="WhatsApp-Gruppe beitreten (öffnet extern)"
+							class="inline-flex items-center gap-1 mt-3 text-sm font-bold text-primary hover:underline rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+						>
+							WhatsApp-Gruppe beitreten
+							<span class="material-symbols-outlined text-sm leading-none">open_in_new</span>
+						</a>
 					</div>
 				</li>
 			</ol>
+		</div>
+	</section>
+
+	<!-- About -->
+	<section class="bg-surface-container py-24 px-8">
+		<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+			<div class="order-2 md:order-1 grid grid-cols-2 gap-4">
+				<img
+					src="{base}/images/spieletreff-mitspieler.jpg"
+					alt="Gruppe von Freunden beim Spielen"
+					class="rounded-xl w-full h-64 object-cover shadow-md"
+				/>
+				<img
+					src="{base}/images/spieletreff-spieleabend.jpg"
+					alt="Würfel auf einem Spielbrett"
+					class="rounded-xl w-full h-64 object-cover mt-12 shadow-md"
+				/>
+			</div>
+			<div class="order-1 md:order-2">
+				<h2 class="text-4xl font-extrabold font-headline mb-8 text-on-surface leading-tight">
+					Eine offene Runde –<br /><span class="text-primary">seit 2009.</span>
+				</h2>
+				<div class="space-y-6 text-lg text-on-surface-variant leading-relaxed">
+					<p>
+						Eine gemischte Gruppe von rund 50 Brettspiel-Begeisterten, die sich regelmäßig zu Spieleabenden trifft. Ob Gelegenheitsspieler oder Hardcore-Stratege – bei uns findet jeder einen Platz am Tisch.
+					</p>
+					<p>
+						Wir spielen entweder in der DRK-Begegnungsstätte Mettingen oder im ev. Gemeindehaus Brochterbeck. Da das Spielen eine gemeinschaftliche Sache ist, gilt natürlich: Je größer die Gruppe, umso schöner der Abend. Wer Lust am Spielen hat, ist bei uns jederzeit herzlich willkommen.
+					</p>
+					<p>
+						Kommt vorbei – ein freier Stuhl ist immer da.
+					</p>
+				<div class="pt-4 flex flex-wrap gap-3">
+					<span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-sm text-sm font-bold">Strategiespiele</span>
+					<span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-sm text-sm font-bold">Eurogames</span>
+					<span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-sm text-sm font-bold">Partyspiele</span>
+					<span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-sm text-sm font-bold">Für alle</span>
+				</div>
+				</div>
+			</div>
 		</div>
 	</section>
 
@@ -217,7 +223,7 @@ const hasCalendarSourceData = $derived(calendarStore.events.length > 0);
 		{#if nextThreeEvents.length > 0}
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 				{#each nextThreeEvents as event, i (event.uid)}
-				<div class="relative bg-surface-container-highest rounded-xl overflow-hidden flex flex-col group transition-all duration-300 hover:shadow-lg">
+				<div class={`relative rounded-xl overflow-hidden flex flex-col group transition-all duration-300 hover:shadow-lg ${i === 0 ? 'bg-primary-container ring-2 ring-primary/30 shadow-md' : 'bg-surface-container-highest'}`}>
 					<a
 						href="{base}/kalender#bevorstehende-termine"
 						aria-label="{event.title} – Im Kalender ansehen"
