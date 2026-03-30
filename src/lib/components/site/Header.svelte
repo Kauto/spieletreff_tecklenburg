@@ -9,7 +9,7 @@
 	const reduceMotion = $derived(prefersReducedMotion.current);
 
 	const navItems = [
-		{ href: '/', label: 'Home' },
+		{ href: '/', label: 'Start' },
 		{ href: '/kalender', label: 'Kalender' },
 		{ href: '/geschichte', label: 'Geschichte' }
 	];
@@ -31,7 +31,7 @@
 			<div class="hidden md:flex items-center gap-6">
 				{#each navItems as item (item.href)}
 					<a
-						class={`nav-link focus-ring min-h-11 rounded-xl px-3 py-2 font-headline text-sm font-bold transition-colors duration-200 ${isActive(item.href) ? 'bg-surface-container-highest text-primary' : 'text-on-surface-variant hover:bg-surface-container-low hover:text-primary'}`}
+						class={`nav-link focus-ring inline-flex items-center min-h-11 rounded-xl px-3 py-2 font-headline text-sm font-bold transition-colors duration-200 ${isActive(item.href) ? 'bg-surface-container-highest text-primary' : 'text-on-surface-variant hover:bg-surface-container-low hover:text-primary'}`}
 						href="{base}{item.href}"
 						aria-current={isActive(item.href) ? 'page' : undefined}
 					>
@@ -68,7 +68,7 @@
 							delay: reduceMotion ? 0 : 40,
 							easing: quartOut
 						}}
-						class={`nav-link focus-ring min-h-11 rounded-xl px-3 py-2 font-headline font-bold transition-colors duration-200 ${isActive(item.href) ? 'bg-surface-container-highest text-primary' : 'text-on-surface-variant hover:bg-surface-container-low hover:text-primary'}`}
+						class={`nav-link focus-ring inline-flex items-center min-h-11 rounded-xl px-3 py-2 font-headline font-bold transition-colors duration-200 ${isActive(item.href) ? 'bg-surface-container-highest text-primary' : 'text-on-surface-variant hover:bg-surface-container-low hover:text-primary'}`}
 						href="{base}{item.href}"
 						aria-current={isActive(item.href) ? 'page' : undefined}
 						onclick={() => (menuOpen = false)}
