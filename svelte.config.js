@@ -13,7 +13,12 @@ const config = {
 			return isExternalLibrary ? undefined : true;
 		}
 	},
-	kit: { adapter: adapter() }
+	kit: {
+		adapter: adapter(),
+		paths: {
+			base: process.env.BASE_PATH ?? ''
+		}
+	}
 };
 
 export default config;

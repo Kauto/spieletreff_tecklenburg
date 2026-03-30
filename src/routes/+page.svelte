@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import MapConsentDialog from '$lib/components/site/MapConsentDialog.svelte';
 	import { calendarStore } from '$lib/events.svelte';
 	import { locationOrUndefined } from '$lib/location';
@@ -171,7 +172,7 @@ const hasCalendarSourceData = $derived(calendarStore.events.length > 0);
 					<div>
 						<p class="font-bold font-headline text-on-surface text-lg leading-snug">Termin aussuchen</p>
 						<p class="text-on-surface-variant mt-1.5 leading-relaxed">Im Kalender steht, wann und wo das nächste Treffen stattfindet.</p>
-						<a href="/kalender" class="inline-flex items-center gap-1 mt-3 text-sm font-bold text-primary hover:underline rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2">
+						<a href="{base}/kalender" class="inline-flex items-center gap-1 mt-3 text-sm font-bold text-primary hover:underline rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2">
 							Zum Kalender
 							<span class="material-symbols-outlined text-sm leading-none">arrow_forward</span>
 						</a>
@@ -202,7 +203,7 @@ const hasCalendarSourceData = $derived(calendarStore.events.length > 0);
 				<h2 class="text-4xl font-extrabold font-headline text-on-surface mb-2">Bevorstehende Treffen</h2>
 				<p class="text-on-surface-variant text-lg font-medium">Alle nächsten Termine im Überblick – im Kalender gebündelt.</p>
 			</div>
-			<a class="text-on-surface-variant font-semibold flex items-center gap-2 hover:text-primary hover:underline group transition-colors" href="/kalender">
+			<a class="text-on-surface-variant font-semibold flex items-center gap-2 hover:text-primary hover:underline group transition-colors" href="{base}/kalender">
 				Gesamten Kalender ansehen
 				<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
 			</a>
@@ -212,7 +213,7 @@ const hasCalendarSourceData = $derived(calendarStore.events.length > 0);
 				{#each nextThreeEvents as event, i (event.uid)}
 				<div class="relative bg-surface-container-highest rounded-xl overflow-hidden flex flex-col group transition-all duration-300 hover:shadow-lg">
 					<a
-						href="/kalender#bevorstehende-termine"
+						href="{base}/kalender#bevorstehende-termine"
 						aria-label="{event.title} – Im Kalender ansehen"
 						class="absolute inset-0 z-0 rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-[-2px]"
 					><span class="sr-only">Im Kalender ansehen</span></a>

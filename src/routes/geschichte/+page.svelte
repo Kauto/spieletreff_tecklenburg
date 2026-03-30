@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { base } from '$app/paths';
+
 	const photos = [
 		{ src: '/images/gallery/spieleabend-16.jpg', alt: 'Spieleabend – Blick auf die Spieletische' },
 		{ src: '/images/gallery/spieleabend-12.jpg', alt: 'Konzentrierte Runde am Spieltisch' },
@@ -112,7 +114,7 @@
 			</p>
 			<div class="flex flex-wrap gap-4">
 				<a
-					href="/kalender"
+					href="{base}/kalender"
 					class="ui-button inline-flex items-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-lg font-bold text-base"
 				>
 					<span class="material-symbols-outlined text-xl leading-none" aria-hidden="true">calendar_month</span>

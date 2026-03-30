@@ -1,7 +1,11 @@
+<script lang="ts">
+	import { base } from '$app/paths';
+</script>
+
 <footer class="w-full bg-surface-container-low font-body">
 	<div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-8 px-8 py-16 md:grid-cols-4 md:px-12">
 		<div class="flex flex-col gap-4">
-			<div class="font-headline text-xl font-bold text-primary">Spieletreff Tecklenburg</div>
+			<a href="{base}/" class="font-headline text-xl font-bold text-primary hover:underline">Spieletreff Tecklenburg</a>
 			<p class="text-base leading-relaxed text-on-surface-variant">
 				Die Gemeinschaft für Brett- und Kartenspiel-Enthusiasten im Teutoburger Wald.
 			</p>
@@ -9,11 +13,11 @@
 		<div class="flex flex-col gap-4">
 			<h4 class="font-headline text-xs font-bold uppercase tracking-widest text-primary">Seiten</h4>
 			<ul class="space-y-2">
-				<li><a class="footer-link focus-ring min-h-11 inline-flex rounded-xl px-2 py-1 text-on-surface-variant transition-colors duration-200 hover:bg-surface-container hover:text-primary" href="/">Home</a></li>
-				<li><a class="footer-link focus-ring min-h-11 inline-flex rounded-xl px-2 py-1 text-on-surface-variant transition-colors duration-200 hover:bg-surface-container hover:text-primary" href="/kalender">Kalender</a></li>
-				<li><a class="footer-link focus-ring min-h-11 inline-flex rounded-xl px-2 py-1 text-on-surface-variant transition-colors duration-200 hover:bg-surface-container hover:text-primary" href="/geschichte">Geschichte</a></li>
-				<li><a class="footer-link focus-ring min-h-11 inline-flex rounded-xl px-2 py-1 text-on-surface-variant/60 text-sm transition-colors duration-200 hover:bg-surface-container hover:text-primary" href="/datenschutz">Datenschutz</a></li>
-				<li><a class="footer-link focus-ring min-h-11 inline-flex rounded-xl px-2 py-1 text-on-surface-variant/60 text-sm transition-colors duration-200 hover:bg-surface-container hover:text-primary" href="/impressum">Impressum</a></li>
+				<li><a class="footer-link focus-ring min-h-11 inline-flex rounded-xl px-2 py-1 text-on-surface-variant transition-colors duration-200 hover:bg-surface-container hover:text-primary" href="{base}/">Home</a></li>
+				<li><a class="footer-link focus-ring min-h-11 inline-flex rounded-xl px-2 py-1 text-on-surface-variant transition-colors duration-200 hover:bg-surface-container hover:text-primary" href="{base}/kalender">Kalender</a></li>
+				<li><a class="footer-link focus-ring min-h-11 inline-flex rounded-xl px-2 py-1 text-on-surface-variant transition-colors duration-200 hover:bg-surface-container hover:text-primary" href="{base}/geschichte">Geschichte</a></li>
+				<li><a class="footer-link focus-ring min-h-11 inline-flex rounded-xl px-2 py-1 text-on-surface-variant/60 text-sm transition-colors duration-200 hover:bg-surface-container hover:text-primary" href="{base}/datenschutz">Datenschutz</a></li>
+				<li><a class="footer-link focus-ring min-h-11 inline-flex rounded-xl px-2 py-1 text-on-surface-variant/60 text-sm transition-colors duration-200 hover:bg-surface-container hover:text-primary" href="{base}/impressum">Impressum</a></li>
 			</ul>
 		</div>
 		<div class="flex flex-col gap-4">

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import { quartOut } from 'svelte/easing';
 	import { prefersReducedMotion } from 'svelte/motion';
 	import { fly } from 'svelte/transition';
@@ -14,15 +15,16 @@
 	];
 
 	function isActive(href: string): boolean {
-		if (href === '/') return currentPath === '/';
-		return currentPath.startsWith(href);
+		const path = currentPath.replace(base, '') || '/';
+		if (href === '/') return path === '/';
+		return path.startsWith(href);
 	}
 </script>
 
 <nav class="fixed top-0 z-50 w-full bg-surface/75 backdrop-blur-xl">
 	<div class="mx-auto max-w-7xl px-6 py-4">
 		<div class="flex justify-between items-center gap-4">
-			<a href="/" class="brand-mark focus-ring flex items-center gap-1.5 rounded-xl font-headline text-xl font-black tracking-tight text-primary md:text-2xl">
+			<a href="{base}/" class="brand-mark focus-ring flex items-center gap-1.5 rounded-xl font-headline text-xl font-black tracking-tight text-primary md:text-2xl">
 				Spieletreff Tecklenburg
 				<span class="brand-icon material-symbols-outlined text-base md:text-lg" aria-hidden="true">casino</span>
 			</a>
@@ -30,7 +32,7 @@
 				{#each navItems as item (item.href)}
 					<a
 						class={`nav-link focus-ring min-h-11 rounded-xl px-3 py-2 font-headline text-sm font-bold transition-colors duration-200 ${isActive(item.href) ? 'bg-surface-container-highest text-primary' : 'text-on-surface-variant hover:bg-surface-container-low hover:text-primary'}`}
-						href={item.href}
+						href="{base}{item.href}"
 						aria-current={isActive(item.href) ? 'page' : undefined}
 					>
 						{item.label}
@@ -38,7 +40,7 @@
 				{/each}
 			</div>
 			<div class="flex items-center gap-2">
-				<a href="/kalender#bevorstehende-termine" class="header-cta focus-ring hidden min-h-11 whitespace-nowrap rounded-xl bg-primary px-4 py-2.5 text-sm font-bold text-on-primary transition-colors duration-200 hover:bg-primary/90 md:px-6 md:text-base sm:inline-flex">
+				<a href="{base}/kalender#bevorstehende-termine" class="header-cta focus-ring hidden min-h-11 whitespace-nowrap rounded-xl bg-primary px-4 py-2.5 text-sm font-bold text-on-primary transition-colors duration-200 hover:bg-primary/90 md:px-6 md:text-base sm:inline-flex">
 					Nächstes Treffen
 				</a>
 				<button
@@ -67,14 +69,14 @@
 							easing: quartOut
 						}}
 						class={`nav-link focus-ring min-h-11 rounded-xl px-3 py-2 font-headline font-bold transition-colors duration-200 ${isActive(item.href) ? 'bg-surface-container-highest text-primary' : 'text-on-surface-variant hover:bg-surface-container-low hover:text-primary'}`}
-						href={item.href}
+						href="{base}{item.href}"
 						aria-current={isActive(item.href) ? 'page' : undefined}
 						onclick={() => (menuOpen = false)}
 					>
 						{item.label}
 					</a>
 				{/each}
-				<a href="/kalender#bevorstehende-termine" class="header-cta focus-ring mt-1 inline-flex min-h-11 justify-center rounded-xl bg-primary px-4 py-2.5 font-bold text-on-primary transition-colors duration-200 hover:bg-primary/90" onclick={() => (menuOpen = false)}>
+				<a href="{base}/kalender#bevorstehende-termine" class="header-cta focus-ring mt-1 inline-flex min-h-11 justify-center rounded-xl bg-primary px-4 py-2.5 font-bold text-on-primary transition-colors duration-200 hover:bg-primary/90" onclick={() => (menuOpen = false)}>
 					Nächstes Treffen
 				</a>
 			</div>
