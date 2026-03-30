@@ -63,6 +63,9 @@ const hasCalendarSourceData = $derived(calendarStore.events.length > 0);
 
 <svelte:head>
 	<title>Spieletreff Tecklenburg – Brettspielgruppe im Tecklenburger Land</title>
+	<meta name="description" content="Brettspielgruppe im Tecklenburger Land – offen für alle. Jeden 1. und 3. Freitag in Mettingen und Brochterbeck. Kostenlos, ohne Anmeldung." />
+	<meta property="og:title" content="Spieletreff Tecklenburg – Brettspielgruppe im Tecklenburger Land" />
+	<meta property="og:description" content="Jeden 1. und 3. Freitag gemeinsam Brettspiele spielen. Offen für alle – kein Mitgliedsbeitrag, keine Anmeldung." />
 </svelte:head>
 
 <main class="bg-surface font-body text-on-surface antialiased">

@@ -100,6 +100,9 @@ const hasCalendarSourceData = $derived(calendarStore.events.length > 0);
 
 <svelte:head>
 	<title>Kalender – Spieletreff Tecklenburg</title>
+	<meta name="description" content="Alle Spieleabende und Termine des Spieletreffs Tecklenburg auf einen Blick. Wir treffen uns jeden 1. und 3. Freitag im Monat." />
+	<meta property="og:title" content="Kalender – Spieletreff Tecklenburg" />
+	<meta property="og:description" content="Alle Spieleabende und Termine auf einen Blick. Jeden 1. und 3. Freitag im Tecklenburger Land." />
 </svelte:head>
 
 <main class="bg-surface font-body text-on-surface antialiased">

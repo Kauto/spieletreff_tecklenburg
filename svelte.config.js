@@ -17,6 +17,9 @@ const config = {
 		adapter: adapter(),
 		paths: {
 			base: process.env.BASE_PATH ?? ''
+		},
+		prerender: {
+			origin: 'https://kauto.github.io'
 		}
 	}
 };
