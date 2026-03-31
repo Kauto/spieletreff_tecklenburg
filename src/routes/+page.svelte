@@ -114,7 +114,7 @@
 				<div class="relative rounded-2xl overflow-hidden shadow-xl">
 					<img
 						src="{base}/images/spieletreff-hero.jpg"
-						alt="Bunte Brettspiel-Figuren, Karten und Holzwürfel auf einem Holztisch"
+						alt="Teilnehmer des Spieletreff Tecklenburg beim gemeinsamen Brettspielabend"
 						class="w-full aspect-[4/5] object-cover"
 					/>
 				</div>
@@ -171,8 +171,8 @@
 		<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
 			<div class="order-2 md:order-1 grid grid-cols-2 gap-4">
 				<img
-					src="{base}/images/spieletreff-mitspieler.jpg"
-					alt="Gruppe von Freunden beim Spielen"
+					src="{base}/images/group-photo.png"
+					alt="Mitglieder des Spieletreff Tecklenburg beim gemeinsamen Spielen"
 					class="rounded-xl w-full h-64 object-cover shadow-lg"
 				/>
 				<img
