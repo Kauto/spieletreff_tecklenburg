@@ -173,7 +173,7 @@
 				<img
 					src="{base}/images/group-photo.png"
 					alt="Mitglieder des Spieletreff Tecklenburg beim gemeinsamen Spielen"
-					class="rounded-xl w-full h-64 object-cover shadow-lg"
+					class="rounded-xl w-full h-64 object-contain shadow-lg"
 				/>
 				<img
 					src="{base}/images/spieletreff-spieleabend.jpg"
