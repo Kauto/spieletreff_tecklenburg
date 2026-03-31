@@ -18,7 +18,7 @@
 
 <svelte:head>
 	<link rel="icon" type="image/svg+xml" href={favicon} />
-	<meta name="theme-color" content="#556b2f" />
+	<meta name="theme-color" content="#2E3A8C" />
 	<meta name="robots" content="index, follow" />
 	<meta name="author" content="Spieletreff Tecklenburger Land" />
 	<meta property="og:site_name" content="Spieletreff Tecklenburg" />

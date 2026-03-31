@@ -14,7 +14,7 @@
 	const upcoming = $derived(calendarStore.upcoming);
 	const past = $derived(calendarStore.events.filter((e) => e.end < todayStart).slice().reverse());
 	const nextEvent = $derived(calendarStore.next);
-const hasCalendarSourceData = $derived(calendarStore.events.length > 0);
+	const hasCalendarSourceData = $derived(calendarStore.events.length > 0);
 
 	type MonthGroup = { key: string; label: string; events: CalendarEvent[] };
 

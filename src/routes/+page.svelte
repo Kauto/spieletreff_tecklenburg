@@ -31,7 +31,7 @@
 	const upcoming = $derived(calendarStore.upcoming);
 	const nextEvent = $derived(calendarStore.next);
 	const nextThreeEvents = $derived(upcoming.slice(0, 3));
-const hasCalendarSourceData = $derived(calendarStore.events.length > 0);
+	const hasCalendarSourceData = $derived(calendarStore.events.length > 0);
 
 	const accents = ['bg-primary', 'bg-primary', 'bg-primary'];
 
@@ -223,44 +223,44 @@ const hasCalendarSourceData = $derived(calendarStore.events.length > 0);
 		{#if nextThreeEvents.length > 0}
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 				{#each nextThreeEvents as event, i (event.uid)}
-				<div class={`relative rounded-xl overflow-hidden flex flex-col group transition-all duration-300 hover:shadow-lg ${i === 0 ? 'bg-primary-container ring-2 ring-primary/30 shadow-md' : 'bg-surface-container-highest'}`}>
-					<a
-						href="{base}/kalender#bevorstehende-termine"
-						aria-label="{event.title} – Im Kalender ansehen"
-						class="absolute inset-0 z-0 rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-[-2px]"
-					><span class="sr-only">Im Kalender ansehen</span></a>
-					<div class={`h-3 ${accents[i % accents.length]}`}></div>
-						<div class="p-8 flex flex-col h-full">
-							<div class="text-secondary font-bold text-sm tracking-widest uppercase mb-4">Treffen im {formatMonthTag(event.start)}</div>
-							<h3 class="text-2xl font-bold font-headline mb-4 leading-tight group-hover:text-primary transition-colors">
-								{event.title}
-							</h3>
-							<div class="mt-auto space-y-4">
-								<div class="flex items-center gap-3 text-on-surface-variant">
-									<span class="material-symbols-outlined">event</span>
-									<span class="font-bold">
-										{formatDate(event.start)}
-										{#if !event.allDay}&nbsp;ab {formatTime(event.start)} Uhr{/if}
-									</span>
+			<div class={`relative rounded-xl overflow-hidden flex flex-col group transition-all duration-300 hover:shadow-lg ${i === 0 ? 'bg-primary-container text-on-primary-container ring-2 ring-white/20 shadow-lg' : 'bg-surface-container-highest'}`}>
+				<a
+					href="{base}/kalender#bevorstehende-termine"
+					aria-label="{event.title} – Im Kalender ansehen"
+					class="absolute inset-0 z-0 rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-[-2px]"
+				><span class="sr-only">Im Kalender ansehen</span></a>
+				<div class={`h-3 ${i === 0 ? 'bg-secondary' : 'bg-primary'}`}></div>
+					<div class="p-8 flex flex-col h-full">
+						<div class={`font-bold text-sm tracking-widest uppercase mb-4 ${i === 0 ? 'text-on-primary-container/70' : 'text-secondary'}`}>Treffen im {formatMonthTag(event.start)}</div>
+						<h3 class={`text-2xl font-bold font-headline mb-4 leading-tight transition-colors ${i === 0 ? 'group-hover:text-on-primary-container/80' : 'group-hover:text-primary'}`}>
+							{event.title}
+						</h3>
+						<div class="mt-auto space-y-4">
+							<div class={`flex items-center gap-3 ${i === 0 ? 'text-on-primary-container/70' : 'text-on-surface-variant'}`}>
+								<span class="material-symbols-outlined">event</span>
+								<span class="font-bold">
+									{formatDate(event.start)}
+									{#if !event.allDay}&nbsp;ab {formatTime(event.start)} Uhr{/if}
+								</span>
+							</div>
+							{#if event.location}
+								<div class={`flex items-center gap-3 ${i === 0 ? 'text-on-primary-container/70' : 'text-on-surface-variant'}`}>
+									<span class="material-symbols-outlined">apartment</span>
+									{#if locationOrUndefined(event.location)}
+										<button
+											type="button"
+											class="relative z-10 text-left hover:underline cursor-pointer rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+											onclick={(eventClick) =>
+												requestMapConsent(locationOrUndefined(event.location)!, eventClick.currentTarget)}
+										>
+											{locationOrUndefined(event.location)}
+										</button>
+									{/if}
 								</div>
-								{#if event.location}
-									<div class="flex items-center gap-3 text-on-surface-variant">
-										<span class="material-symbols-outlined">apartment</span>
-										{#if locationOrUndefined(event.location)}
-								<button
-										type="button"
-										class="relative z-10 text-left hover:underline cursor-pointer rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
-										onclick={(eventClick) =>
-											requestMapConsent(locationOrUndefined(event.location)!, eventClick.currentTarget)}
-									>
-												{locationOrUndefined(event.location)}
-											</button>
-										{/if}
-									</div>
-								{/if}
-						</div>
+							{/if}
 						</div>
 					</div>
+				</div>
 				{/each}
 			</div>
 		{:else if hasCalendarSourceData}
