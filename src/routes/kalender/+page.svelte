@@ -150,7 +150,17 @@
 			<div class="text-center py-20 text-on-surface-variant">
 				<span class="material-symbols-outlined text-7xl mb-4 block opacity-30">event_busy</span>
 				<p class="text-2xl font-bold font-headline">Keine bevorstehenden Termine</p>
-				<p class="mt-2 text-lg">Schaut bald wieder vorbei – neue Termine folgen.</p>
+				<p class="mt-2 text-lg">Kein Treffen in Sicht? Tritt der WhatsApp-Gruppe bei und verpasse keine spontanen Runden.</p>
+				<a
+					href="https://chat.whatsapp.com/2naM3nPDYs08qymMxBIE8v?mode=gi_t"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="WhatsApp-Gruppe beitreten (öffnet extern)"
+					class="mt-6 inline-flex items-center gap-2 bg-primary text-on-primary px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-primary/90 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+				>
+					<span class="material-symbols-outlined text-base leading-none" aria-hidden="true">forum</span>
+					WhatsApp-Gruppe beitreten
+				</a>
 			</div>
 		{:else if upcomingGroups.length === 0}
 			<div class="text-center py-20 text-on-surface-variant">

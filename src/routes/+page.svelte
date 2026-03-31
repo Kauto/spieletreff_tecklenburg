@@ -173,12 +173,12 @@
 				<img
 					src="{base}/images/spieletreff-mitspieler.jpg"
 					alt="Gruppe von Freunden beim Spielen"
-					class="rounded-xl w-full h-64 object-cover shadow-md"
+					class="rounded-xl w-full h-64 object-cover shadow-lg"
 				/>
 				<img
 					src="{base}/images/spieletreff-spieleabend.jpg"
 					alt="Würfel auf einem Spielbrett"
-					class="rounded-xl w-full h-64 object-cover mt-12 shadow-md"
+					class="rounded-xl w-full h-64 object-cover mt-12 shadow-lg"
 				/>
 			</div>
 			<div class="order-1 md:order-2">
@@ -211,7 +211,7 @@
 		<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
 			<div>
 				<h2 class="text-4xl font-extrabold font-headline text-on-surface mb-2">Bevorstehende Treffen</h2>
-				<p class="text-on-surface-variant text-lg font-medium">Alle nächsten Termine im Überblick – im Kalender gebündelt.</p>
+				<p class="text-on-surface-variant text-lg font-medium">Die nächsten Termine auf einen Blick.</p>
 			</div>
 			<a class="text-on-surface-variant font-semibold flex items-center gap-2 hover:text-primary hover:underline group transition-colors" href="{base}/kalender">
 				Gesamten Kalender ansehen
@@ -228,7 +228,7 @@
 					class="absolute inset-0 z-0 rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-[-2px]"
 				><span class="sr-only">Im Kalender ansehen</span></a>
 					<div class={`flex flex-col h-full ${i === 0 ? 'p-10' : 'p-8'}`}>
-						<div class={`font-bold text-sm tracking-widest uppercase mb-4 ${i === 0 ? 'text-on-primary-container/70' : 'text-secondary'}`}>Treffen im {formatMonthTag(event.start)}</div>
+						<div class={`font-bold text-sm tracking-widest uppercase mb-4 ${i === 0 ? 'text-on-primary-container/70' : 'text-on-surface-variant'}`}>Treffen im {formatMonthTag(event.start)}</div>
 						<h3 class={`font-bold font-headline mb-4 leading-tight transition-colors ${i === 0 ? 'text-3xl group-hover:text-on-primary-container/80' : 'text-2xl group-hover:text-primary'}`}>
 							{event.title}
 						</h3>
@@ -264,7 +264,17 @@
 			<div class="text-center py-20 text-on-surface-variant bg-surface-container-highest rounded-2xl">
 				<span class="material-symbols-outlined text-7xl mb-4 block opacity-30">event_busy</span>
 				<p class="text-2xl font-bold font-headline">Keine bevorstehenden Termine</p>
-				<p class="mt-2 text-lg">Schaut bald wieder vorbei – neue Termine folgen.</p>
+				<p class="mt-2 text-lg">Kein Treffen in Sicht? Tritt der WhatsApp-Gruppe bei und verpasse keine spontanen Runden.</p>
+				<a
+					href="https://chat.whatsapp.com/2naM3nPDYs08qymMxBIE8v?mode=gi_t"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="WhatsApp-Gruppe beitreten (öffnet extern)"
+					class="mt-6 inline-flex items-center gap-2 bg-primary text-on-primary px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-primary/90 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+				>
+					<span class="material-symbols-outlined text-base leading-none" aria-hidden="true">forum</span>
+					WhatsApp-Gruppe beitreten
+				</a>
 			</div>
 		{:else}
 			<div class="text-center py-20 text-on-surface-variant bg-surface-container-highest rounded-2xl">
