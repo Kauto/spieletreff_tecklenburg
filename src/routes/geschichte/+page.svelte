@@ -89,15 +89,15 @@
 				<h2 class="text-2xl font-extrabold font-headline text-on-surface">Bilder vom Spieleabend</h2>
 			</div>
 		<div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-			{#each photos as photo (photo.src)}
-				<div class="overflow-hidden rounded-xl group">
+			{#each photos as photo, i (photo.src)}
+				<div class={`overflow-hidden rounded-xl group ${i === 0 ? 'col-span-2' : ''}`}>
 					<img
 						src={photo.src}
 						alt={photo.alt}
 						loading="lazy"
 						width="941"
 						height="628"
-						class="w-full aspect-[3/2] object-cover transition-transform duration-500 group-hover:scale-105"
+						class={`w-full object-cover transition-transform duration-500 group-hover:scale-105 ${i === 0 ? 'aspect-[2/1]' : 'aspect-[3/2]'}`}
 					/>
 				</div>
 			{/each}

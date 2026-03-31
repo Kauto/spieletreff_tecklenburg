@@ -33,8 +33,6 @@
 	const nextThreeEvents = $derived(upcoming.slice(0, 3));
 	const hasCalendarSourceData = $derived(calendarStore.events.length > 0);
 
-	const accents = ['bg-primary', 'bg-primary', 'bg-primary'];
-
 	function formatDate(d: Date): string {
 		return new Intl.DateTimeFormat('de-DE', {
 			day: '2-digit',
@@ -113,7 +111,7 @@
 				</p>
 			</div>
 			<div class="lg:col-span-5 relative">
-				<div class="relative rounded-2xl overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500">
+				<div class="relative rounded-2xl overflow-hidden shadow-xl">
 					<img
 						src="{base}/images/spieletreff-hero.jpg"
 						alt="Bunte Brettspiel-Figuren, Karten und Holzwürfel auf einem Holztisch"
@@ -223,16 +221,15 @@
 		{#if nextThreeEvents.length > 0}
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 				{#each nextThreeEvents as event, i (event.uid)}
-			<div class={`relative rounded-xl overflow-hidden flex flex-col group transition-all duration-300 hover:shadow-lg ${i === 0 ? 'bg-primary-container text-on-primary-container ring-2 ring-white/20 shadow-lg' : 'bg-surface-container-highest'}`}>
+			<div class={`relative rounded-xl overflow-hidden flex flex-col group transition-all duration-300 hover:shadow-lg ${i === 0 ? 'bg-primary-container text-on-primary-container shadow-lg' : 'bg-surface-container-highest'}`}>
 				<a
 					href="{base}/kalender#bevorstehende-termine"
 					aria-label="{event.title} – Im Kalender ansehen"
 					class="absolute inset-0 z-0 rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-[-2px]"
 				><span class="sr-only">Im Kalender ansehen</span></a>
-				<div class={`h-3 ${i === 0 ? 'bg-secondary' : 'bg-primary'}`}></div>
-					<div class="p-8 flex flex-col h-full">
+					<div class={`flex flex-col h-full ${i === 0 ? 'p-10' : 'p-8'}`}>
 						<div class={`font-bold text-sm tracking-widest uppercase mb-4 ${i === 0 ? 'text-on-primary-container/70' : 'text-secondary'}`}>Treffen im {formatMonthTag(event.start)}</div>
-						<h3 class={`text-2xl font-bold font-headline mb-4 leading-tight transition-colors ${i === 0 ? 'group-hover:text-on-primary-container/80' : 'group-hover:text-primary'}`}>
+						<h3 class={`font-bold font-headline mb-4 leading-tight transition-colors ${i === 0 ? 'text-3xl group-hover:text-on-primary-container/80' : 'text-2xl group-hover:text-primary'}`}>
 							{event.title}
 						</h3>
 						<div class="mt-auto space-y-4">
@@ -274,6 +271,14 @@
 				<span class="material-symbols-outlined text-7xl mb-4 block opacity-30">cloud_off</span>
 				<p class="text-2xl font-bold font-headline">Termine sind gerade nicht verfügbar</p>
 				<p class="mt-2 text-lg">Bitte versuche es in ein paar Minuten erneut.</p>
+				<button
+					type="button"
+					onclick={() => window.location.reload()}
+					class="mt-6 inline-flex items-center gap-2 bg-surface-container text-on-surface px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-surface-container-high transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+				>
+					<span class="material-symbols-outlined text-base leading-none">refresh</span>
+					Seite neu laden
+				</button>
 			</div>
 		{/if}
 	</section>

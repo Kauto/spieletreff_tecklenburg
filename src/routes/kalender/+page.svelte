@@ -127,15 +127,15 @@
 			>
 				Alle Spieleabende, Sondertermine und Turniere – immer auf einen Blick. Wir treffen uns jeden 1. und 3. Freitag im Monat.
 			</p>
-			{#if nextEvent}
-				<div
-					in:fly={{ y: heroFlyY, duration: heroDuration, delay: reduceMotion ? 0 : 240, easing: quartOut }}
-					class="mt-8 inline-flex items-center gap-3 bg-primary-container text-on-primary-container px-6 py-3 rounded-xl font-bold"
-				>
-					<span class="material-symbols-outlined">event_upcoming</span>
-					Nächstes Treffen: {formatFullDate(nextEvent.start)}{#if !nextEvent.allDay}&nbsp;ab {formatTime(nextEvent.start)} Uhr{/if}
-				</div>
-			{/if}
+		{#if nextEvent}
+			<div
+				in:fly={{ y: heroFlyY, duration: heroDuration, delay: reduceMotion ? 0 : 240, easing: quartOut }}
+				class="mt-8 inline-flex items-center gap-3 bg-primary-container text-on-primary-container px-6 py-3 rounded-xl font-bold"
+			>
+				<span class="material-symbols-outlined">event_upcoming</span>
+				Nächster Spielabend: {formatFullDate(nextEvent.start)}{#if !nextEvent.allDay}&nbsp;ab {formatTime(nextEvent.start)} Uhr{/if}
+			</div>
+		{/if}
 		</div>
 	</section>
 
@@ -157,6 +157,14 @@
 				<span class="material-symbols-outlined text-7xl mb-4 block opacity-30">cloud_off</span>
 				<p class="text-2xl font-bold font-headline">Termine sind gerade nicht verfügbar</p>
 				<p class="mt-2 text-lg">Bitte versuche es in ein paar Minuten erneut.</p>
+				<button
+					type="button"
+					onclick={() => window.location.reload()}
+					class="mt-6 inline-flex items-center gap-2 bg-surface-container text-on-surface px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-surface-container-high transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+				>
+					<span class="material-symbols-outlined text-base leading-none">refresh</span>
+					Seite neu laden
+				</button>
 			</div>
 		{:else}
 		<div class="space-y-10">

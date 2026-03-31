@@ -29,7 +29,7 @@
 		<div class="flex flex-col gap-4">
 			<h4 class="font-headline text-xs font-bold uppercase tracking-widest text-primary">Kontakt</h4>
 			<p class="text-base text-on-surface-variant">Mario Lampe</p>
-			<a class="footer-link focus-ring min-h-11 inline-flex rounded-xl px-2 py-1 font-bold text-primary transition-colors duration-200 hover:bg-surface-container hover:text-primary/90" href="mailto:spielen@spieletreff-tecklenburgerland.de">
+			<a class="footer-link focus-ring min-h-11 inline-flex rounded-xl px-2 py-1 font-bold text-primary transition-colors duration-200 hover:bg-surface-container hover:text-primary/90 break-all" href="mailto:spielen@spieletreff-tecklenburgerland.de">
 				spielen@spieletreff-tecklenburgerland.de
 			</a>
 		</div>

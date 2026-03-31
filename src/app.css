@@ -17,9 +17,9 @@
 	--color-on-primary-container: #FFFFFF;
 	--color-on-primary: #FFFFFF;
 	--color-secondary: #FF5F1F;
-	--color-secondary-container: #FF5F1F;
+	--color-secondary-container: #FF8040;
 	--color-on-secondary: #FFFFFF;
-	--color-on-secondary-container: #FFFFFF;
+	--color-on-secondary-container: #2A1000;
 	--color-tertiary: #374151;
 	--color-tertiary-container: #D1D5DB;
 	--color-on-tertiary: #FFFFFF;
@@ -29,7 +29,7 @@
 	--color-surface: #F9FAFB;
 	--color-surface-container: #E5E7EB;
 	--color-surface-container-high: #D1D5DB;
-	--color-surface-container-highest: #BEC1C7;
+	--color-surface-container-highest: #C8CBD1;
 	--color-surface-container-low: #F9FAFB;
 	--color-surface-container-lowest: #FFFFFF;
 	--color-on-surface: #111827;
