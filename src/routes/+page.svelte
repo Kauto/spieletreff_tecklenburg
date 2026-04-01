@@ -33,8 +33,11 @@
 	const nextThreeEvents = $derived(upcoming.slice(0, 3));
 	const hasCalendarSourceData = $derived(calendarStore.events.length > 0);
 
+	const TZ = 'Europe/Berlin';
+
 	function formatDate(d: Date): string {
 		return new Intl.DateTimeFormat('de-DE', {
+			timeZone: TZ,
 			day: '2-digit',
 			month: 'long',
 			year: 'numeric'
@@ -42,15 +45,16 @@
 	}
 
 	function formatMonthTag(d: Date): string {
-		return new Intl.DateTimeFormat('de-DE', { month: 'long' }).format(d);
+		return new Intl.DateTimeFormat('de-DE', { timeZone: TZ, month: 'long' }).format(d);
 	}
 
 	function formatTime(d: Date): string {
-		return new Intl.DateTimeFormat('de-DE', { hour: '2-digit', minute: '2-digit' }).format(d);
+		return new Intl.DateTimeFormat('de-DE', { timeZone: TZ, hour: '2-digit', minute: '2-digit' }).format(d);
 	}
 
 	function formatHeroDate(d: Date): string {
 		return new Intl.DateTimeFormat('de-DE', {
+			timeZone: TZ,
 			weekday: 'long',
 			day: 'numeric',
 			month: 'long'

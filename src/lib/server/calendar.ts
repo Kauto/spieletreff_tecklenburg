@@ -33,13 +33,50 @@ function unescape(value: string): string {
 	return value.replace(/\\n/g, '\n').replace(/\\,/g, ',').replace(/\\;/g, ';').replace(/\\\\/g, '\\');
 }
 
+/**
+ * Converts a wall-clock datetime string (ISO local, no Z suffix) that is in the
+ * given IANA timezone into a proper UTC Date. Works on any Node/V8 version that
+ * supports Intl.DateTimeFormat.formatToParts.
+ */
+function parseLocalInTimezone(localIso: string, tzid: string): Date {
+	// Treat the local time as if it were UTC so we have a Date to pass to Intl.
+	const assumedUtc = new Date(localIso + 'Z');
+
+	// Format that UTC instant as a broken-down date/time in the target timezone.
+	const parts = Object.fromEntries(
+		new Intl.DateTimeFormat('en-CA', {
+			timeZone: tzid,
+			year: 'numeric',
+			month: '2-digit',
+			day: '2-digit',
+			hour: '2-digit',
+			minute: '2-digit',
+			second: '2-digit',
+			hour12: false
+		})
+			.formatToParts(assumedUtc)
+			.map((p) => [p.type, p.value])
+	);
+
+	// Rebuild the date string from parts and parse it as UTC to get the TZ offset.
+	const hour = parts.hour === '24' ? '00' : parts.hour;
+	const tzAsUtc = new Date(
+		`${parts.year}-${parts.month}-${parts.day}T${hour}:${parts.minute}:${parts.second}Z`
+	);
+
+	// offset = (local time treated as UTC) - (what that UTC time looks like in tzid)
+	// Applying the offset converts our "assumed UTC" to the real UTC instant.
+	const offsetMs = assumedUtc.getTime() - tzAsUtc.getTime();
+	return new Date(assumedUtc.getTime() + offsetMs);
+}
+
 function parseDate(key: string, value: string): { date: Date; allDay: boolean } {
 	const isAllDay = key.includes('VALUE=DATE') || value.length === 8;
 
 	if (isAllDay) {
-		// DATE: YYYYMMDD — treat as midnight local
+		// DATE: YYYYMMDD — noon UTC avoids any date-line ambiguity during display
 		return {
-			date: new Date(`${value.slice(0, 4)}-${value.slice(4, 6)}-${value.slice(6, 8)}`),
+			date: new Date(`${value.slice(0, 4)}-${value.slice(4, 6)}-${value.slice(6, 8)}T12:00:00Z`),
 			allDay: true
 		};
 	}
@@ -54,13 +91,17 @@ function parseDate(key: string, value: string): { date: Date; allDay: boolean } 
 		};
 	}
 
-	// Floating / TZID local datetime — parse without explicit TZ
-	return {
-		date: new Date(
-			`${value.slice(0, 4)}-${value.slice(4, 6)}-${value.slice(6, 8)}T${value.slice(9, 11)}:${value.slice(11, 13)}:${value.slice(13, 15)}`
-		),
-		allDay: false
-	};
+	const localIso = `${value.slice(0, 4)}-${value.slice(4, 6)}-${value.slice(6, 8)}T${value.slice(9, 11)}:${value.slice(11, 13)}:${value.slice(13, 15)}`;
+
+	// Extract TZID parameter, e.g. DTSTART;TZID=Europe/Berlin
+	const tzidMatch = key.match(/TZID=([^;:]+)/);
+	if (tzidMatch) {
+		return { date: parseLocalInTimezone(localIso, tzidMatch[1]), allDay: false };
+	}
+
+	// Truly floating datetime (no TZID, no Z) — assume Europe/Berlin as the
+	// calendar is German and Google Calendar always sets TZID, so this is a fallback.
+	return { date: parseLocalInTimezone(localIso, 'Europe/Berlin'), allDay: false };
 }
 
 type RawEvent = Partial<CalendarEvent> & {

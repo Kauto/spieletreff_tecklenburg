@@ -21,12 +21,9 @@
 	function groupByMonth(events: CalendarEvent[]): MonthGroup[] {
 		const groups = new SvelteMap<string, MonthGroup>(); // local computation only, not reactive
 		for (const event of events) {
-			const key = `${event.start.getFullYear()}-${String(event.start.getMonth() + 1).padStart(2, '0')}`;
+			const key = groupKeyFormatter.format(event.start); // e.g. "2026-04" in Europe/Berlin
 			if (!groups.has(key)) {
-				const label = new Intl.DateTimeFormat('de-DE', {
-					month: 'long',
-					year: 'numeric'
-				}).format(event.start);
+				const label = monthYearFormatter.format(event.start);
 				groups.set(key, { key, label, events: [] });
 			}
 			groups.get(key)!.events.push(event);
@@ -37,20 +34,26 @@
 	const upcomingGroups = $derived(groupByMonth(upcoming));
 	const pastGroups = $derived(groupByMonth(past));
 
-	const weekdayFormatter = new Intl.DateTimeFormat('de-DE', { weekday: 'short' });
-	const timeFormatter = new Intl.DateTimeFormat('de-DE', { hour: '2-digit', minute: '2-digit' });
+	const TZ = 'Europe/Berlin';
+
+	const weekdayFormatter = new Intl.DateTimeFormat('de-DE', { timeZone: TZ, weekday: 'short' });
+	const timeFormatter = new Intl.DateTimeFormat('de-DE', { timeZone: TZ, hour: '2-digit', minute: '2-digit' });
 	const fullDateFormatter = new Intl.DateTimeFormat('de-DE', {
+		timeZone: TZ,
 		weekday: 'long',
 		day: 'numeric',
 		month: 'long',
 		year: 'numeric'
 	});
+	const dayFormatter = new Intl.DateTimeFormat('de-DE', { timeZone: TZ, day: 'numeric' });
+	const monthYearFormatter = new Intl.DateTimeFormat('de-DE', { timeZone: TZ, month: 'long', year: 'numeric' });
+	const groupKeyFormatter = new Intl.DateTimeFormat('en-CA', { timeZone: TZ, year: 'numeric', month: '2-digit' });
 
 	function formatWeekday(d: Date): string {
 		return weekdayFormatter.format(d);
 	}
 	function formatDay(d: Date): string {
-		return d.getDate().toString();
+		return dayFormatter.format(d);
 	}
 	function formatTime(d: Date): string {
 		return timeFormatter.format(d);
