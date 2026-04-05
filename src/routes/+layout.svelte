@@ -6,7 +6,19 @@
 	import Header from '$lib/components/site/Header.svelte';
 	import '../app.css';
 	import { calendarStore } from '$lib/events.svelte';
+	import { onNavigate } from '$app/navigation';
 
+	onNavigate((navigation) => {
+		if (!document.startViewTransition) return;
+
+		return new Promise((resolve) => {
+			document.startViewTransition(async () => {
+				resolve();
+				await navigation.complete;
+			});
+		});
+	});
+	
 	let { children, data } = $props();
 
 	$effect(() => {
