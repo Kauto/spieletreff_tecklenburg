@@ -43,8 +43,6 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build
-        env:
-          BASE_PATH: '/spieletreff_tecklenburg'
         run: pnpm build
 
       - name: Upload via SFTP
