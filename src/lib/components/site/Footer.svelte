@@ -1,14 +1,17 @@
 <script lang="ts">
 	import { base } from '$app/paths';
+	import imgLogo from '$lib/assets/images/logo-transparent.png?enhanced';
 </script>
 
 <footer class="w-full bg-surface-container-low font-body">
 	<div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-8 px-8 py-16 md:grid-cols-4 md:px-12">
 		<div class="flex flex-col gap-5">
-			<a href="{base}/" class="inline-block rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2">
-				<img
-					src="{base}/images/logo-transparent.png"
-					alt="Spieletreff Tecklenburger Land"
+			<a href="{base}/" class="inline-block rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2" aria-label="Spieletreff Tecklenburger Land – Startseite">
+				<enhanced:img
+					src={imgLogo}
+					alt=""
+					aria-hidden="true"
+					sizes="64px"
 					class="h-16 w-auto"
 				/>
 			</a>

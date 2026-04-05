@@ -1,6 +1,10 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import MapConsentDialog from '$lib/components/site/MapConsentDialog.svelte';
+	import imgMeeple from '$lib/assets/images/meeple.png?enhanced';
+	import imgHero from '$lib/assets/images/spieletreff-hero.jpg?enhanced';
+	import imgGroupPhoto from '$lib/assets/images/group-photo.png?enhanced';
+	import imgSpielabend from '$lib/assets/images/spieletreff-spieleabend.jpg?enhanced';
 	import { calendarStore } from '$lib/events.svelte';
 	import { locationOrUndefined } from '$lib/location';
 
@@ -77,8 +81,8 @@
 		<div class="lg:col-span-7 z-10">
 			<div class="flex flex-col gap-3 sm:flex-row">
 				<div class="sm:order-2">
-					<img
-						src="{base}/images/meeple.png"
+					<enhanced:img
+						src={imgMeeple}
 						alt=""
 						aria-hidden="true"
 						class="h-18 w-auto"
@@ -139,10 +143,12 @@
 		</div>
 			<div class="lg:col-span-5 relative">
 				<div class="relative rounded-2xl overflow-hidden shadow-xl">
-					<img
-						src="{base}/images/spieletreff-hero.jpg"
+					<enhanced:img
+						src={imgHero}
 						alt="Teilnehmer des Spieletreff Tecklenburg beim gemeinsamen Brettspielabend"
+						sizes="(min-width: 1024px) 40vw, 100vw"
 						class="w-full aspect-[4/5] object-cover"
+						fetchpriority="high"
 					/>
 				</div>
 			</div>
@@ -153,16 +159,18 @@
 	<section class="bg-surface-container-low py-24 px-8">
 		<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
 			<div class="order-2 md:order-1 grid grid-cols-2 gap-4">
-				<img
-					src="{base}/images/group-photo.png"
-					alt="Mitglieder des Spieletreff Tecklenburg beim gemeinsamen Spielen"
-					class="rounded-xl w-full h-64 object-contain shadow-lg"
-				/>
-				<img
-					src="{base}/images/spieletreff-spieleabend.jpg"
-					alt="Würfel auf einem Spielbrett"
-					class="rounded-xl w-full h-64 object-cover mt-12 shadow-lg"
-				/>
+			<enhanced:img
+				src={imgGroupPhoto}
+				alt="Mitglieder des Spieletreff Tecklenburg beim gemeinsamen Spielen"
+				sizes="(min-width: 768px) 25vw, 45vw"
+				class="rounded-xl w-full h-64 object-contain shadow-lg"
+			/>
+			<enhanced:img
+				src={imgSpielabend}
+				alt="Würfel auf einem Spielbrett"
+				sizes="(min-width: 768px) 25vw, 45vw"
+				class="rounded-xl w-full h-64 object-cover mt-12 shadow-lg"
+			/>
 			</div>
 			<div class="order-1 md:order-2">
 				<h2 class="text-4xl font-extrabold font-headline mb-8 text-on-surface leading-tight">

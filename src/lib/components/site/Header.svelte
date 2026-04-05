@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import { quartOut } from 'svelte/easing';
+	import imgLogo from '$lib/assets/images/logo-transparent.png?enhanced';
 	import { prefersReducedMotion } from 'svelte/motion';
 	import { fly } from 'svelte/transition';
 
@@ -25,10 +26,12 @@
 <nav class="fixed top-0 z-50 w-full bg-surface-container/90 backdrop-blur-xl">
 	<div class="mx-auto max-w-7xl px-6 py-4">
 		<div class="flex justify-between items-center gap-4">
-			<a href="{base}/" class="brand-mark focus-ring shrink-0 rounded-xl">
-				<img
-					src="{base}/images/logo-transparent.png"
-					alt="Spieletreff Tecklenburger Land"
+			<a href="{base}/" class="brand-mark focus-ring shrink-0 rounded-xl" aria-label="Spieletreff Tecklenburger Land – Startseite">
+				<enhanced:img
+					src={imgLogo}
+					alt=""
+					aria-hidden="true"
+					sizes="48px"
 					class="h-10 md:h-12 w-auto"
 				/>
 			</a>
@@ -95,11 +98,11 @@
 			opacity 200ms ease;
 	}
 
-	.brand-mark:hover img {
+	.brand-mark:hover :global(img) {
 		transform: scale(1.03);
 	}
 
-	.brand-mark img {
+	.brand-mark :global(img) {
 		transition: transform 220ms cubic-bezier(0.25, 1, 0.5, 1);
 	}
 

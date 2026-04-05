@@ -1,16 +1,25 @@
 <script lang="ts">
 	import { base } from '$app/paths';
+	import img16 from '$lib/assets/images/gallery/spieleabend-16.jpg?enhanced';
+	import img12 from '$lib/assets/images/gallery/spieleabend-12.jpg?enhanced';
+	import img4 from '$lib/assets/images/gallery/spieleabend-4.jpg?enhanced';
+	import img6 from '$lib/assets/images/gallery/spieleabend-6.jpg?enhanced';
+	import img3 from '$lib/assets/images/gallery/spieleabend-3.jpg?enhanced';
+	import img22 from '$lib/assets/images/gallery/spieleabend-22.jpg?enhanced';
+	import img78 from '$lib/assets/images/gallery/spieleabend-78.jpg?enhanced';
+	import img17 from '$lib/assets/images/gallery/spieleabend-17.jpg?enhanced';
+	import img76 from '$lib/assets/images/gallery/spieleabend-76.jpg?enhanced';
 
 	const photos = [
-		{ src: `${base}/images/gallery/spieleabend-16.jpg`, alt: 'Spieleabend – Blick auf die Spieletische' },
-		{ src: `${base}/images/gallery/spieleabend-12.jpg`, alt: 'Konzentrierte Runde am Spieltisch' },
-		{ src: `${base}/images/gallery/spieleabend-4.jpg`, alt: 'Spieler wählen ihr nächstes Spiel' },
-		{ src: `${base}/images/gallery/spieleabend-6.jpg`, alt: 'Gesellige Runde beim Brettspielen' },
-		{ src: `${base}/images/gallery/spieleabend-3.jpg`, alt: 'Karten liegen auf dem Tisch' },
-		{ src: `${base}/images/gallery/spieleabend-22.jpg`, alt: 'Spieler diskutieren ihren Zug' },
-		{ src: `${base}/images/gallery/spieleabend-78.jpg`, alt: 'Abend in lockerer Runde' },
-		{ src: `${base}/images/gallery/spieleabend-17.jpg`, alt: 'Brettspiele auf dem Tisch' },
-		{ src: `${base}/images/gallery/spieleabend-76.jpg`, alt: 'Gemeinschaft beim Spielen' },
+		{ src: img16, alt: 'Spieleabend – Blick auf die Spieletische' },
+		{ src: img12, alt: 'Konzentrierte Runde am Spieltisch' },
+		{ src: img4, alt: 'Spieler wählen ihr nächstes Spiel' },
+		{ src: img6, alt: 'Gesellige Runde beim Brettspielen' },
+		{ src: img3, alt: 'Karten liegen auf dem Tisch' },
+		{ src: img22, alt: 'Spieler diskutieren ihren Zug' },
+		{ src: img78, alt: 'Abend in lockerer Runde' },
+		{ src: img17, alt: 'Brettspiele auf dem Tisch' },
+		{ src: img76, alt: 'Gemeinschaft beim Spielen' },
 	];
 </script>
 
@@ -89,14 +98,13 @@
 				<h2 class="text-2xl font-extrabold font-headline text-on-surface">Bilder vom Spieleabend</h2>
 			</div>
 		<div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-			{#each photos as photo, i (photo.src)}
+			{#each photos as photo, i (photo.alt)}
 				<div class={`overflow-hidden rounded-xl group ${i === 0 ? 'col-span-2' : ''}`}>
-					<img
+					<enhanced:img
 						src={photo.src}
 						alt={photo.alt}
 						loading="lazy"
-						width="941"
-						height="628"
+						sizes={i === 0 ? '(min-width: 768px) 60vw, 100vw' : '(min-width: 768px) 30vw, 50vw'}
 						class={`w-full object-cover transition-transform duration-500 group-hover:scale-105 ${i === 0 ? 'aspect-[2/1]' : 'aspect-[3/2]'}`}
 					/>
 				</div>
