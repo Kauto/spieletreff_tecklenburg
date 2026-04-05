@@ -75,17 +75,23 @@
 	<section class="relative px-8 py-16 max-w-7xl mx-auto">
 		<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
 		<div class="lg:col-span-7 z-10">
-			<img
-				src="{base}/images/meeple.png"
-				alt=""
-				aria-hidden="true"
-				class="h-20 md:h-24 w-auto mb-3 float-right"
-			/>
-			<h1 class="text-2xl md:text-3xl font-extrabold font-headline tracking-tight text-on-surface mb-1">
-				Spieletreff Tecklenburger Land
-			</h1>
-			<p class="text-base text-on-surface-variant mb-8">Brettspielgruppe – offen für alle</p>
-		<div class="mt-12 inline-block clear-both bg-secondary-container text-on-secondary-container px-4 py-1 rounded-sm mb-4 font-bold text-sm tracking-widest uppercase">
+			<div class="flex flex-col gap-3 sm:flex-row">
+				<div class="sm:order-2">
+					<img
+						src="{base}/images/meeple.png"
+						alt=""
+						aria-hidden="true"
+						class="h-18 w-auto"
+					/>
+				</div>
+				<div class="sm:order-1">
+					<h1 class="text-2xl md:text-3xl font-extrabold font-headline tracking-tight text-on-surface mb-1">
+						Spieletreff Tecklenburger Land
+					</h1>
+					<p class="text-base text-on-surface-variant mb-16">Brettspielgruppe – offen für alle</p>
+				</div>
+			</div>
+		<div class="inline-block clear-both bg-secondary-container text-on-secondary-container px-4 py-1 rounded-sm mb-4 font-bold text-sm tracking-widest uppercase">
 			Das nächste Treffen
 		</div>
 			<h2 class="text-5xl md:text-7xl font-extrabold font-headline leading-tight text-primary italic mb-6">
