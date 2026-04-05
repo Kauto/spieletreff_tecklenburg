@@ -14,8 +14,7 @@ We are moving away from the rigid, sterile "app" look and toward an editorial ex
 
 ## 2. Colors & Surface Architecture
 
-The palette draws from Tecklenburg’s natural forest greens and warm, sunset oranges, balanced by a sophisticated "Mint-Ice" neutral scale.
-
+Our palette bridges the gap between the natural landscape of Tecklenburger Land and the playful vibrancy of tabletop gaming.
 
 
 ### The "No-Line" Rule

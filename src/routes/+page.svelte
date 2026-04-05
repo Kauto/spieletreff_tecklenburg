@@ -65,22 +65,32 @@
 
 <svelte:head>
 	<title>Spieletreff Tecklenburg – Brettspielgruppe im Tecklenburger Land</title>
-	<meta name="description" content="Brettspielgruppe im Tecklenburger Land – offen für alle. Jeden 1. und 3. Freitag in Mettingen und Brochterbeck. Kostenlos, ohne Anmeldung." />
+	<meta name="description" content="Brettspielgruppe im Tecklenburger Land – offen für alle. Jeden 1. und 3. Freitag in Mettingen und Brochterbeck. Kostenlos, einfach vorbeikommen." />
 	<meta property="og:title" content="Spieletreff Tecklenburg – Brettspielgruppe im Tecklenburger Land" />
-	<meta property="og:description" content="Jeden 1. und 3. Freitag gemeinsam Brettspiele spielen. Offen für alle – kein Mitgliedsbeitrag, keine Anmeldung." />
+	<meta property="og:description" content="Jeden 1. und 3. Freitag gemeinsam Brettspiele spielen. Offen für alle – kein Mitgliedsbeitrag, einfach vorbeikommen." />
 </svelte:head>
 
 <main class="bg-surface font-body text-on-surface antialiased">
 	<!-- Hero -->
 	<section class="relative px-8 py-16 max-w-7xl mx-auto">
 		<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-			<div class="lg:col-span-7 z-10">
-			<div class="inline-block bg-secondary-container text-on-secondary-container px-4 py-1 rounded-sm mb-6 font-bold text-sm tracking-widest uppercase">
-				Das nächste Treffen
-			</div>
-				<h1 class="text-5xl md:text-7xl font-extrabold font-headline leading-tight text-on-surface mb-6">
-					<span class="text-primary italic">{nextEvent?.title ?? 'Spieleabend im ev. Gemeindehaus'}</span>
-				</h1>
+		<div class="lg:col-span-7 z-10">
+			<img
+				src="{base}/images/meeple.png"
+				alt=""
+				aria-hidden="true"
+				class="h-20 md:h-24 w-auto mb-3 float-right"
+			/>
+			<h1 class="text-2xl md:text-3xl font-extrabold font-headline tracking-tight text-on-surface mb-1">
+				Spieletreff Tecklenburger Land
+			</h1>
+			<p class="text-base text-on-surface-variant mb-8">Brettspielgruppe – offen für alle</p>
+		<div class="mt-12 inline-block clear-both bg-secondary-container text-on-secondary-container px-4 py-1 rounded-sm mb-4 font-bold text-sm tracking-widest uppercase">
+			Das nächste Treffen
+		</div>
+			<h2 class="text-5xl md:text-7xl font-extrabold font-headline leading-tight text-primary italic mb-6">
+				{nextEvent?.title ?? 'Spieleabend im ev. Gemeindehaus'}
+			</h2>
 			<div class="flex flex-wrap gap-x-6 gap-y-3 mb-8">
 				<span class="flex items-center gap-2 text-on-surface-variant">
 					<span class="material-symbols-outlined text-xl leading-none text-secondary" aria-hidden="true">calendar_month</span>
@@ -109,11 +119,18 @@
 					{/if}
 				</span>
 			</div>
-				<p class="text-xl text-on-surface-variant max-w-xl mb-10 leading-relaxed">
-					{nextEvent?.description ??
-						'Wir packen die großen Strategie-Bretter und die schnellen Kartenspiele aus. Kommt vorbei, setzt euch dazu und lasst uns gemeinsam die Würfel rollen!'}
-				</p>
-			</div>
+			<p class="text-xl text-on-surface-variant max-w-xl mb-8 leading-relaxed">
+				{nextEvent?.description ??
+					'Wir packen die großen Strategie-Bretter und die schnellen Kartenspiele aus. Kommt vorbei, setzt euch dazu und lasst uns gemeinsam die Würfel rollen!'}
+			</p>
+			<a
+				href="{base}/anmeldung"
+				class="ui-button mb-10 inline-flex items-center gap-2 rounded-xl border border-primary/30 bg-primary/8 px-5 py-2.5 text-sm font-bold text-primary transition-colors hover:bg-primary/12 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+			>
+				<span class="material-symbols-outlined text-base leading-none" aria-hidden="true">edit_note</span>
+				Vorab anmelden <span class="font-normal opacity-70">(optional)</span>
+			</a>
+		</div>
 			<div class="lg:col-span-5 relative">
 				<div class="relative rounded-2xl overflow-hidden shadow-xl">
 					<img
@@ -126,52 +143,8 @@
 		</div>
 	</section>
 
-	<!-- How it works -->
-	<section class="py-14 px-8 bg-surface-container-low">
-		<div class="max-w-7xl mx-auto">
-			<p class="text-xs font-bold uppercase tracking-widest text-secondary mb-8">Zum ersten Mal hier?</p>
-			<ol class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 list-none m-0 p-0">
-				<li class="flex gap-5 items-start">
-					<span aria-hidden="true" class="shrink-0 w-9 h-9 rounded-full bg-primary text-on-primary font-extrabold font-headline flex items-center justify-center text-base select-none">1</span>
-					<div>
-						<p class="font-bold font-headline text-on-surface text-lg leading-snug">Termin aussuchen</p>
-						<p class="text-on-surface-variant mt-1.5 leading-relaxed">Im Kalender steht, wann und wo das nächste Treffen stattfindet.</p>
-						<a href="{base}/kalender" class="inline-flex items-center gap-1 mt-3 text-sm font-bold text-primary hover:underline rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2">
-							Zum Kalender
-							<span class="material-symbols-outlined text-sm leading-none">arrow_forward</span>
-						</a>
-					</div>
-				</li>
-				<li class="flex gap-5 items-start">
-					<span aria-hidden="true" class="shrink-0 w-9 h-9 rounded-full bg-primary text-on-primary font-extrabold font-headline flex items-center justify-center text-base select-none">2</span>
-					<div>
-						<p class="font-bold font-headline text-on-surface text-lg leading-snug">Einfach vorbeikommen</p>
-						<p class="text-on-surface-variant mt-1.5 leading-relaxed">Keine Anmeldung, kein Mitgliedsbeitrag – komm vorbei und setz dich dazu.</p>
-					</div>
-				</li>
-				<li class="flex gap-5 items-start">
-					<span aria-hidden="true" class="shrink-0 w-9 h-9 rounded-full bg-primary text-on-primary font-extrabold font-headline flex items-center justify-center text-base select-none">3</span>
-					<div>
-						<p class="font-bold font-headline text-on-surface text-lg leading-snug">Im Kontakt bleiben</p>
-						<p class="text-on-surface-variant mt-1.5 leading-relaxed">Wer möchte, tritt unserer WhatsApp-Gruppe bei und verpasst keine Termine oder spontanen Runden mehr.</p>
-						<a
-							href="https://chat.whatsapp.com/2naM3nPDYs08qymMxBIE8v?mode=gi_t"
-							target="_blank"
-							rel="noopener noreferrer"
-							aria-label="WhatsApp-Gruppe beitreten (öffnet extern)"
-							class="inline-flex items-center gap-1 mt-3 text-sm font-bold text-primary hover:underline rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
-						>
-							WhatsApp-Gruppe beitreten
-							<span class="material-symbols-outlined text-sm leading-none">open_in_new</span>
-						</a>
-					</div>
-				</li>
-			</ol>
-		</div>
-	</section>
-
 	<!-- About -->
-	<section class="bg-surface-container py-24 px-8">
+	<section class="bg-surface-container-low py-24 px-8">
 		<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
 			<div class="order-2 md:order-1 grid grid-cols-2 gap-4">
 				<img
@@ -210,13 +183,59 @@
 		</div>
 	</section>
 
+	<!-- How it works -->
+	<section class="py-14 px-8 bg-surface-container">
+		<div class="max-w-7xl mx-auto">
+			<h2 class="text-sm font-bold text-secondary mb-8">Zum ersten Mal hier?</h2>
+			<ol class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 list-none m-0 p-0">
+				<li class="flex gap-5 items-start">
+					<span aria-hidden="true" class="shrink-0 w-9 h-9 rounded-full bg-primary text-on-primary font-extrabold font-headline flex items-center justify-center text-base select-none">1</span>
+					<div>
+						<p class="font-bold font-headline text-on-surface text-lg leading-snug">Termin aussuchen</p>
+						<p class="text-on-surface-variant mt-1.5 leading-relaxed">Im Kalender steht, wann und wo das nächste Treffen stattfindet.</p>
+						<a href="{base}/kalender" class="inline-flex items-center gap-1 mt-3 text-sm font-bold text-primary hover:underline rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2">
+							Zum Kalender
+							<span class="material-symbols-outlined text-sm leading-none">arrow_forward</span>
+						</a>
+					</div>
+				</li>
+			<li class="flex gap-5 items-start">
+				<span aria-hidden="true" class="shrink-0 w-9 h-9 rounded-full bg-primary text-on-primary font-extrabold font-headline flex items-center justify-center text-base select-none">2</span>
+				<div>
+					<p class="font-bold font-headline text-on-surface text-lg leading-snug">Einfach vorbeikommen</p>
+					<p class="text-on-surface-variant mt-1.5 leading-relaxed">Keine Anmeldung, kein Mitgliedsbeitrag – komm vorbei und setz dich dazu.</p>
+					<p class="text-on-surface-variant mt-2 leading-relaxed">Du kannst dich aber auch gerne vorab anmelden – kein Muss, hilft uns aber bei der Planung.</p>
+					<a href="{base}/anmeldung" class="inline-flex items-center gap-1 mt-3 text-sm font-bold text-primary hover:underline rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2">
+						Vorab anmelden
+						<span class="material-symbols-outlined text-sm leading-none">arrow_forward</span>
+					</a>
+				</div>
+			</li>
+				<li class="flex gap-5 items-start">
+					<span aria-hidden="true" class="shrink-0 w-9 h-9 rounded-full bg-primary text-on-primary font-extrabold font-headline flex items-center justify-center text-base select-none">3</span>
+					<div>
+						<p class="font-bold font-headline text-on-surface text-lg leading-snug">Im Kontakt bleiben</p>
+						<p class="text-on-surface-variant mt-1.5 leading-relaxed">
+							Wer möchte, tritt unserer <a
+								href="https://chat.whatsapp.com/2naM3nPDYs08qymMxBIE8v?mode=gi_t"
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label="WhatsApp-Gruppe beitreten (öffnet extern)"
+								class="font-bold text-primary underline decoration-primary/40 hover:decoration-primary rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-1"
+							>WhatsApp-Gruppe</a> bei und verpasst keine Termine oder spontanen Runden mehr.
+						</p>
+					</div>
+				</li>
+			</ol>
+		</div>
+	</section>
+
 	<!-- Upcoming Events -->
 	<section class="py-24 px-8 max-w-7xl mx-auto">
 		<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
-			<div>
-				<h2 class="text-4xl font-extrabold font-headline text-on-surface mb-2">Bevorstehende Treffen</h2>
-				<p class="text-on-surface-variant text-lg font-medium">Die nächsten Termine auf einen Blick.</p>
-			</div>
+		<div>
+			<h2 class="text-4xl font-extrabold font-headline text-on-surface">Bevorstehende Treffen</h2>
+		</div>
 			<a class="text-on-surface-variant font-semibold flex items-center gap-2 hover:text-primary hover:underline group transition-colors" href="{base}/kalender">
 				Gesamten Kalender ansehen
 				<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>

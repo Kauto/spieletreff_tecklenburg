@@ -11,7 +11,8 @@
 	const navItems = [
 		{ href: '/', label: 'Start' },
 		{ href: '/kalender', label: 'Kalender' },
-		{ href: '/geschichte', label: 'Geschichte' }
+		{ href: '/geschichte', label: 'Geschichte' },
+		{ href: '/anmeldung', label: 'Anmeldung' }
 	];
 
 	function isActive(href: string): boolean {

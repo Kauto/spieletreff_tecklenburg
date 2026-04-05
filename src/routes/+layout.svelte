@@ -33,7 +33,7 @@
 </svelte:head>
 
 <Header currentPath={page.url.pathname} />
-<div class="pt-24 bg-surface">
+<div class="pt-16 bg-surface">
 	{@render children()}
 </div>
 <Footer />
