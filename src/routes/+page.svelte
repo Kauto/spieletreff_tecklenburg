@@ -328,3 +328,12 @@
 {#if showMapConsent}
 	<MapConsentDialog open={showMapConsent} location={pendingLocation} onDecision={handleMapConsent} />
 {/if}
+
+<style>
+	h1,
+	h2,
+	h3 {
+		hyphens: auto;
+		overflow-wrap: break-word;
+	}
+</style>
