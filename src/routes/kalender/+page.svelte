@@ -219,7 +219,7 @@
 													Nächstes Treffen
 												</span>
 											{/if}
-											<h4 class="text-xl font-bold font-headline text-on-surface">
+											<h4 class="text-xl font-bold font-headline text-on-surface line-clamp-1">
 												{event.title}
 											</h4>
 											<div class="flex flex-wrap gap-x-4 gap-y-1 mt-2">
@@ -293,7 +293,7 @@
 										</span>
 									</div>
 									<div class="flex-1 p-4 min-w-0">
-										<h4 class="font-bold font-headline text-on-surface-variant">
+										<h4 class="font-bold font-headline text-on-surface-variant line-clamp-1">
 											{event.title}
 										</h4>
 										<div class="flex flex-wrap gap-3 mt-1">
