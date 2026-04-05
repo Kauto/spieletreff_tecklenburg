@@ -47,6 +47,18 @@ jobs:
           BASE_PATH: '/spieletreff_tecklenburg'
         run: pnpm build
 
+      - name: Upload via SFTP
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        with:
+          server: ${{ secrets.SFTP_HOST }}
+          username: ${{ secrets.SFTP_USERNAME }}
+          password: ${{ secrets.SFTP_PASSWORD }}
+          ssh_private_key: ${{ secrets.SFTP_PRIVATE_KEY }}
+          port: ${{ secrets.SFTP_PORT || '22' }}
+          local_path: ./build/*
+          remote_path: ${{ secrets.SFTP_REMOTE_PATH }}
+          sftp_only: true
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
