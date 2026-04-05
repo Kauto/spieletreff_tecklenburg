@@ -37,6 +37,7 @@
 	},
 	"dependencies": {
 		"@fontsource-variable/manrope": "^5.2.8",
-		"@fontsource-variable/plus-jakarta-sans": "^5.2.8"
+		"@fontsource-variable/plus-jakarta-sans": "^5.2.8",
+		"@material-symbols/svg-400": "^0.44.0"
 	}
 }

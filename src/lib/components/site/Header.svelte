@@ -4,6 +4,7 @@
 	import imgLogo from '$lib/assets/images/logo-transparent.png?enhanced';
 	import { prefersReducedMotion } from 'svelte/motion';
 	import { fly } from 'svelte/transition';
+	import Icon from '$lib/components/Icon.svelte';
 
 	let { currentPath = '/' } = $props<{ currentPath?: string }>();
 	let menuOpen = $state(false);
@@ -57,7 +58,7 @@
 					aria-expanded={menuOpen}
 					onclick={() => (menuOpen = !menuOpen)}
 				>
-					<span class="material-symbols-outlined">{menuOpen ? 'close' : 'menu'}</span>
+					<Icon name={menuOpen ? 'close' : 'menu'} />
 				</button>
 			</div>
 		</div>

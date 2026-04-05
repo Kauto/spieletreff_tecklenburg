@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import { calendarStore } from '$lib/events.svelte';
+	import Icon from '$lib/components/Icon.svelte';
 
 	let name = $state('');
 	let email = $state('');
@@ -83,18 +84,18 @@
 			{#if nextEvent}
 				<div class="mt-6 inline-flex flex-wrap items-center gap-x-5 gap-y-2 rounded-lg bg-surface-container px-4 py-3 text-sm">
 					<span class="flex items-center gap-2 text-on-surface-variant">
-						<span class="material-symbols-outlined text-base leading-none text-secondary" aria-hidden="true">event</span>
+						<Icon name="event" class="text-base leading-none text-secondary" />
 						<span class="font-bold text-on-surface">{formatHeroDate(nextEvent.start)}</span>
 					</span>
 					{#if !nextEvent.allDay}
 						<span class="flex items-center gap-2 text-on-surface-variant">
-							<span class="material-symbols-outlined text-base leading-none text-secondary" aria-hidden="true">schedule</span>
+							<Icon name="schedule" class="text-base leading-none text-secondary" />
 							<span class="font-semibold">Ab {formatTime(nextEvent.start)} Uhr</span>
 						</span>
 					{/if}
 					{#if nextEvent.location}
 						<span class="flex items-center gap-2 text-on-surface-variant">
-							<span class="material-symbols-outlined text-base leading-none text-secondary" aria-hidden="true">location_on</span>
+							<Icon name="location_on" class="text-base leading-none text-secondary" />
 							<span class="font-semibold">{nextEvent.location}</span>
 						</span>
 					{/if}
@@ -112,7 +113,7 @@
 				{#if status === 'success'}
 					<!-- Success state -->
 					<div class="flex flex-col items-center gap-5 py-4 text-center">
-						<span class="material-symbols-outlined text-5xl text-primary" aria-hidden="true">check_circle</span>
+						<Icon name="check_circle" class="text-5xl text-primary" />
 						<div>
 							<h2 class="font-headline text-2xl font-extrabold text-on-surface">Anmeldung erhalten!</h2>
 						<p class="mt-3 leading-relaxed text-on-surface-variant">
@@ -129,14 +130,14 @@
 								href="{base}/"
 								class="ui-button inline-flex items-center gap-2 rounded-[var(--radius-lg)] border border-outline-variant px-5 py-2.5 font-headline text-sm font-bold text-on-surface transition-colors hover:bg-surface-container"
 							>
-								<span class="material-symbols-outlined text-base leading-none" aria-hidden="true">home</span>
+								<Icon name="home" class="text-base leading-none" />
 								Zur Startseite
 							</a>
 							<a
 								href="{base}/kalender"
 								class="ui-button inline-flex items-center gap-2 rounded-[var(--radius-lg)] bg-primary px-5 py-2.5 font-headline text-sm font-bold text-on-primary transition-colors hover:bg-primary/90"
 							>
-								<span class="material-symbols-outlined text-base leading-none" aria-hidden="true">calendar_month</span>
+								<Icon name="calendar_month" class="text-base leading-none" />
 								Kalender ansehen
 							</a>
 						</div>
@@ -197,9 +198,7 @@
 							class="flex items-start gap-3 rounded-[var(--radius-lg)] border border-error/30 bg-error-container px-4 py-3 text-sm text-on-error-container"
 							role="alert"
 						>
-							<span class="material-symbols-outlined shrink-0 text-lg leading-none text-error" aria-hidden="true"
-								>warning</span
-							>
+							<Icon name="warning" class="text-lg leading-none text-error" />
 							<p>{errorMessage}</p>
 						</div>
 					{/if}

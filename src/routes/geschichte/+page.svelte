@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { base } from '$app/paths';
+	import Icon from '$lib/components/Icon.svelte';
 	import img16 from '$lib/assets/images/gallery/spieleabend-16.jpg?enhanced';
 	import img12 from '$lib/assets/images/gallery/spieleabend-12.jpg?enhanced';
 	import img4 from '$lib/assets/images/gallery/spieleabend-4.jpg?enhanced';
@@ -128,7 +129,7 @@
 					href="{base}/kalender"
 					class="ui-button inline-flex items-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-lg font-bold text-base"
 				>
-					<span class="material-symbols-outlined text-xl leading-none" aria-hidden="true">calendar_month</span>
+					<Icon name="calendar_month" class="text-xl leading-none" />
 					Nächsten Termin ansehen
 				</a>
 				<a
@@ -138,9 +139,9 @@
 					aria-label="WhatsApp-Gruppe beitreten (öffnet extern)"
 					class="ui-button inline-flex items-center gap-2 bg-surface-container text-on-surface px-6 py-3 rounded-lg font-bold text-base"
 				>
-					<span class="material-symbols-outlined text-xl leading-none" aria-hidden="true">forum</span>
+					<Icon name="forum" class="text-xl leading-none" />
 					WhatsApp-Gruppe
-					<span class="material-symbols-outlined text-sm leading-none" aria-hidden="true">open_in_new</span>
+					<Icon name="open_in_new" class="text-sm leading-none" />
 				</a>
 			</div>
 		</div>

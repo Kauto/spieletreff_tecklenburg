@@ -2,14 +2,6 @@
 @import '@fontsource-variable/plus-jakarta-sans';
 @import '@fontsource-variable/manrope';
 
-@font-face {
-	font-family: 'Material Symbols Outlined';
-	font-style: normal;
-	font-weight: 100 700;
-	font-display: block;
-	src: url('/fonts/material-symbols-outlined.woff2') format('woff2');
-}
-
 @theme {
 	--color-primary: #2E3A8C;
 	--color-primary-dim: #1E2761;
@@ -51,20 +43,6 @@
 	--radius-full: 9999px;
 }
 
-.material-symbols-outlined {
-	font-family: 'Material Symbols Outlined';
-	font-style: normal;
-	font-weight: normal;
-	line-height: 1;
-	display: inline-block;
-	white-space: nowrap;
-	direction: ltr;
-	letter-spacing: normal;
-	text-transform: none;
-	font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-	vertical-align: middle;
-}
-
 .tonal-shift {
 	background: linear-gradient(to bottom, #E5E7EB, #F9FAFB);
 }
@@ -94,4 +72,9 @@
 		transform: none !important;
 		filter: none !important;
 	}
+}
+
+h2,h3,h4,h5,h6 {
+	hyphens: auto;
+	word-wrap: break-word;
 }

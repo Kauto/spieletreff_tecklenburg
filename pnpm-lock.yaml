@@ -14,6 +14,9 @@ importers:
       '@fontsource-variable/plus-jakarta-sans':
         specifier: ^5.2.8
         version: 5.2.8
+      '@material-symbols/svg-400':
+        specifier: ^0.44.0
+        version: 0.44.0
     devDependencies:
       '@eslint/compat':
         specifier: ^2.0.3
@@ -475,6 +478,9 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
+
+  '@material-symbols/svg-400@0.44.0':
+    resolution: {integrity: sha512-yb26R973q/NyDkfJO3ptVh88hThuiirjXKLagKW3YGp4VuBod13XicnQ92JM5aPLoLBy2Pe0pP7mXGxyGbo+ow==}
 
   '@polka/url@1.0.0-next.29':
     resolution: {integrity: sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww==}
@@ -1757,6 +1763,8 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
+
+  '@material-symbols/svg-400@0.44.0': {}
 
   '@polka/url@1.0.0-next.29': {}
 

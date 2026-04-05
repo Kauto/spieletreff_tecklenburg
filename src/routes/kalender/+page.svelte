@@ -3,6 +3,7 @@
 	import { calendarStore } from '$lib/events.svelte';
 	import { locationOrUndefined } from '$lib/location';
 	import type { CalendarEvent } from '$lib/types';
+	import Icon from '$lib/components/Icon.svelte';
 	import { prefersReducedMotion } from 'svelte/motion';
 	import { SvelteMap } from 'svelte/reactivity';
 	import { quartOut } from 'svelte/easing';
@@ -135,7 +136,7 @@
 				in:fly={{ y: heroFlyY, duration: heroDuration, delay: reduceMotion ? 0 : 240, easing: quartOut }}
 				class="mt-8 inline-flex items-center gap-3 bg-primary-container text-on-primary-container px-6 py-3 rounded-xl font-bold"
 			>
-				<span class="material-symbols-outlined">event_upcoming</span>
+				<Icon name="event_upcoming" />
 				Nächster Spielabend: {formatFullDate(nextEvent.start)}{#if !nextEvent.allDay}&nbsp;ab {formatTime(nextEvent.start)} Uhr{/if}
 			</div>
 		{/if}
@@ -151,7 +152,7 @@
 
 		{#if upcomingGroups.length === 0 && hasCalendarSourceData}
 			<div class="text-center py-20 text-on-surface-variant">
-				<span class="material-symbols-outlined text-7xl mb-4 block opacity-30">event_busy</span>
+				<Icon name="event_busy" class="text-7xl mb-4 block opacity-30" />
 				<p class="text-2xl font-bold font-headline">Keine bevorstehenden Termine</p>
 				<p class="mt-2 text-lg">Kein Treffen in Sicht? Tritt der WhatsApp-Gruppe bei und verpasse keine spontanen Runden.</p>
 				<a
@@ -161,13 +162,13 @@
 					aria-label="WhatsApp-Gruppe beitreten (öffnet extern)"
 					class="mt-6 inline-flex items-center gap-2 bg-primary text-on-primary px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-primary/90 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
 				>
-					<span class="material-symbols-outlined text-base leading-none" aria-hidden="true">forum</span>
+					<Icon name="forum" class="text-base leading-none" />
 					WhatsApp-Gruppe beitreten
 				</a>
 			</div>
 		{:else if upcomingGroups.length === 0}
 			<div class="text-center py-20 text-on-surface-variant">
-				<span class="material-symbols-outlined text-7xl mb-4 block opacity-30">cloud_off</span>
+				<Icon name="cloud_off" class="text-7xl mb-4 block opacity-30" />
 				<p class="text-2xl font-bold font-headline">Termine sind gerade nicht verfügbar</p>
 				<p class="mt-2 text-lg">Bitte versuche es in ein paar Minuten erneut.</p>
 				<button
@@ -175,7 +176,7 @@
 					onclick={() => window.location.reload()}
 					class="mt-6 inline-flex items-center gap-2 bg-surface-container text-on-surface px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-surface-container-high transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
 				>
-					<span class="material-symbols-outlined text-base leading-none">refresh</span>
+					<Icon name="refresh" class="text-base leading-none" />
 					Seite neu laden
 				</button>
 			</div>
@@ -225,18 +226,18 @@
 											<div class="flex flex-wrap gap-x-4 gap-y-1 mt-2">
 												{#if !event.allDay}
 													<span class="flex items-center gap-1.5 text-on-surface-variant text-sm">
-														<span class="material-symbols-outlined text-lg leading-none">schedule</span>
+														<Icon name="schedule" class="text-lg leading-none" />
 														{formatTime(event.start)} Uhr
 													</span>
 												{:else}
 													<span class="flex items-center gap-1.5 text-on-surface-variant text-sm">
-														<span class="material-symbols-outlined text-lg leading-none">today</span>
+														<Icon name="today" class="text-lg leading-none" />
 														Ganztägig
 													</span>
 												{/if}
 												{#if event.location}
 													<span class="flex items-center gap-1.5 text-on-surface-variant text-sm">
-														<span class="material-symbols-outlined text-lg leading-none">location_on</span>
+														<Icon name="location_on" class="text-lg leading-none" />
 														{#if locationOrUndefined(event.location)}
 															<button
 																type="button"
@@ -299,7 +300,7 @@
 										<div class="flex flex-wrap gap-3 mt-1">
 											{#if event.location}
 												<span class="flex items-center gap-1 text-on-surface-variant/70 text-sm">
-													<span class="material-symbols-outlined text-base leading-none">location_on</span>
+													<Icon name="location_on" class="text-base leading-none" />
 													{#if locationOrUndefined(event.location)}
 								<button
 																type="button"
@@ -314,8 +315,8 @@
 											{/if}
 											{#if !event.allDay}
 												<span class="flex items-center gap-1 text-on-surface-variant/70 text-sm">
-													<span class="material-symbols-outlined text-base leading-none">schedule</span>
-													{formatTime(event.start)} Uhr
+												<Icon name="schedule" class="text-base leading-none" />
+												{formatTime(event.start)} Uhr
 												</span>
 											{/if}
 										</div>
@@ -337,7 +338,7 @@
 				onclick={() => (showAllPast = !showAllPast)}
 				class="mt-8 flex items-center gap-2 text-sm font-bold text-on-surface-variant hover:text-primary transition-colors rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
 			>
-				<span class="material-symbols-outlined text-base leading-none transition-transform duration-200" class:rotate-180={showAllPast}>expand_more</span>
+				<Icon name="expand_more" class="text-base leading-none transition-transform duration-200 {showAllPast ? 'rotate-180' : ''}" />
 				{showAllPast ? 'Weniger anzeigen' : `${pastGroups.length - 2} weitere Monate anzeigen`}
 			</button>
 		{/if}
@@ -359,9 +360,9 @@
 				aria-label="WhatsApp-Community beitreten (öffnet WhatsApp)"
 				class="ui-button shrink-0 inline-flex items-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-xl font-bold"
 			>
-				<span class="material-symbols-outlined text-xl leading-none" aria-hidden="true">forum</span>
+				<Icon name="forum" class="text-xl leading-none" />
 				WhatsApp beitreten
-				<span class="material-symbols-outlined text-sm leading-none opacity-70" aria-hidden="true">open_in_new</span>
+				<Icon name="open_in_new" class="text-sm leading-none opacity-70" />
 			</a>
 		</div>
 	</section>

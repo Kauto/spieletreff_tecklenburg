@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import imgLogo from '$lib/assets/images/logo-transparent.png?enhanced';
+	import Icon from '$lib/components/Icon.svelte';
 </script>
 
 <footer class="w-full bg-surface-container-low font-body">
@@ -16,7 +17,7 @@
 				/>
 			</a>
 			<p class="text-base leading-relaxed text-on-surface-variant">
-				Offene Brettspielrunde im Tecklenburger Land – seit 2009. Kostenlos, ohne Anmeldung.
+				Offene Brettspielrunde im Tecklenburger Land – seit 2009. Kostenlos.
 			</p>
 		</div>
 		<div class="flex flex-col gap-4">
@@ -42,19 +43,19 @@
 				<li>
 					<a class="footer-link focus-ring min-h-11 inline-flex rounded-xl px-2 py-1 text-on-surface-variant transition-colors duration-200 hover:bg-surface-container hover:text-primary" href="https://www.brettspieletreff-lingen.de/" target="_blank" rel="noopener noreferrer">
 						Brettspieltreff Lingen
-						<span class="link-icon material-symbols-outlined text-base" aria-hidden="true">arrow_outward</span>
+						<Icon name="arrow_outward" class="link-icon text-base" />
 					</a>
 				</li>
 				<li>
 					<a class="footer-link focus-ring min-h-11 inline-flex rounded-xl px-2 py-1 text-on-surface-variant transition-colors duration-200 hover:bg-surface-container hover:text-primary" href="https://spieltraeumer.de/" target="_blank" rel="noopener noreferrer">
 						Spieltraeumer
-						<span class="link-icon material-symbols-outlined text-base" aria-hidden="true">arrow_outward</span>
+						<Icon name="arrow_outward" class="link-icon text-base" />
 					</a>
 				</li>
 				<li>
 					<a class="footer-link focus-ring min-h-11 inline-flex rounded-xl px-2 py-1 text-on-surface-variant transition-colors duration-200 hover:bg-surface-container hover:text-primary" href="https://wp.nrw-spielt.de/" target="_blank" rel="noopener noreferrer">
 						NRW spielt
-						<span class="link-icon material-symbols-outlined text-base" aria-hidden="true">arrow_outward</span>
+						<Icon name="arrow_outward" class="link-icon text-base" />
 					</a>
 				</li>
 			</ul>

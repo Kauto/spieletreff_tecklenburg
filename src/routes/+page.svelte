@@ -7,6 +7,7 @@
 	import imgSpielabend from '$lib/assets/images/spieletreff-spieleabend.jpg?enhanced';
 	import { calendarStore } from '$lib/events.svelte';
 	import { locationOrUndefined } from '$lib/location';
+	import Icon from '$lib/components/Icon.svelte';
 
 	let showMapConsent = $state(false);
 	let pendingLocation = $state('');
@@ -103,11 +104,11 @@
 			</h2>
 			<div class="flex flex-wrap gap-x-6 gap-y-3 mb-8">
 				<span class="flex items-center gap-2 text-on-surface-variant">
-					<span class="material-symbols-outlined text-xl leading-none text-secondary" aria-hidden="true">calendar_month</span>
+					<Icon name="calendar_month" class="text-xl leading-none text-secondary" />
 					<span class="font-bold text-on-surface">{nextEvent ? formatHeroDate(nextEvent.start) : 'Freitag, 3. April'}</span>
 				</span>
 				<span class="flex items-center gap-2 text-on-surface-variant">
-					<span class="material-symbols-outlined text-xl leading-none text-secondary" aria-hidden="true">schedule</span>
+					<Icon name="schedule" class="text-xl leading-none text-secondary" />
 					<span class="font-bold text-on-surface">
 						{#if nextEvent}
 							{#if nextEvent.allDay}Ganztägig{:else}Ab {formatTime(nextEvent.start)} Uhr{/if}
@@ -117,7 +118,7 @@
 					</span>
 				</span>
 				<span class="flex items-center gap-2 text-on-surface-variant">
-					<span class="material-symbols-outlined text-xl leading-none text-secondary" aria-hidden="true">location_on</span>
+					<Icon name="location_on" class="text-xl leading-none text-secondary" />
 					{#if locationOrUndefined(nextEvent?.location)}
 						<button
 							type="button"
@@ -137,7 +138,7 @@
 				href="{base}/anmeldung"
 				class="ui-button mb-10 inline-flex items-center gap-2 rounded-xl border border-primary/30 bg-primary/8 px-5 py-2.5 text-sm font-bold text-primary transition-colors hover:bg-primary/12 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
 			>
-				<span class="material-symbols-outlined text-base leading-none" aria-hidden="true">edit_note</span>
+				<Icon name="edit_note" class="text-base leading-none" />
 				Vorab anmelden <span class="font-normal opacity-70">(optional)</span>
 			</a>
 		</div>
@@ -209,7 +210,7 @@
 						<p class="text-on-surface-variant mt-1.5 leading-relaxed">Im Kalender steht, wann und wo das nächste Treffen stattfindet.</p>
 						<a href="{base}/kalender" class="inline-flex items-center gap-1 mt-3 text-sm font-bold text-primary hover:underline rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2">
 							Zum Kalender
-							<span class="material-symbols-outlined text-sm leading-none">arrow_forward</span>
+							<Icon name="arrow_forward" class="text-sm leading-none" />
 						</a>
 					</div>
 				</li>
@@ -221,7 +222,7 @@
 					<p class="text-on-surface-variant mt-2 leading-relaxed">Du kannst dich aber auch gerne vorab anmelden – kein Muss, hilft uns aber bei der Planung.</p>
 					<a href="{base}/anmeldung" class="inline-flex items-center gap-1 mt-3 text-sm font-bold text-primary hover:underline rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2">
 						Vorab anmelden
-						<span class="material-symbols-outlined text-sm leading-none">arrow_forward</span>
+						<Icon name="arrow_forward" class="text-sm leading-none" />
 					</a>
 				</div>
 			</li>
@@ -252,7 +253,7 @@
 		</div>
 			<a class="text-on-surface-variant font-semibold flex items-center gap-2 hover:text-primary hover:underline group transition-colors" href="{base}/kalender">
 				Gesamten Kalender ansehen
-				<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+				<Icon name="arrow_forward" class="group-hover:translate-x-1 transition-transform" />
 			</a>
 		</div>
 		{#if nextThreeEvents.length > 0}
@@ -271,7 +272,7 @@
 						</h3>
 						<div class="mt-auto space-y-4">
 							<div class={`flex items-center gap-3 ${i === 0 ? 'text-on-primary-container/70' : 'text-on-surface-variant'}`}>
-								<span class="material-symbols-outlined">event</span>
+								<Icon name="event" />
 								<span class="font-bold">
 									{formatDate(event.start)}
 									{#if !event.allDay}&nbsp;ab {formatTime(event.start)} Uhr{/if}
@@ -279,7 +280,7 @@
 							</div>
 							{#if event.location}
 								<div class={`flex items-center gap-3 ${i === 0 ? 'text-on-primary-container/70' : 'text-on-surface-variant'}`}>
-									<span class="material-symbols-outlined">apartment</span>
+									<Icon name="apartment" />
 									{#if locationOrUndefined(event.location)}
 										<button
 											type="button"
@@ -299,7 +300,7 @@
 			</div>
 		{:else if hasCalendarSourceData}
 			<div class="text-center py-20 text-on-surface-variant bg-surface-container-highest rounded-2xl">
-				<span class="material-symbols-outlined text-7xl mb-4 block opacity-30">event_busy</span>
+				<Icon name="event_busy" class="text-7xl mb-4 block opacity-30" />
 				<p class="text-2xl font-bold font-headline">Keine bevorstehenden Termine</p>
 				<p class="mt-2 text-lg">Kein Treffen in Sicht? Tritt der WhatsApp-Gruppe bei und verpasse keine spontanen Runden.</p>
 				<a
@@ -309,13 +310,13 @@
 					aria-label="WhatsApp-Gruppe beitreten (öffnet extern)"
 					class="mt-6 inline-flex items-center gap-2 bg-primary text-on-primary px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-primary/90 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
 				>
-					<span class="material-symbols-outlined text-base leading-none" aria-hidden="true">forum</span>
+					<Icon name="forum" class="text-base leading-none" />
 					WhatsApp-Gruppe beitreten
 				</a>
 			</div>
 		{:else}
 			<div class="text-center py-20 text-on-surface-variant bg-surface-container-highest rounded-2xl">
-				<span class="material-symbols-outlined text-7xl mb-4 block opacity-30">cloud_off</span>
+				<Icon name="cloud_off" class="text-7xl mb-4 block opacity-30" />
 				<p class="text-2xl font-bold font-headline">Termine sind gerade nicht verfügbar</p>
 				<p class="mt-2 text-lg">Bitte versuche es in ein paar Minuten erneut.</p>
 				<button
@@ -323,7 +324,7 @@
 					onclick={() => window.location.reload()}
 					class="mt-6 inline-flex items-center gap-2 bg-surface-container text-on-surface px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-surface-container-high transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
 				>
-					<span class="material-symbols-outlined text-base leading-none">refresh</span>
+					<Icon name="refresh" class="text-base leading-none" />
 					Seite neu laden
 				</button>
 			</div>
@@ -334,7 +335,7 @@
 	<section class="py-24 px-8 max-w-5xl mx-auto text-center">
 		<div class="bg-primary p-12 md:p-20 rounded-3xl shadow-2xl relative overflow-hidden">
 			<div class="absolute top-0 right-0 p-8 opacity-10">
-				<span class="material-symbols-outlined text-9xl" style="font-variation-settings: 'FILL' 1;">casino</span>
+				<Icon name="casino" fill class="text-9xl" />
 			</div>
 			<h2 class="text-3xl md:text-5xl font-extrabold font-headline text-on-primary mb-6 relative z-10">
 				Immer dabei sein?
@@ -351,7 +352,7 @@
 					class="ui-button bg-surface-container-lowest text-primary px-10 py-4 rounded-xl font-bold text-lg inline-flex items-center gap-2"
 				>
 					WhatsApp-Community beitreten
-					<span class="material-symbols-outlined text-base leading-none opacity-70" aria-hidden="true">open_in_new</span>
+					<Icon name="open_in_new" class="text-base leading-none opacity-70" />
 				</a>
 			</div>
 		</div>
