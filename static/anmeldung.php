@@ -35,7 +35,7 @@ $name      = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
 $safeEmail = filter_var($email, FILTER_SANITIZE_EMAIL);
 $nachricht = htmlspecialchars($nachricht, ENT_QUOTES, 'UTF-8');
 
-$to      = 'kauto@gmx.de';
+$to      = 'ma.lampe@web.de';
 $subject = 'Anmeldung Spieletreff Tecklenburger Land – ' . $name;
 
 $body  = "Neue Anmeldung über das Webformular:\n\n";
@@ -47,8 +47,8 @@ if (!empty($nachricht)) {
 
 $encodedSubject = '=?UTF-8?B?' . base64_encode($subject) . '?=';
 $headers = implode("\r\n", [
-    'From: Spieletreff Tecklenburg <noreply@spieletreff-tecklenburg.de>',
-    'Reply-To: ' . $name . ' <' . $safeEmail . '>',
+    'From: ma.lampe@web.de',
+    'Reply-To: ma.lampe@web.de',
     'MIME-Version: 1.0',
     'Content-Type: text/plain; charset=UTF-8',
     'Content-Transfer-Encoding: 8bit',
