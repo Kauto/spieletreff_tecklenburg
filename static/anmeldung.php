@@ -46,20 +46,30 @@ if (!empty($nachricht)) {
 }
 
 $encodedSubject = '=?UTF-8?B?' . base64_encode($subject) . '?=';
+$senderAddress = 'ma.lampe@web.de';
 $headers = implode("\r\n", [
-    'From: ma.lampe@web.de',
-    'Reply-To: ma.lampe@web.de',
+    'From: ' . $senderAddress,
+    'Reply-To: ' . $senderAddress,
     'MIME-Version: 1.0',
     'Content-Type: text/plain; charset=UTF-8',
     'Content-Transfer-Encoding: 8bit',
     'X-Mailer: PHP/' . phpversion(),
 ]);
 
-$sent = mail($to, $encodedSubject, $body, $headers);
+$sent = @mail($to, $encodedSubject, $body, $headers, '-f' . $senderAddress);
 
 if ($sent) {
     echo json_encode(['success' => true]);
 } else {
+    $lastError = error_get_last();
+    $errorMessage = 'Unbekannter Fehler bei mail()';
+    if (is_array($lastError) && isset($lastError['message']) && is_string($lastError['message'])) {
+        $errorMessage = $lastError['message'];
+    }
     http_response_code(500);
-    echo json_encode(['success' => false, 'message' => 'Fehler beim Senden der E-Mail. Bitte versuche es später erneut.']);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Fehler beim Senden der E-Mail.',
+        'debug' => $errorMessage
+    ]);
 }
