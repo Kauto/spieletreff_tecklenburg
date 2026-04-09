@@ -56,7 +56,23 @@ $headers = implode("\r\n", [
     'X-Mailer: PHP/' . phpversion(),
 ]);
 
-$sent = @mail($to, $encodedSubject, $body, $headers, '-f' . $senderAddress);
+$mailWarnings = [];
+set_error_handler(function ($severity, $message, $file, $line) use (&$mailWarnings) {
+    $mailWarnings[] = $message . ' in ' . basename($file) . ':' . $line;
+    return true;
+});
+
+$sent = mail($to, $encodedSubject, $body, $headers, '-f' . $senderAddress);
+$firstAttemptWarnings = $mailWarnings;
+
+if (!$sent) {
+    // Fallback for hosts that block custom envelope sender (-f).
+    $mailWarnings = [];
+    $sent = mail($to, $encodedSubject, $body, $headers);
+}
+
+$secondAttemptWarnings = $mailWarnings;
+restore_error_handler();
 
 if ($sent) {
     echo json_encode(['success' => true]);
@@ -65,6 +81,11 @@ if ($sent) {
     $errorMessage = 'Unbekannter Fehler bei mail()';
     if (is_array($lastError) && isset($lastError['message']) && is_string($lastError['message'])) {
         $errorMessage = $lastError['message'];
+    }
+    if (!empty($secondAttemptWarnings)) {
+        $errorMessage = implode(' | ', $secondAttemptWarnings);
+    } elseif (!empty($firstAttemptWarnings)) {
+        $errorMessage = implode(' | ', $firstAttemptWarnings);
     }
     http_response_code(500);
     echo json_encode([
