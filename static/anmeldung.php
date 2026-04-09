@@ -7,16 +7,17 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-$contentType = $_SERVER['CONTENT_TYPE'] ?? '';
-if (str_contains($contentType, 'application/json')) {
-    $data = json_decode(file_get_contents('php://input'), true) ?? [];
+$contentType = isset($_SERVER['CONTENT_TYPE']) ? $_SERVER['CONTENT_TYPE'] : '';
+if (strpos($contentType, 'application/json') !== false) {
+    $decoded = json_decode(file_get_contents('php://input'), true);
+    $data = is_array($decoded) ? $decoded : [];
 } else {
     $data = $_POST;
 }
 
-$name      = trim($data['name'] ?? '');
-$email     = trim($data['email'] ?? '');
-$nachricht = trim($data['nachricht'] ?? '');
+$name      = trim(isset($data['name']) ? $data['name'] : '');
+$email     = trim(isset($data['email']) ? $data['email'] : '');
+$nachricht = trim(isset($data['nachricht']) ? $data['nachricht'] : '');
 
 if (empty($name) || empty($email)) {
     http_response_code(400);
