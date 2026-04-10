@@ -3,19 +3,22 @@
  * Kopiere diese Datei nach anmeldung.config.php und trage Zugangsdaten ein.
  * anmeldung.config.php nicht ins Repository committen (steht in .gitignore).
  *
- * web.de SMTP (typisch):
- * - Host: smtp.web.de
- * - Port: 465 mit SSL oder 587 mit STARTTLS
+ * Im produktiven Betrieb wird diese Datei automatisch vom GitHub-Actions-Workflow
+ * aus dem Secret RESEND_API_KEY generiert und via SFTP hochgeladen.
+ *
+ * Resend SMTP (https://resend.com/docs/send-with-smtp):
+ * - Host: smtp.resend.com
+ * - Port: 465 (SSL) oder 587 (STARTTLS)
+ * - Username: resend
+ * - Password: dein Resend API-Key
  */
 return [
     'smtp' => [
-        'host' => 'smtp.web.de',
+        'host' => 'smtp.resend.com',
         'port' => 465,
-        // 'ssl' = direkte SSL-Verbindung (Port 465), 'tls' = STARTTLS (Port 587)
         'encryption' => 'ssl',
-        'username' => 'ma.lampe@web.de',
+        'username' => 'resend',
         'password' => '',
-        // Bei Zertifikatsproblemen auf dem Server ggf. auf false setzen (unsicherer)
         'ssl_verify_peer' => true,
     ],
 ];

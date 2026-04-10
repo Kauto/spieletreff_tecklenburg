@@ -45,6 +45,24 @@ jobs:
       - name: Build
         run: pnpm build
 
+      - name: Generate mail config
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        run: |
+          cat > ./build/anmeldung.config.php <<PHP
+          <?php
+          return [
+              'smtp' => [
+                  'host' => 'smtp.resend.com',
+                  'port' => 465,
+                  'encryption' => 'ssl',
+                  'username' => 'resend',
+                  'password' => '${RESEND_API_KEY}',
+                  'ssl_verify_peer' => true,
+              ],
+          ];
+          PHP
+
       - name: Upload via SFTP
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
