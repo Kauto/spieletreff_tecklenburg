@@ -57,14 +57,33 @@
 				</section>
 
 				<section class="space-y-2">
-					<h2 class="text-xl font-bold font-headline text-on-surface">5. Speicherdauer</h2>
+					<h2 class="text-xl font-bold font-headline text-on-surface">5. Anmeldeformular und E-Mail-Versand</h2>
+					<p>
+						Auf unserer Website kannst du dich vorab für einen Spieleabend anmelden. Dabei erheben wir folgende Daten: Name, E-Mail-Adresse sowie eine optionale Nachricht.
+					</p>
+					<p>
+						Diese Daten verwenden wir ausschließlich, um deine Anmeldung zu bearbeiten und dir eine Bestätigungs-E-Mail zu schicken. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Durchführung vorvertraglicher Maßnahmen).
+					</p>
+					<p>
+						Für den E-Mail-Versand setzen wir den Dienst <strong>Resend</strong> (Resend, Inc., 2261 Market Street #5496, San Francisco, CA 94114, USA) ein. Resend verarbeitet dabei deine E-Mail-Adresse sowie den Inhalt der Bestätigungs-E-Mail als Auftragsverarbeiter gemäß Art. 28 DSGVO. Es besteht ein Auftragsverarbeitungsvertrag (Data Processing Addendum).
+					</p>
+					<p>
+						Da Resend seinen Sitz in den USA hat, werden Daten in ein Drittland außerhalb der EU übermittelt. Die Übermittlung erfolgt auf Grundlage von EU-Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO), die ein angemessenes Datenschutzniveau sicherstellen. Weitere Informationen findest du in der <a class="text-primary font-semibold hover:underline" href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Datenschutzerklärung von Resend</a>.
+					</p>
+					<p>
+						Deine Anmeldedaten werden nach dem jeweiligen Spieleabend gelöscht, spätestens jedoch nach 30 Tagen.
+					</p>
+				</section>
+
+				<section class="space-y-2">
+					<h2 class="text-xl font-bold font-headline text-on-surface">6. Speicherdauer</h2>
 					<p>
 						Personenbezogene Daten werden nur so lange gespeichert, wie dies für den jeweiligen Zweck erforderlich ist oder gesetzliche Aufbewahrungsfristen bestehen.
 					</p>
 				</section>
 
 				<section class="space-y-2">
-					<h2 class="text-xl font-bold font-headline text-on-surface">6. Ihre Rechte</h2>
+					<h2 class="text-xl font-bold font-headline text-on-surface">7. Ihre Rechte</h2>
 					<p>Sie haben im Rahmen der gesetzlichen Vorgaben insbesondere folgende Rechte:</p>
 					<ul class="list-disc pl-6 space-y-1">
 						<li>Auskunft über die von uns verarbeiteten personenbezogenen Daten (Art. 15 DSGVO)</li>
@@ -77,14 +96,14 @@
 				</section>
 
 				<section class="space-y-2">
-					<h2 class="text-xl font-bold font-headline text-on-surface">7. Beschwerderecht</h2>
+					<h2 class="text-xl font-bold font-headline text-on-surface">8. Beschwerderecht</h2>
 					<p>
 						Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde über die Verarbeitung Ihrer personenbezogenen Daten zu beschweren.
 					</p>
 				</section>
 
 				<section class="space-y-2">
-					<h2 class="text-xl font-bold font-headline text-on-surface">8. Aktualität dieser Datenschutzerklärung</h2>
+					<h2 class="text-xl font-bold font-headline text-on-surface">9. Aktualität dieser Datenschutzerklärung</h2>
 					<p>
 						Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entspricht oder um Änderungen unserer Leistungen in der Datenschutzerklärung umzusetzen.
 					</p>
