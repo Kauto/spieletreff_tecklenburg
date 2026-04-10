@@ -1,0 +1,15 @@
+---
+description: Git push requires explicit user command
+alwaysApply: true
+---
+
+# Git Push Policy
+
+**Never run `git push` unless the user explicitly asks for it.**
+
+This includes:
+- Standalone pushes
+- Pushes chained after `git commit`
+- Force pushes
+
+Only push when the user's message contains a clear instruction such as "push", "commit and push", or "execute the commit-and-push action".
