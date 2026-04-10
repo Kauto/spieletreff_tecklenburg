@@ -224,7 +224,7 @@
 
 					<!-- DSGVO note -->
 					<p class="text-center text-xs leading-relaxed text-on-surface-variant/60">
-						Deine Angaben werden nur für die Bearbeitung deiner Anmeldung genutzt. Die Bestätigungs-E-Mail versenden wir über <strong class="text-on-surface-variant/80">Resend</strong> (USA) – mit dem ein Auftragsverarbeitungsvertrag besteht. Mehr dazu in unserer
+						Deine Angaben werden nur für die Bearbeitung deiner Anmeldung genutzt. Das Formular wird über <strong class="text-on-surface-variant/80">Resend</strong> (USA) versendet – mit dem ein Auftragsverarbeitungsvertrag besteht. Mehr dazu in unserer
 						<a href="{base}/datenschutz" class="underline decoration-on-surface-variant/30 transition-colors hover:text-on-surface-variant">Datenschutzerklärung</a>.
 					</p>
 				</form>

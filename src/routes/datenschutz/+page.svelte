@@ -62,10 +62,10 @@
 						Auf unserer Website kannst du dich vorab für einen Spieleabend anmelden. Dabei erheben wir folgende Daten: Name, E-Mail-Adresse sowie eine optionale Nachricht.
 					</p>
 					<p>
-						Diese Daten verwenden wir ausschließlich, um deine Anmeldung zu bearbeiten und dir eine Bestätigungs-E-Mail zu schicken. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Durchführung vorvertraglicher Maßnahmen).
+						Diese Daten verwenden wir ausschließlich, um deine Anmeldung zu bearbeiten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Durchführung vorvertraglicher Maßnahmen).
 					</p>
 					<p>
-						Für den E-Mail-Versand setzen wir den Dienst <strong>Resend</strong> (Resend, Inc., 2261 Market Street #5496, San Francisco, CA 94114, USA) ein. Resend verarbeitet dabei deine E-Mail-Adresse sowie den Inhalt der Bestätigungs-E-Mail als Auftragsverarbeiter gemäß Art. 28 DSGVO. Es besteht ein Auftragsverarbeitungsvertrag (Data Processing Addendum).
+						Für den E-Mail-Versand der Anmeldung setzen wir den Dienst <strong>Resend</strong> (Resend, Inc., 2261 Market Street #5496, San Francisco, CA 94114, USA) ein. Resend verarbeitet dabei deine E-Mail-Adresse sowie den Inhalt der Anmeldung als Auftragsverarbeiter gemäß Art. 28 DSGVO. Es besteht ein Auftragsverarbeitungsvertrag (Data Processing Addendum).
 					</p>
 					<p>
 						Da Resend seinen Sitz in den USA hat, werden Daten in ein Drittland außerhalb der EU übermittelt. Die Übermittlung erfolgt auf Grundlage von EU-Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO), die ein angemessenes Datenschutzniveau sicherstellen. Weitere Informationen findest du in der <a class="text-primary font-semibold hover:underline" href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Datenschutzerklärung von Resend</a>.
