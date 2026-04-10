@@ -56,37 +56,91 @@ $headers = implode("\r\n", [
     'X-Mailer: PHP/' . phpversion(),
 ]);
 
-$mailWarnings = [];
-set_error_handler(function ($severity, $message, $file, $line) use (&$mailWarnings) {
-    $mailWarnings[] = $message . ' in ' . basename($file) . ':' . $line;
-    return true;
-});
-
-$sent = mail($to, $encodedSubject, $body, $headers, '-f' . $senderAddress);
-$firstAttemptWarnings = $mailWarnings;
-
-if (!$sent) {
-    // Fallback for hosts that block custom envelope sender (-f).
-    $mailWarnings = [];
-    $sent = mail($to, $encodedSubject, $body, $headers);
+$configPath = __DIR__ . '/anmeldung.config.php';
+$config = [];
+if (is_file($configPath)) {
+    $loaded = include $configPath;
+    if (is_array($loaded)) {
+        $config = $loaded;
+    }
 }
 
-$secondAttemptWarnings = $mailWarnings;
-restore_error_handler();
+$sent = false;
+$smtpResult = null;
+
+if (isset($config['smtp']) && is_array($config['smtp'])) {
+    $smtpCfg = $config['smtp'];
+    $smtpPass = isset($smtpCfg['password']) ? $smtpCfg['password'] : '';
+    if ($smtpPass !== '') {
+        $smtpPhp = __DIR__ . '/anmeldung-smtp.php';
+        if (is_file($smtpPhp)) {
+            require_once $smtpPhp;
+            $smtpResult = anmeldung_send_via_smtp($smtpCfg, $to, $senderAddress, $encodedSubject, $body);
+            if (isset($smtpResult['ok']) && $smtpResult['ok']) {
+                $sent = true;
+            }
+        } else {
+            $smtpResult = ['ok' => false, 'error' => 'SMTP: Datei anmeldung-smtp.php fehlt auf dem Server.'];
+        }
+    }
+}
+
+if (!$sent) {
+    $mailWarnings = [];
+    set_error_handler(function ($severity, $message, $file, $line) use (&$mailWarnings) {
+        $mailWarnings[] = $message . ' in ' . basename($file) . ':' . $line;
+        return true;
+    });
+
+    $mailOk = mail($to, $encodedSubject, $body, $headers, '-f' . $senderAddress);
+    $firstAttemptWarnings = $mailWarnings;
+
+    if (!$mailOk) {
+        $mailWarnings = [];
+        $mailOk = mail($to, $encodedSubject, $body, $headers);
+    }
+
+    $secondAttemptWarnings = $mailWarnings;
+    restore_error_handler();
+
+    if ($mailOk) {
+        $sent = true;
+    }
+}
 
 if ($sent) {
     echo json_encode(['success' => true]);
 } else {
     $lastError = error_get_last();
-    $errorMessage = 'Unbekannter Fehler bei mail()';
-    if (is_array($lastError) && isset($lastError['message']) && is_string($lastError['message'])) {
-        $errorMessage = $lastError['message'];
+    $parts = [];
+
+    $parts[] = 'mail() lieferte false ohne brauchbare PHP-Warnung (typisch: kein sendmail/MTA auf dem Webspace).';
+    $parts[] = 'sendmail_path=' . (ini_get('sendmail_path') ? ini_get('sendmail_path') : '(leer)');
+
+    if ($smtpResult !== null) {
+        if (!empty($smtpResult['ok'])) {
+            $parts[] = 'SMTP: OK (sollte nicht bei Fehler erscheinen)';
+        } else {
+            $err = isset($smtpResult['error']) ? $smtpResult['error'] : 'SMTP unbekannt';
+            $parts[] = $err;
+            if (!empty($smtpResult['last_response'])) {
+                $parts[] = 'SMTP last: ' . trim($smtpResult['last_response']);
+            }
+        }
+    } else {
+        $parts[] = 'SMTP: nicht konfiguriert (optional: anmeldung.config.php mit smtp.password aus anmeldung.config.example.php).';
     }
+
     if (!empty($secondAttemptWarnings)) {
-        $errorMessage = implode(' | ', $secondAttemptWarnings);
+        $parts[] = 'PHP: ' . implode(' | ', $secondAttemptWarnings);
     } elseif (!empty($firstAttemptWarnings)) {
-        $errorMessage = implode(' | ', $firstAttemptWarnings);
+        $parts[] = 'PHP: ' . implode(' | ', $firstAttemptWarnings);
+    } elseif (is_array($lastError) && isset($lastError['message']) && is_string($lastError['message'])) {
+        $parts[] = 'PHP: ' . $lastError['message'];
     }
+
+    $errorMessage = implode("\n", $parts);
+
     http_response_code(500);
     echo json_encode([
         'success' => false,

@@ -14,6 +14,9 @@ dist/
 .env.*
 !.env.example
 
+# PHP: lokale SMTP-Zugangsdaten (Kopie von anmeldung.config.example.php)
+static/anmeldung.config.php
+
 # OS
 .DS_Store
 Thumbs.db
