@@ -35,7 +35,7 @@ $name      = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
 $safeEmail = filter_var($email, FILTER_SANITIZE_EMAIL);
 $nachricht = htmlspecialchars($nachricht, ENT_QUOTES, 'UTF-8');
 
-$to            = 'spielen@spieletreff-tecklenburgerland.de';
+$to            = 'kauto@gmx.de';
 $senderAddress = 'onboarding@resend.dev';
 $subject       = 'Anmeldung Spieletreff Tecklenburger Land – ' . $name;
 
