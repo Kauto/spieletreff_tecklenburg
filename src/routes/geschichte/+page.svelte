@@ -56,7 +56,7 @@
 				Alles begann im November 2009 mit einem Spielenachmittag im evangelischen Gemeindehaus Brochterbeck – für Familien und brettspielbegeisterte Erwachsene. Über ein Brettspielforum hatte Martin Grüter das Treffen angekündigt, und so trudelten auch einige Besucher aus dem Rest des Kreises Steinfurt ein. Am Ende des Tages stand für die letzten fünf Anwesenden fest:
 			</p>
 
-			<blockquote class="border-l-4 border-primary pl-6 py-1 my-2">
+			<blockquote class="rounded-xl bg-surface-container-low px-8 py-6 my-2">
 				<p class="font-semibold font-headline text-on-surface text-xl md:text-2xl leading-snug italic">
 					„Wir wollen uns regelmäßig zum Brettspieleabend treffen!"
 				</p>
@@ -141,6 +141,26 @@
 				>
 					<Icon name="forum" class="text-xl leading-none" />
 					WhatsApp-Gruppe
+					<Icon name="open_in_new" class="text-sm leading-none" />
+				</a>
+				<a
+					href="https://www.facebook.com/p/Spieletreff-Tecklenburger-Land-100064257206980/"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="Spieletreff Tecklenburger Land auf Facebook (öffnet extern)"
+					class="ui-button inline-flex items-center gap-2 bg-surface-container text-on-surface px-6 py-3 rounded-lg font-bold text-base"
+				>
+					Facebook
+					<Icon name="open_in_new" class="text-sm leading-none" />
+				</a>
+				<a
+					href="https://www.instagram.com/spielteckland?igsh=dTZvbGVnbjJ6MTZ0"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="Spieletreff Tecklenburger Land auf Instagram (öffnet extern)"
+					class="ui-button inline-flex items-center gap-2 bg-surface-container text-on-surface px-6 py-3 rounded-lg font-bold text-base"
+				>
+					Instagram
 					<Icon name="open_in_new" class="text-sm leading-none" />
 				</a>
 			</div>

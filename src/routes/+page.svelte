@@ -93,13 +93,13 @@
 					<h1 class="text-2xl md:text-3xl font-extrabold font-headline tracking-tight text-on-surface mb-1">
 						Spieletreff Tecklenburger Land
 					</h1>
-					<p class="text-base text-on-surface-variant mb-16">Brettspielgruppe – offen für alle</p>
+					<p class="text-base text-on-surface-variant mb-8 md:mb-16">Brettspielgruppe – offen für alle</p>
 				</div>
 			</div>
 		<div class="inline-block clear-both bg-secondary-container text-on-secondary-container px-4 py-1 rounded-sm mb-4 font-bold text-sm tracking-widest uppercase">
 			Das nächste Treffen
 		</div>
-			<h2 class="text-5xl md:text-7xl font-extrabold font-headline leading-tight text-primary italic mb-6">
+			<h2 class="text-4xl md:text-6xl lg:text-7xl font-extrabold font-headline leading-tight text-primary italic mb-6 line-clamp-2">
 				{nextEvent?.title ?? 'Spieleabend im ev. Gemeindehaus'}
 			</h2>
 			<div class="flex flex-wrap gap-x-6 gap-y-3 mb-8">
@@ -238,6 +238,24 @@
 								aria-label="WhatsApp-Gruppe beitreten (öffnet extern)"
 								class="font-bold text-primary underline decoration-primary/40 hover:decoration-primary rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-1"
 							>WhatsApp-Gruppe</a> bei und verpasst keine Termine oder spontanen Runden mehr.
+						</p>
+						<p class="text-on-surface-variant mt-2 leading-relaxed">
+							Oder folge uns auf
+							<a
+								href="https://www.facebook.com/p/Spieletreff-Tecklenburger-Land-100064257206980/"
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label="Spieletreff Tecklenburger Land auf Facebook (öffnet extern)"
+								class="font-bold text-primary underline decoration-primary/40 hover:decoration-primary rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-1"
+							>Facebook</a>
+							und
+							<a
+								href="https://www.instagram.com/spielteckland?igsh=dTZvbGVnbjJ6MTZ0"
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label="Spieletreff Tecklenburger Land auf Instagram (öffnet extern)"
+								class="font-bold text-primary underline decoration-primary/40 hover:decoration-primary rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-1"
+							>Instagram</a>.
 						</p>
 					</div>
 				</li>

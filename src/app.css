@@ -43,10 +43,6 @@
 	--radius-full: 9999px;
 }
 
-.tonal-shift {
-	background: linear-gradient(to bottom, #E5E7EB, #F9FAFB);
-}
-
 .ui-button {
 	transition:
 		transform 160ms ease,

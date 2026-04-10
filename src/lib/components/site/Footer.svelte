@@ -36,6 +36,45 @@
 			<a class="footer-link focus-ring min-h-11 inline-flex rounded-xl px-2 py-1 font-bold text-primary transition-colors duration-200 hover:bg-surface-container hover:text-primary/90 break-all" href="mailto:spielen@spieletreff-tecklenburgerland.de">
 				spielen@spieletreff-tecklenburgerland.de
 			</a>
+			<h4 class="font-headline text-xs font-bold uppercase tracking-widest text-primary mt-2">Community</h4>
+			<ul class="space-y-2">
+				<li>
+					<a
+						href="https://chat.whatsapp.com/2naM3nPDYs08qymMxBIE8v?mode=gi_t"
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label="WhatsApp-Gruppe beitreten (öffnet extern)"
+						class="footer-link focus-ring min-h-11 inline-flex rounded-xl px-2 py-1 text-on-surface-variant transition-colors duration-200 hover:bg-surface-container hover:text-primary"
+					>
+						WhatsApp
+						<Icon name="arrow_outward" class="link-icon text-base" />
+					</a>
+				</li>
+				<li>
+					<a
+						href="https://www.facebook.com/p/Spieletreff-Tecklenburger-Land-100064257206980/"
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label="Spieletreff Tecklenburger Land auf Facebook (öffnet extern)"
+						class="footer-link focus-ring min-h-11 inline-flex rounded-xl px-2 py-1 text-on-surface-variant transition-colors duration-200 hover:bg-surface-container hover:text-primary"
+					>
+						Facebook
+						<Icon name="arrow_outward" class="link-icon text-base" />
+					</a>
+				</li>
+				<li>
+					<a
+						href="https://www.instagram.com/spielteckland?igsh=dTZvbGVnbjJ6MTZ0"
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label="Spieletreff Tecklenburger Land auf Instagram (öffnet extern)"
+						class="footer-link focus-ring min-h-11 inline-flex rounded-xl px-2 py-1 text-on-surface-variant transition-colors duration-200 hover:bg-surface-container hover:text-primary"
+					>
+						Instagram
+						<Icon name="arrow_outward" class="link-icon text-base" />
+					</a>
+				</li>
+			</ul>
 		</div>
 		<div class="flex flex-col gap-4">
 			<h4 class="font-headline text-xs font-bold uppercase tracking-widest text-primary">Links</h4>

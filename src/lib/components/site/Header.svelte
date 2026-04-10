@@ -24,7 +24,7 @@
 	}
 </script>
 
-<nav class="fixed top-0 z-50 w-full bg-surface-container/90 backdrop-blur-xl">
+<nav class="fixed top-0 z-50 w-full bg-surface-container border-b border-outline-variant/40">
 	<div class="mx-auto max-w-7xl px-6 py-4">
 		<div class="flex justify-between items-center gap-4">
 			<a href="{base}/" class="brand-mark focus-ring shrink-0 rounded-xl" aria-label="Spieletreff Tecklenburger Land – Startseite">

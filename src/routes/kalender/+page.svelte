@@ -351,19 +351,41 @@
 		<div class="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-6">
 			<div>
 				<p class="font-bold font-headline text-on-surface text-xl">Keinen Termin verpassen?</p>
-				<p class="text-on-surface-variant mt-1 leading-relaxed">Alle Infos und spontane Treffen direkt in der WhatsApp-Gruppe.</p>
+				<p class="text-on-surface-variant mt-1 leading-relaxed">Alle Infos und spontane Treffen direkt via WhatsApp, Facebook und Instagram.</p>
 			</div>
-			<a
-				href="https://chat.whatsapp.com/2naM3nPDYs08qymMxBIE8v?mode=gi_t"
-				target="_blank"
-				rel="noopener noreferrer"
-				aria-label="WhatsApp-Community beitreten (öffnet WhatsApp)"
-				class="ui-button shrink-0 inline-flex items-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-xl font-bold"
-			>
-				<Icon name="forum" class="text-xl leading-none" />
-				WhatsApp beitreten
-				<Icon name="open_in_new" class="text-sm leading-none opacity-70" />
-			</a>
+			<div class="flex flex-wrap items-center gap-3 shrink-0">
+				<a
+					href="https://chat.whatsapp.com/2naM3nPDYs08qymMxBIE8v?mode=gi_t"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="WhatsApp-Community beitreten (öffnet WhatsApp)"
+					class="ui-button inline-flex items-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-xl font-bold"
+				>
+					<Icon name="forum" class="text-xl leading-none" />
+					WhatsApp beitreten
+					<Icon name="open_in_new" class="text-sm leading-none opacity-70" />
+				</a>
+				<a
+					href="https://www.facebook.com/p/Spieletreff-Tecklenburger-Land-100064257206980/"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="Spieletreff Tecklenburger Land auf Facebook (öffnet extern)"
+					class="inline-flex items-center gap-1 rounded-xl px-3 py-2 text-sm font-bold text-primary hover:bg-surface-container-low focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+				>
+					Facebook
+					<Icon name="open_in_new" class="text-sm leading-none opacity-70" />
+				</a>
+				<a
+					href="https://www.instagram.com/spielteckland?igsh=dTZvbGVnbjJ6MTZ0"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="Spieletreff Tecklenburger Land auf Instagram (öffnet extern)"
+					class="inline-flex items-center gap-1 rounded-xl px-3 py-2 text-sm font-bold text-primary hover:bg-surface-container-low focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+				>
+					Instagram
+					<Icon name="open_in_new" class="text-sm leading-none opacity-70" />
+				</a>
+			</div>
 		</div>
 	</section>
 </main>
