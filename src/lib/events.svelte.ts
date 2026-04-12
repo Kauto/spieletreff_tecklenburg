@@ -18,7 +18,7 @@ export const calendarStore = {
 	get upcoming(): CalendarEvent[] {
 		const now = new Date();
 		const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-		return _events.filter((e) => e.end >= todayStart);
+		return _events.filter((e) => e.start >= todayStart);
 	},
 
 	/** The next single event, or undefined if none. */

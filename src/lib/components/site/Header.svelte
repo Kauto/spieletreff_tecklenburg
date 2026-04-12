@@ -53,7 +53,7 @@
 				</a>
 				<button
 					type="button"
-					class="focus-ring inline-flex h-11 w-11 items-center justify-center rounded-xl bg-surface-container text-on-surface transition-colors duration-200 hover:bg-surface-container-highest md:hidden"
+					class="focus-ring inline-flex h-11 w-11 items-center justify-center rounded-xl bg-surface-container text-on-surface text-2xl transition-colors duration-200 hover:bg-surface-container-highest md:hidden"
 					aria-label={menuOpen ? 'Menü schließen' : 'Menü öffnen'}
 					aria-expanded={menuOpen}
 					onclick={() => (menuOpen = !menuOpen)}
