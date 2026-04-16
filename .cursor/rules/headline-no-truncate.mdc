@@ -1,0 +1,9 @@
+# Überschriften ohne Truncating
+
+Auf der gesamten Website gilt als Grundregel:
+
+- Überschriften dürfen **nicht abgeschnitten** werden.
+- Keine Truncate-Utilities für Überschriften verwenden (z. B. `truncate`, `line-clamp-*`, `text-ellipsis`).
+- Überschriften sollen stattdessen normal umbrechen und vollständig lesbar bleiben.
+
+Diese Regel gilt für die Startseite sowie alle Unterseiten.

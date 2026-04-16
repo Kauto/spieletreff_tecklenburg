@@ -100,7 +100,7 @@
 		<div class="inline-block clear-both bg-secondary-container text-on-secondary-container px-4 py-1 rounded-sm mb-4 font-bold text-sm tracking-widest uppercase">
 			Das nächste Treffen
 		</div>
-			<h2 class="text-4xl md:text-6xl lg:text-7xl font-extrabold font-headline leading-tight text-primary italic mb-6 line-clamp-2">
+			<h2 class="text-4xl md:text-6xl lg:text-7xl font-extrabold font-headline leading-tight text-primary italic mb-6">
 				{nextEvent?.title ?? 'Spieleabend im ev. Gemeindehaus'}
 			</h2>
 			<div class="flex flex-wrap gap-x-6 gap-y-3 mb-8">
