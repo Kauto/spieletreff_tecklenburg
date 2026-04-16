@@ -13,7 +13,6 @@
 	const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
 	const upcoming = $derived(calendarStore.upcoming);
-	const past = $derived(calendarStore.events.filter((e) => e.end < todayStart).slice().reverse());
 	const nextEvent = $derived(calendarStore.next);
 	const hasCalendarSourceData = $derived(calendarStore.events.length > 0);
 
@@ -33,7 +32,6 @@
 	}
 
 	const upcomingGroups = $derived(groupByMonth(upcoming));
-	const pastGroups = $derived(groupByMonth(past));
 
 	const TZ = 'Europe/Berlin';
 
@@ -98,8 +96,6 @@
 	const heroDuration = $derived(reduceMotion ? 0 : 420);
 	const cardDuration = $derived(reduceMotion ? 0 : 320);
 
-	let showAllPast = $state(false);
-	const visiblePastGroups = $derived(showAllPast ? pastGroups : pastGroups.slice(0, 2));
 </script>
 
 <svelte:head>
@@ -267,84 +263,6 @@
 		{/if}
 		</div>
 	</section>
-
-	<!-- Past Events -->
-	{#if pastGroups.length > 0}
-		<section class="py-16 px-8 bg-surface-container-low">
-			<div class="max-w-7xl mx-auto">
-			<h2 class="text-2xl font-extrabold font-headline text-on-surface-variant mb-8">
-				Vergangene Treffen
-			</h2>
-		<div class="space-y-10 opacity-60">
-			{#each visiblePastGroups as group (group.key)}
-					<div class="bg-surface-container rounded-3xl p-6 md:p-8">
-						<div class="flex items-center gap-4 mb-4">
-							<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
-							<h3 class="text-xs font-bold font-headline text-secondary uppercase tracking-[0.2em]">{group.label}</h3>
-						</div>
-						<div class="space-y-6">
-							{#each group.events as event (event.uid)}
-								<div class="bg-surface-container-highest rounded-xl flex flex-col sm:flex-row overflow-hidden">
-									<div class="flex flex-col items-center justify-center p-4 min-w-[72px] bg-surface-container-low shrink-0">
-										<span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant/60">
-											{formatWeekday(event.start)}
-										</span>
-										<span class="text-3xl font-extrabold font-headline text-on-surface-variant/60 leading-none">
-											{formatDay(event.start)}
-										</span>
-									</div>
-									<div class="flex-1 p-4 min-w-0">
-										<h4 class="font-bold font-headline text-on-surface-variant">
-											{event.title}
-										</h4>
-										<div class="flex flex-wrap gap-3 mt-1">
-											{#if event.location}
-												<span class="flex items-center gap-1 text-on-surface-variant/70 text-sm">
-													<Icon name="location_on" class="text-base leading-none" />
-													{#if locationOrUndefined(event.location)}
-								<button
-																type="button"
-																class="text-left hover:underline cursor-pointer rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
-																onclick={(eventClick) =>
-																	requestMapConsent(locationOrUndefined(event.location)!, eventClick.currentTarget)}
-															>
-															{locationOrUndefined(event.location)}
-														</button>
-													{/if}
-												</span>
-											{/if}
-											{#if !event.allDay}
-												<span class="flex items-center gap-1 text-on-surface-variant/70 text-sm">
-												<Icon name="schedule" class="text-base leading-none" />
-												{formatTime(event.start)} Uhr
-												</span>
-											{/if}
-										</div>
-										{#if event.description}
-										<p class="mt-3 text-on-surface-variant/80 text-sm leading-relaxed whitespace-pre-line rounded-lg bg-surface-container-low/70 px-3 py-2">
-											{event.description}
-										</p>
-										{/if}
-									</div>
-								</div>
-							{/each}
-						</div>
-					</div>
-				{/each}
-		</div>
-		{#if pastGroups.length > 2}
-			<button
-				type="button"
-				onclick={() => (showAllPast = !showAllPast)}
-				class="mt-8 flex items-center gap-2 text-sm font-bold text-on-surface-variant hover:text-primary transition-colors rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
-			>
-				<Icon name="expand_more" class="text-base leading-none transition-transform duration-200 {showAllPast ? 'rotate-180' : ''}" />
-				{showAllPast ? 'Weniger anzeigen' : `${pastGroups.length - 2} weitere Monate anzeigen`}
-			</button>
-		{/if}
-		</div>
-	</section>
-{/if}
 
 	<!-- CTA -->
 	<section class="py-12 px-8 bg-surface">

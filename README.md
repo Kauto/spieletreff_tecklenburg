@@ -49,3 +49,4 @@ pnpm dev
 
 - Adapter is configured for static output (`@sveltejs/adapter-static`).
 - Design direction and visual system are documented in `DESIGN.md`.
+
