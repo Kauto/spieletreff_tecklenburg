@@ -1,42 +1,51 @@
-# sv
+# Spieletreff Tecklenburg
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Website project for Spieletreff Tecklenburg, built with SvelteKit, TypeScript, and Tailwind CSS.
 
-## Creating a project
+## Tech Stack
 
-If you're seeing this, you've probably already done this step. Congrats!
+- SvelteKit 2
+- Svelte 5
+- TypeScript
+- Tailwind CSS 4
+- Vite 7
+- pnpm
 
-```sh
-# create a new project
-npx sv create my-app
+## Requirements
+
+- Node.js 22+
+- pnpm
+
+## Local Development
+
+Install dependencies:
+
+```bash
+pnpm install
 ```
 
-To recreate this project with the same configuration:
+Start dev server:
 
-```sh
-# recreate this project
-pnpm dlx sv@0.13.0 create --template minimal --types ts --add prettier eslint mcp="ide:claude-code+setup:local" sveltekit-adapter="adapter:static" --install pnpm spieletreff_tecklenburg
+```bash
+pnpm dev
 ```
 
-## Developing
+## Scripts
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+- `pnpm dev` - start development server
+- `pnpm build` - create production build
+- `pnpm preview` - preview production build locally
+- `pnpm check` - run Svelte/TypeScript checks
+- `pnpm lint` - run Prettier check and ESLint
+- `pnpm format` - format codebase with Prettier
 
-```sh
-npm run dev
+## Project Structure
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+- `src/` - app source code (routes, components, styles)
+- `static/` - static assets
+- `build/` - generated build output
 
-## Building
+## Notes
 
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+- Adapter is configured for static output (`@sveltejs/adapter-static`).
+- Design direction and visual system are documented in `DESIGN.md`.
