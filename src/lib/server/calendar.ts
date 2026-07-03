@@ -108,7 +108,42 @@ type RawEvent = Partial<CalendarEvent> & {
 	rrule?: string;
 	exdates?: Date[];
 	rdates?: Date[];
+	durationMs?: number;
 };
+
+/** Parses iCal DURATION values such as PT5H, P1D, or PT1H30M into milliseconds. */
+function parseDuration(value: string): number {
+	const match = value.match(/^P(?:(\d+)W|(?:(\d+)D)?(?:T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?)?)$/);
+	if (!match) return 0;
+
+	const weeks = Number(match[1] || 0);
+	const days = Number(match[2] || 0);
+	const hours = Number(match[3] || 0);
+	const minutes = Number(match[4] || 0);
+	const seconds = Number(match[5] || 0);
+
+	return (((weeks * 7 + days) * 24 + hours) * 60 + minutes) * 60 * 1000 + seconds * 1000;
+}
+
+/** Derives DTEND when Google Calendar omits it (common for open-ended or all-day events). */
+function resolveEventEnd(raw: RawEvent): Date | undefined {
+	if (raw.end) return raw.end;
+	if (!raw.start) return undefined;
+
+	if (raw.durationMs) {
+		return new Date(raw.start.getTime() + raw.durationMs);
+	}
+
+	// All-day DTEND is exclusive; default to a single day when omitted.
+	if (raw.allDay) {
+		const end = new Date(raw.start);
+		end.setUTCDate(end.getUTCDate() + 1);
+		return end;
+	}
+
+	// Timed event without end/duration: zero-length instant (RFC 5545).
+	return new Date(raw.start.getTime());
+}
 
 function parseRRule(rrule: string): Record<string, string> {
 	const result: Record<string, string> = {};
@@ -156,19 +191,24 @@ function withTimeFrom(datePart: Date, timePart: Date): Date {
 }
 
 function expandRecurringEvent(raw: RawEvent): CalendarEvent[] {
-	if (!raw.uid || !raw.title || !raw.start || !raw.end) return [];
-	if (!raw.rrule) return [raw as CalendarEvent];
+	if (!raw.uid || !raw.title || !raw.start) return [];
 
-	const rule = parseRRule(raw.rrule);
+	const end = resolveEventEnd(raw);
+	if (!end) return [];
+
+	const normalized = { ...raw, end };
+	if (!normalized.rrule) return [normalized as CalendarEvent];
+
+	const rule = parseRRule(normalized.rrule);
 	const freq = rule.FREQ;
-	if (!freq) return [raw as CalendarEvent];
+	if (!freq) return [normalized as CalendarEvent];
 
 	const interval = Number(rule.INTERVAL || '1');
 	const until = rule.UNTIL ? parseDate('DTSTART', rule.UNTIL).date : null;
 	const count = rule.COUNT ? Number(rule.COUNT) : null;
-	const durationMs = raw.end.getTime() - raw.start.getTime();
-	const exdates = new Set((raw.exdates ?? []).map((d) => d.getTime()));
-	const rdates = raw.rdates ?? [];
+	const durationMs = end.getTime() - normalized.start!.getTime();
+	const exdates = new Set((normalized.exdates ?? []).map((d) => d.getTime()));
+	const rdates = normalized.rdates ?? [];
 
 	const occurrences: Date[] = [];
 	const addOccurrence = (d: Date) => {
@@ -179,12 +219,12 @@ function expandRecurringEvent(raw: RawEvent): CalendarEvent[] {
 	};
 
 	// DTSTART is always part of the recurrence set.
-	addOccurrence(raw.start);
+	addOccurrence(normalized.start!);
 
 	if (freq === 'DAILY') {
 		let i = 1;
 		while (i < 1000) {
-			const d = new Date(raw.start);
+			const d = new Date(normalized.start!);
 			d.setDate(d.getDate() + i * interval);
 			if (until && d > until) break;
 			addOccurrence(d);
@@ -198,11 +238,11 @@ function expandRecurringEvent(raw: RawEvent): CalendarEvent[] {
 			.filter(Boolean);
 		const weekdays = bydayTokens.length
 			? bydayTokens.map((t) => parseWeekdayToken(t)?.day).filter((d): d is number => d !== undefined)
-			: [raw.start.getDay()];
+			: [normalized.start!.getDay()];
 
 		let week = 0;
 		while (week < 520) {
-			const weekStart = new Date(raw.start);
+			const weekStart = new Date(normalized.start!);
 			weekStart.setDate(weekStart.getDate() + week * interval * 7);
 			for (const wd of weekdays) {
 				const d = new Date(weekStart);
@@ -223,7 +263,7 @@ function expandRecurringEvent(raw: RawEvent): CalendarEvent[] {
 
 		let monthOffset = 0;
 		while (monthOffset < 240) {
-			const d = new Date(raw.start);
+			const d = new Date(normalized.start!);
 			d.setMonth(d.getMonth() + monthOffset * interval);
 			const year = d.getFullYear();
 			const month = d.getMonth();
@@ -236,11 +276,11 @@ function expandRecurringEvent(raw: RawEvent): CalendarEvent[] {
 					const nth = parsed.nth ?? 1;
 					const dayInMonth = nthWeekdayOfMonth(year, month, parsed.day, nth);
 					if (!dayInMonth) continue;
-					addOccurrence(withTimeFrom(dayInMonth, raw.start));
+					addOccurrence(withTimeFrom(dayInMonth, normalized.start!));
 					if (count && occurrences.length >= count) break;
 				}
 			} else {
-				addOccurrence(new Date(year, month, raw.start.getDate(), raw.start.getHours(), raw.start.getMinutes(), raw.start.getSeconds()));
+				addOccurrence(new Date(year, month, normalized.start!.getDate(), normalized.start!.getHours(), normalized.start!.getMinutes(), normalized.start!.getSeconds()));
 			}
 
 			if (count && occurrences.length >= count) break;
@@ -255,13 +295,13 @@ function expandRecurringEvent(raw: RawEvent): CalendarEvent[] {
 	if (count) occurrences.splice(count);
 
 	return occurrences.map((startDate) => ({
-		uid: `${raw.uid}#${startDate.toISOString()}`,
-		title: raw.title!,
+		uid: `${normalized.uid}#${startDate.toISOString()}`,
+		title: normalized.title!,
 		start: startDate,
 		end: new Date(startDate.getTime() + durationMs),
-		allDay: raw.allDay ?? false,
-		description: raw.description,
-		location: raw.location
+		allDay: normalized.allDay ?? false,
+		description: normalized.description,
+		location: normalized.location
 	}));
 }
 
@@ -278,7 +318,7 @@ function parseIcal(text: string): CalendarEvent[] {
 		}
 
 		if (line === 'END:VEVENT') {
-			if (evt?.uid && evt.title && evt.start && evt.end) {
+			if (evt?.uid && evt.title && evt.start) {
 				rawEvents.push(evt);
 			}
 			evt = null;
@@ -311,6 +351,9 @@ function parseIcal(text: string): CalendarEvent[] {
 				evt.end = parseDate(key, value).date;
 				break;
 			}
+			case 'DURATION':
+				evt.durationMs = parseDuration(value);
+				break;
 			case 'DESCRIPTION':
 				evt.description = unescape(value);
 				break;
