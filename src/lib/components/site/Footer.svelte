@@ -126,7 +126,7 @@
 		outline-offset: 2px;
 	}
 
-	.link-icon {
+	.footer-link :global(.link-icon) {
 		opacity: 0.55;
 		transform: translateX(0);
 		transition:
@@ -134,7 +134,7 @@
 			opacity 180ms ease;
 	}
 
-	.footer-link:hover .link-icon {
+	.footer-link:hover :global(.link-icon) {
 		opacity: 1;
 		transform: translateX(1px);
 	}
@@ -145,7 +145,7 @@
 			transform: none !important;
 		}
 
-		.link-icon {
+		.footer-link :global(.link-icon) {
 			opacity: 1;
 			transform: none !important;
 			transition-duration: 1ms !important;
