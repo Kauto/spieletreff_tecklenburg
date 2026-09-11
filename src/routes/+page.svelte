@@ -5,7 +5,7 @@
 	import imgHero from '$lib/assets/images/spieletreff-hero.jpg?enhanced';
 	import imgGroupPhoto from '$lib/assets/images/group-photo.png?enhanced';
 	import imgSpielabend from '$lib/assets/images/spieletreff-spieleabend.jpg?enhanced';
-	import { calendarStore } from '$lib/events.svelte';
+	import { calendarStore, displayEventTitle } from '$lib/events.svelte';
 	import { locationOrUndefined } from '$lib/location';
 	import Icon from '$lib/components/Icon.svelte';
 	import InstagramPost from '$lib/components/site/InstagramPost.svelte';
@@ -34,9 +34,9 @@
 	}
 
 
-	const upcoming = $derived(calendarStore.upcoming);
 	const nextEvent = $derived(calendarStore.next);
-	const nextThreeEvents = $derived(upcoming.slice(0, 3));
+	const nextCancellation = $derived(calendarStore.nextCancellation);
+	const nextThreeEvents = $derived(calendarStore.upcomingActive.slice(0, 3));
 	const hasCalendarSourceData = $derived(calendarStore.events.length > 0);
 
 	const TZ = 'Europe/Berlin';
@@ -97,51 +97,112 @@
 					<p class="text-base text-on-surface-variant mb-8 md:mb-16">Brettspielgruppe – offen für alle</p>
 				</div>
 			</div>
-		<div class="inline-block clear-both bg-secondary-container text-on-secondary-container px-4 py-1 rounded-sm mb-4 font-bold text-sm tracking-widest uppercase">
-			Das nächste Treffen
-		</div>
-			<h2 class="text-4xl md:text-6xl lg:text-7xl font-extrabold font-headline leading-tight text-primary italic mb-6">
-				{nextEvent?.title ?? 'Spieleabend im ev. Gemeindehaus'}
-			</h2>
-			<div class="flex flex-wrap gap-x-6 gap-y-3 mb-8">
-				<span class="flex items-center gap-2 text-on-surface-variant">
-					<Icon name="calendar_month" class="text-xl leading-none text-secondary" />
-					<span class="font-bold text-on-surface">{nextEvent ? formatHeroDate(nextEvent.start) : 'Freitag, 3. April'}</span>
-				</span>
-				<span class="flex items-center gap-2 text-on-surface-variant">
-					<Icon name="schedule" class="text-xl leading-none text-secondary" />
-					<span class="font-bold text-on-surface">
-						{#if nextEvent}
-							{#if nextEvent.allDay}Ganztägig{:else}Ab {formatTime(nextEvent.start)} Uhr{/if}
+		{#if nextCancellation || nextEvent}
+			<div class="mb-8 space-y-5">
+				{#if nextCancellation}
+					<div
+						role="status"
+						class="flex gap-3 rounded-xl bg-error-container px-4 py-3 text-on-error-container"
+					>
+						<Icon name="warning" class="mt-0.5 shrink-0 text-xl leading-none text-error" />
+						<div class="min-w-0">
+							<p class="font-extrabold font-headline text-sm tracking-wide">Leider abgesagt</p>
+							<p class="mt-1 leading-snug">
+								Das Treffen am {formatHeroDate(nextCancellation.start)}
+								({displayEventTitle(nextCancellation)}) fällt aus. Bitte kommt nicht vorbei.
+							</p>
+							{#if nextCancellation.description}
+								<p class="mt-2 text-sm leading-relaxed whitespace-pre-line opacity-90">
+									{nextCancellation.description}
+								</p>
+							{/if}
+							<a
+								href="https://chat.whatsapp.com/2naM3nPDYs08qymMxBIE8v?mode=gi_t"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="mt-3 inline-flex items-center gap-1.5 text-sm font-bold underline decoration-current/40 hover:decoration-current rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-error focus-visible:outline-offset-2"
+							>
+								Fragen? Schreib uns auf WhatsApp
+								<Icon name="open_in_new" class="text-sm leading-none opacity-70" />
+							</a>
+						</div>
+					</div>
+				{/if}
+
+				{#if nextEvent}
+					<div>
+						<div
+							class="inline-block bg-secondary-container text-on-secondary-container px-4 py-1 rounded-sm mb-4 font-bold text-sm tracking-widest uppercase"
+						>
+							Das nächste Treffen
+						</div>
+						<h2
+							class="font-extrabold font-headline leading-tight text-primary italic mb-6 {nextCancellation
+								? 'text-3xl md:text-5xl'
+								: 'text-4xl md:text-6xl lg:text-7xl'}"
+						>
+							{displayEventTitle(nextEvent)}
+						</h2>
+						<div class="flex flex-wrap gap-x-6 gap-y-3 {nextCancellation ? 'mb-4' : 'mb-8'}">
+							<span class="flex items-center gap-2 text-on-surface-variant">
+								<Icon name="calendar_month" class="text-xl leading-none text-secondary" />
+								<span class="font-bold text-on-surface">{formatHeroDate(nextEvent.start)}</span>
+							</span>
+							<span class="flex items-center gap-2 text-on-surface-variant">
+								<Icon name="schedule" class="text-xl leading-none text-secondary" />
+								<span class="font-bold text-on-surface">
+									{#if nextEvent.allDay}Ganztägig{:else}Ab {formatTime(nextEvent.start)} Uhr{/if}
+								</span>
+							</span>
+							<span class="flex items-center gap-2 text-on-surface-variant">
+								<Icon name="location_on" class="text-xl leading-none text-secondary" />
+								{#if locationOrUndefined(nextEvent.location)}
+									<button
+										type="button"
+										class="font-bold text-primary underline cursor-pointer rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+										onclick={(event) =>
+											requestMapConsent(locationOrUndefined(nextEvent.location)!, event.currentTarget)}
+									>{locationOrUndefined(nextEvent.location)}</button>
+								{:else}
+									<span class="font-bold text-on-surface">{displayEventTitle(nextEvent)}</span>
+								{/if}
+							</span>
+						</div>
+						{#if !nextCancellation}
+							<p class="text-xl text-on-surface-variant max-w-xl mb-8 leading-relaxed">
+								{nextEvent.description ??
+									'Wir packen die großen Strategie-Bretter und die schnellen Kartenspiele aus. Kommt vorbei, setzt euch dazu und lasst uns gemeinsam die Würfel rollen!'}
+							</p>
+							<a
+								href="{base}/anmeldung"
+								class="ui-button mb-2 inline-flex items-center gap-2 rounded-xl border border-primary/30 bg-primary/8 px-5 py-2.5 text-sm font-bold text-primary transition-colors hover:bg-primary/12 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+							>
+								<Icon name="edit_note" class="text-base leading-none" />
+								Vorab anmelden <span class="font-normal opacity-70">(optional)</span>
+							</a>
 						{:else}
-							Ab 14:30 Uhr
+							<a
+								href="{base}/anmeldung"
+								class="inline-flex items-center gap-1.5 text-sm font-bold text-primary hover:underline rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+							>
+								Fürs nächste Treffen anmelden
+								<Icon name="arrow_forward" class="text-sm leading-none" />
+							</a>
 						{/if}
-					</span>
-				</span>
-				<span class="flex items-center gap-2 text-on-surface-variant">
-					<Icon name="location_on" class="text-xl leading-none text-secondary" />
-					{#if locationOrUndefined(nextEvent?.location)}
-						<button
-							type="button"
-							class="font-bold text-primary underline cursor-pointer rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
-							onclick={(event) => requestMapConsent(locationOrUndefined(nextEvent?.location)!, event.currentTarget)}
-						>{locationOrUndefined(nextEvent?.location)}</button>
-					{:else}
-						<span class="font-bold text-on-surface">Brochterbeck</span>
-					{/if}
-				</span>
+					</div>
+				{/if}
 			</div>
+		{:else}
+			<div class="inline-block clear-both bg-secondary-container text-on-secondary-container px-4 py-1 rounded-sm mb-4 font-bold text-sm tracking-widest uppercase">
+				Das nächste Treffen
+			</div>
+			<h2 class="text-4xl md:text-6xl lg:text-7xl font-extrabold font-headline leading-tight text-primary italic mb-6">
+				Spieleabend im Tecklenburger Land
+			</h2>
 			<p class="text-xl text-on-surface-variant max-w-xl mb-8 leading-relaxed">
-				{nextEvent?.description ??
-					'Wir packen die großen Strategie-Bretter und die schnellen Kartenspiele aus. Kommt vorbei, setzt euch dazu und lasst uns gemeinsam die Würfel rollen!'}
+				Termine erscheinen hier, sobald sie im Kalender stehen. Schau auch in der WhatsApp-Gruppe vorbei.
 			</p>
-			<a
-				href="{base}/anmeldung"
-				class="ui-button mb-10 inline-flex items-center gap-2 rounded-xl border border-primary/30 bg-primary/8 px-5 py-2.5 text-sm font-bold text-primary transition-colors hover:bg-primary/12 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
-			>
-				<Icon name="edit_note" class="text-base leading-none" />
-				Vorab anmelden <span class="font-normal opacity-70">(optional)</span>
-			</a>
+		{/if}
 		</div>
 			<div class="lg:col-span-5 relative">
 				<div class="relative rounded-2xl overflow-hidden shadow-xl">
@@ -281,13 +342,13 @@
 			<div class={`relative rounded-xl overflow-hidden flex flex-col group transition-all duration-300 hover:shadow-lg ${i === 0 ? 'bg-primary-container text-on-primary-container shadow-lg' : 'bg-surface-container-highest'}`}>
 				<a
 					href="{base}/kalender#bevorstehende-termine"
-					aria-label="{event.title} – Im Kalender ansehen"
+					aria-label="{displayEventTitle(event)}, im Kalender ansehen"
 					class="absolute inset-0 z-0 rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-[-2px]"
 				><span class="sr-only">Im Kalender ansehen</span></a>
 					<div class={`flex flex-col h-full ${i === 0 ? 'p-10' : 'p-8'}`}>
 						<div class={`font-bold text-sm tracking-widest uppercase mb-4 ${i === 0 ? 'text-on-primary-container/70' : 'text-on-surface-variant'}`}>Treffen im {formatMonthTag(event.start)}</div>
 						<h3 class={`font-bold font-headline mb-4 leading-tight transition-colors ${i === 0 ? 'text-3xl group-hover:text-on-primary-container/80' : 'text-2xl group-hover:text-primary'}`}>
-							{event.title}
+							{displayEventTitle(event)}
 						</h3>
 						<div class="mt-auto space-y-4">
 							<div class={`flex items-center gap-3 ${i === 0 ? 'text-on-primary-container/70' : 'text-on-surface-variant'}`}>

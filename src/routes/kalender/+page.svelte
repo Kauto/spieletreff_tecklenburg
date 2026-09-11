@@ -1,6 +1,6 @@
 <script lang="ts">
 	import MapConsentDialog from '$lib/components/site/MapConsentDialog.svelte';
-	import { calendarStore } from '$lib/events.svelte';
+	import { calendarStore, displayEventTitle, isCancelledEvent } from '$lib/events.svelte';
 	import { locationOrUndefined } from '$lib/location';
 	import type { CalendarEvent } from '$lib/types';
 	import Icon from '$lib/components/Icon.svelte';
@@ -9,11 +9,9 @@
 	import { quartOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
 
-	const now = new Date();
-	const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-
 	const upcoming = $derived(calendarStore.upcoming);
 	const nextEvent = $derived(calendarStore.next);
+	const nextCancellation = $derived(calendarStore.nextCancellation);
 	const hasCalendarSourceData = $derived(calendarStore.events.length > 0);
 
 	type MonthGroup = { key: string; label: string; events: CalendarEvent[] };
@@ -127,13 +125,48 @@
 			>
 				Alle Spieleabende, Sondertermine und Turniere – immer auf einen Blick. Wir treffen uns jeden 1. und 3. Freitag im Monat.
 			</p>
-		{#if nextEvent}
+		{#if nextCancellation || nextEvent}
 			<div
 				in:fly={{ y: heroFlyY, duration: heroDuration, delay: reduceMotion ? 0 : 240, easing: quartOut }}
-				class="mt-8 inline-flex items-center gap-3 bg-primary-container text-on-primary-container px-6 py-3 rounded-xl font-bold"
+				class="mt-8 max-w-2xl space-y-4"
 			>
-				<Icon name="event_upcoming" />
-				Nächster Spielabend: {formatFullDate(nextEvent.start)}{#if !nextEvent.allDay}&nbsp;ab {formatTime(nextEvent.start)} Uhr{/if}
+				{#if nextCancellation}
+					<div
+						role="status"
+						class="flex gap-3 rounded-xl bg-error-container px-5 py-4 text-on-error-container"
+					>
+						<Icon name="warning" class="mt-0.5 shrink-0 text-2xl leading-none text-error" />
+						<div class="min-w-0">
+							<p class="font-extrabold font-headline text-sm tracking-wide">Leider abgesagt</p>
+							<p class="mt-1 leading-snug">
+								Das Treffen am {formatFullDate(nextCancellation.start)}
+								({displayEventTitle(nextCancellation)}) fällt aus. Bitte kommt nicht vorbei.
+							</p>
+							{#if nextCancellation.description}
+								<p class="mt-2 text-sm leading-relaxed whitespace-pre-line opacity-90">
+									{nextCancellation.description}
+								</p>
+							{/if}
+							<a
+								href="https://chat.whatsapp.com/2naM3nPDYs08qymMxBIE8v?mode=gi_t"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="mt-3 inline-flex items-center gap-1.5 text-sm font-bold underline decoration-current/40 hover:decoration-current rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-error focus-visible:outline-offset-2"
+							>
+								Fragen? Schreib uns auf WhatsApp
+								<Icon name="open_in_new" class="text-sm leading-none opacity-70" />
+							</a>
+						</div>
+					</div>
+				{/if}
+				{#if nextEvent}
+					<div
+						class="inline-flex items-center gap-3 bg-primary-container text-on-primary-container px-6 py-3 rounded-xl font-bold"
+					>
+						<Icon name="event_upcoming" />
+						Nächster Spielabend: {formatFullDate(nextEvent.start)}{#if !nextEvent.allDay}&nbsp;ab {formatTime(nextEvent.start)} Uhr{/if}
+					</div>
+				{/if}
 			</div>
 		{/if}
 		</div>
@@ -189,7 +222,8 @@
 						<!-- Event list -->
 						<div class="space-y-8">
 							{#each group.events as event, ei (event.uid)}
-								{@const isFirst = gi === 0 && ei === 0}
+								{@const cancelled = isCancelledEvent(event)}
+								{@const isNext = !cancelled && nextEvent?.uid === event.uid}
 								<div
 									in:fly={{
 										y: cardFlyY,
@@ -197,27 +231,49 @@
 										delay: reduceMotion ? 0 : Math.min(40 + gi * 45 + ei * 30, 260),
 										easing: quartOut
 									}}
-									class="upcoming-card bg-surface-container-highest rounded-2xl overflow-hidden flex flex-col sm:flex-row"
+									class="upcoming-card rounded-2xl overflow-hidden flex flex-col sm:flex-row {cancelled
+										? 'upcoming-card--cancelled bg-error-container/60 ring-1 ring-error/25'
+										: 'bg-surface-container-highest'}"
 								>
 									<!-- Date badge -->
-									<div class="flex flex-col items-center justify-center p-5 min-w-[80px] bg-surface-container-low shrink-0">
-										<span class="text-xs font-bold uppercase tracking-widest {accent.text}">
+									<div
+										class="flex flex-col items-center justify-center p-5 min-w-[80px] shrink-0 {cancelled
+											? 'bg-error/10'
+											: 'bg-surface-container-low'}"
+									>
+										<span
+											class="text-xs font-bold uppercase tracking-widest {cancelled
+												? 'text-error'
+												: accent.text}"
+										>
 											{formatWeekday(event.start)}
 										</span>
-										<span class="text-4xl font-extrabold font-headline text-on-surface leading-none">
+										<span
+											class="text-4xl font-extrabold font-headline leading-none {cancelled
+												? 'text-on-error-container'
+												: 'text-on-surface'}"
+										>
 											{formatDay(event.start)}
 										</span>
 									</div>
 									<!-- Details -->
 									<div class="flex-1 p-5 flex flex-col md:flex-row md:items-center gap-4 justify-between min-w-0">
 										<div class="min-w-0">
-											{#if isFirst}
+											{#if cancelled}
+												<span class="inline-block bg-error text-on-error text-xs font-bold px-2 py-0.5 rounded-sm uppercase tracking-wide mb-1">
+													Abgesagt, bitte nicht kommen
+												</span>
+											{:else if isNext}
 												<span class="inline-block bg-primary text-on-primary text-xs font-bold px-2 py-0.5 rounded-sm uppercase tracking-wide mb-1">
 													Nächstes Treffen
 												</span>
 											{/if}
-											<h4 class="text-xl font-bold font-headline text-on-surface">
-												{event.title}
+											<h4
+												class="text-xl font-bold font-headline {cancelled
+													? 'text-on-error-container'
+													: 'text-on-surface'}"
+											>
+												{displayEventTitle(event)}
 											</h4>
 											<div class="flex flex-wrap gap-x-4 gap-y-1 mt-2">
 												{#if !event.allDay}
@@ -322,9 +378,14 @@
 		will-change: transform;
 	}
 
-	.upcoming-card:hover {
+	.upcoming-card:not(.upcoming-card--cancelledled):hover {
 		transform: translateY(-3px) scale(1.008);
 		filter: saturate(1.03);
+	}
+
+	.upcoming-card--cancelledled {
+		transform: none;
+		filter: none;
 	}
 
 	@media (prefers-reduced-motion: reduce) {

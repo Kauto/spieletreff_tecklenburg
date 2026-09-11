@@ -21,6 +21,8 @@
 	
 	let { children, data } = $props();
 
+	// Sync on SSR and first paint (effects do not run during SSR).
+	calendarStore.init(data.events);
 	$effect(() => {
 		calendarStore.init(data.events);
 	});
