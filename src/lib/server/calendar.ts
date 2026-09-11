@@ -109,6 +109,8 @@ type RawEvent = Partial<CalendarEvent> & {
 	exdates?: Date[];
 	rdates?: Date[];
 	durationMs?: number;
+	/** Identifies which series occurrence this VEVENT overrides (RFC 5545). */
+	recurrenceId?: Date;
 };
 
 /** Parses iCal DURATION values such as PT5H, P1D, or PT1H30M into milliseconds. */
@@ -377,9 +379,53 @@ function parseIcal(text: string): CalendarEvent[] {
 				}
 				break;
 			}
+			case 'RECURRENCE-ID': {
+				evt.recurrenceId = parseDate(key, value).date;
+				break;
+			}
 		}
 	}
 
-	const events = rawEvents.flatMap(expandRecurringEvent);
+	return applyRecurrenceOverrides(rawEvents);
+}
+
+/**
+ * Merges series masters with their RECURRENCE-ID exceptions so a modified
+ * instance (e.g. "Abgesagt!") replaces the generated occurrence instead of
+ * appearing twice.
+ */
+function applyRecurrenceOverrides(rawEvents: RawEvent[]): CalendarEvent[] {
+	const overridesByUid = new Map<string, RawEvent[]>();
+
+	for (const evt of rawEvents) {
+		if (!evt.uid || !evt.recurrenceId) continue;
+		const list = overridesByUid.get(evt.uid) ?? [];
+		list.push(evt);
+		overridesByUid.set(evt.uid, list);
+	}
+
+	const events: CalendarEvent[] = [];
+
+	for (const evt of rawEvents) {
+		if (evt.recurrenceId) {
+			// Exception instance: keep as a single event with its own title/time.
+			events.push(...expandRecurringEvent({ ...evt, rrule: undefined }));
+			continue;
+		}
+
+		const overrides = overridesByUid.get(evt.uid ?? '') ?? [];
+		const overrideTimes = new Set(overrides.map((o) => o.recurrenceId!.getTime()));
+
+		// Expand the full series first (so COUNT/UNTIL stay correct), then drop
+		// occurrences that have a RECURRENCE-ID replacement.
+		const expanded = expandRecurringEvent(evt).filter((occurrence) => {
+			if (overrideTimes.size === 0) return true;
+			// Expanded UIDs are `${uid}#${isoStart}`; match on the start instant.
+			return !overrideTimes.has(occurrence.start.getTime());
+		});
+
+		events.push(...expanded);
+	}
+
 	return events.sort((a, b) => a.start.getTime() - b.start.getTime());
 }
