@@ -244,7 +244,7 @@
 						Eine gemischte Gruppe von rund 50 Brettspiel-Begeisterten, die sich regelmäßig zu Spieleabenden trifft. Ob Gelegenheitsspieler oder Hardcore-Stratege – bei uns findet jeder einen Platz am Tisch.
 					</p>
 					<p>
-						Wir spielen entweder in der DRK-Begegnungsstätte Mettingen oder im ev. Gemeindehaus Brochterbeck. Da das Spielen eine gemeinschaftliche Sache ist, gilt natürlich: Je größer die Gruppe, umso schöner der Abend. Wer Lust am Spielen hat, ist bei uns jederzeit herzlich willkommen.
+						Wir spielen entweder in der Fabi Ibbenbüren oder im ev. Gemeindehaus Brochterbeck. Da das Spielen eine gemeinschaftliche Sache ist, gilt natürlich: Je größer die Gruppe, umso schöner der Abend. Wer Lust am Spielen hat, ist bei uns jederzeit herzlich willkommen.
 					</p>
 					<p>
 						Kommt vorbei – ein freier Stuhl ist immer da.
