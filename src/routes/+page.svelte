@@ -61,6 +61,14 @@
 		}).format(d);
 	}
 
+	// Runden-Zettel (separate Seite von Detlev): Spiele anbieten und sich zu Runden eintragen
+	const RUNDEN_ZETTEL_URL = 'https://runden-zettel.pages.dev/';
+
+	function rundenZettelUrl(d: Date): string {
+		const abend = new Intl.DateTimeFormat('en-CA', { timeZone: TZ }).format(d); // JJJJ-MM-TT
+		return `${RUNDEN_ZETTEL_URL}?abend=${abend}`;
+	}
+
 	function formatHeroDate(d: Date): string {
 		return new Intl.DateTimeFormat('de-DE', {
 			timeZone: TZ,
@@ -195,6 +203,17 @@
 									>
 										<Icon name="edit_note" class="text-base leading-none" />
 										Vorab anmelden <span class="font-normal opacity-70">(optional)</span>
+									</a>
+									<a
+										href={rundenZettelUrl(nextEvent.start)}
+										target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Runden-Zettel: Wer bringt welches Spiel mit? (öffnet extern)"
+										class="ui-button mb-2 inline-flex items-center gap-2 rounded-xl border border-primary/30 bg-primary/8 px-5 py-2.5 text-sm font-bold text-primary transition-colors hover:bg-primary/12 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+									>
+										<Icon name="casino" class="text-base leading-none" />
+										Wer bringt was mit? <span class="font-normal opacity-70">(Runden-Zettel)</span>
+										<Icon name="open_in_new" class="text-sm leading-none opacity-70" />
 									</a>
 								{:else}
 									<a
