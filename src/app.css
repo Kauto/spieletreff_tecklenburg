@@ -9,6 +9,7 @@
 	--color-on-primary-container: #ffffff;
 	--color-on-primary: #ffffff;
 	--color-secondary: #ff5f1f;
+	--color-secondary-dim: #b03a0a; /* dunkleres Orange für Text auf hellen Flächen (Kontrast ≥ 4,5:1) */
 	--color-secondary-container: #ff8040;
 	--color-on-secondary: #ffffff;
 	--color-on-secondary-container: #2a1000;

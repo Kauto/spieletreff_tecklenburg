@@ -72,14 +72,14 @@
 </script>
 
 <svelte:head>
-	<title>Spieletreff Tecklenburg – Brettspielgruppe im Tecklenburger Land</title>
+	<title>Spieletreff Tecklenburger Land – offene Brettspielgruppe</title>
 	<meta
 		name="description"
 		content="Brettspielgruppe im Tecklenburger Land – offen für alle. Jeden 1. und 3. Freitag in Mettingen und Brochterbeck. Kostenlos, einfach vorbeikommen."
 	/>
 	<meta
 		property="og:title"
-		content="Spieletreff Tecklenburg – Brettspielgruppe im Tecklenburger Land"
+		content="Spieletreff Tecklenburger Land – offene Brettspielgruppe"
 	/>
 	<meta
 		property="og:description"
@@ -298,7 +298,7 @@
 	<!-- How it works -->
 	<section class="py-14 px-8 bg-surface-container">
 		<div class="max-w-7xl mx-auto">
-			<h2 class="text-sm font-bold text-secondary mb-8">Zum ersten Mal hier?</h2>
+			<h2 class="text-sm font-bold text-secondary-dim mb-8">Zum ersten Mal hier?</h2>
 			<ol class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 list-none m-0 p-0">
 				<li class="flex gap-5 items-start">
 					<span
@@ -509,7 +509,7 @@
 	<section class="py-16 px-8 bg-surface-container-low">
 		<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 			<div>
-				<h2 class="text-sm font-bold text-secondary mb-3 tracking-widest uppercase">
+				<h2 class="text-sm font-bold text-secondary-dim mb-3 tracking-widest uppercase">
 					Folge uns auf Instagram
 				</h2>
 				<p class="text-4xl font-extrabold font-headline text-on-surface leading-tight mb-4">

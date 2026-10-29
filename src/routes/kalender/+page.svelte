@@ -96,7 +96,7 @@
 
 	const accents = [
 		{ text: 'text-primary', dot: 'bg-primary' },
-		{ text: 'text-secondary', dot: 'bg-secondary' },
+		{ text: 'text-secondary-dim', dot: 'bg-secondary' },
 		{ text: 'text-tertiary', dot: 'bg-tertiary' }
 	];
 
@@ -108,12 +108,12 @@
 </script>
 
 <svelte:head>
-	<title>Kalender – Spieletreff Tecklenburg</title>
+	<title>Kalender – Spieletreff Tecklenburger Land</title>
 	<meta
 		name="description"
 		content="Alle Spieleabende und Termine des Spieletreffs Tecklenburg auf einen Blick. Wir treffen uns jeden 1. und 3. Freitag im Monat."
 	/>
-	<meta property="og:title" content="Kalender – Spieletreff Tecklenburg" />
+	<meta property="og:title" content="Kalender – Spieletreff Tecklenburger Land" />
 	<meta
 		property="og:description"
 		content="Alle Spieleabende und Termine auf einen Blick. Jeden 1. und 3. Freitag im Tecklenburger Land."
