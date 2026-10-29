@@ -2,6 +2,7 @@
 	import MapConsentDialog from '#lib/components/site/MapConsentDialog.svelte';
 	import { calendarStore, displayEventTitle, isCancelledEvent } from '#lib/events.svelte.js';
 	import { locationOrUndefined } from '#lib/location.js';
+	import { CALENDAR_GOOGLE_SUBSCRIBE_URL, CALENDAR_WEBCAL_URL } from '#lib/calendar-config.js';
 	import type { CalendarEvent } from '#lib/types.js';
 	import Icon from '#lib/components/Icon.svelte';
 	import { prefersReducedMotion } from 'svelte/motion';
@@ -158,6 +159,37 @@
 				Alle Spieleabende, Sondertermine und Turniere – immer auf einen Blick. Wir treffen uns jeden
 				1. und 3. Freitag im Monat.
 			</p>
+			<div
+				in:fly={{
+					y: heroFlyY,
+					duration: heroDuration,
+					delay: reduceMotion ? 0 : 205,
+					easing: quartOut
+				}}
+				class="mt-6 flex max-w-2xl flex-wrap items-center gap-3"
+			>
+				<a
+					href={CALENDAR_GOOGLE_SUBSCRIBE_URL}
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="Termine im Google Kalender abonnieren (öffnet extern)"
+					class="inline-flex min-h-11 items-center gap-2 bg-primary text-on-primary px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-primary/90 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+				>
+					<Icon name="calendar_month" class="text-base leading-none" />
+					Im Google Kalender abonnieren
+				</a>
+				<a
+					href={CALENDAR_WEBCAL_URL}
+					aria-label="Termine als Kalender-Abo für iPhone, Mac und Outlook"
+					class="inline-flex min-h-11 items-center gap-2 bg-surface-container text-on-surface px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-surface-container-high transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+				>
+					<Icon name="event" class="text-base leading-none" />
+					Abo für iPhone, Mac &amp; Outlook
+				</a>
+				<p class="w-full text-sm text-on-surface-variant">
+					Neue Termine und Absagen erscheinen dann automatisch in deinem Kalender.
+				</p>
+			</div>
 			{#if nextCancellation || nextEvent}
 				<div
 					in:fly={{
