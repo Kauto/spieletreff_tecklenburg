@@ -102,8 +102,11 @@
 						>
 							Spieletreff Tecklenburger Land
 						</h1>
-						<p class="text-base text-on-surface-variant mb-8 md:mb-16">
+						<p class="text-base text-on-surface-variant">
 							Brettspielgruppe – offen für alle
+						</p>
+						<p class="mt-1 mb-8 font-headline text-lg font-extrabold tracking-tight text-primary md:mb-16">
+							Spielen für Toleranz
 						</p>
 					</div>
 				</div>
