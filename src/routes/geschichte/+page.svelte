@@ -25,12 +25,12 @@
 </script>
 
 <svelte:head>
-	<title>Geschichte – Spieletreff Tecklenburg</title>
+	<title>Geschichte – Spieletreff Tecklenburger Land</title>
 	<meta
 		name="description"
 		content="Seit 2009 treffen wir uns im Tecklenburger Land zum gemeinsamen Brettspielen – die Geschichte des Spieletreffs."
 	/>
-	<meta property="og:title" content="Geschichte – Spieletreff Tecklenburg" />
+	<meta property="og:title" content="Geschichte – Spieletreff Tecklenburger Land" />
 	<meta
 		property="og:description"
 		content="Wie alles begann: fünf Spieler, ein Gemeindehaus, und eine Idee – die Geschichte des Spieletreffs seit 2009."
@@ -130,7 +130,7 @@
 	<section class="px-8 py-16 bg-surface-container">
 		<div class="max-w-6xl mx-auto">
 			<div class="max-w-4xl mb-10">
-				<p class="text-xs font-bold uppercase tracking-widest text-secondary mb-2">Eindrücke</p>
+				<p class="text-xs font-bold uppercase tracking-widest text-secondary-dim mb-2">Eindrücke</p>
 				<h2 class="text-2xl font-extrabold font-headline text-on-surface">
 					Bilder vom Spieleabend
 				</h2>

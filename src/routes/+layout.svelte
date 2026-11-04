@@ -36,7 +36,7 @@
 	<meta name="theme-color" content="#2E3A8C" />
 	<meta name="robots" content="index, follow" />
 	<meta name="author" content="Spieletreff Tecklenburger Land" />
-	<meta property="og:site_name" content="Spieletreff Tecklenburg" />
+	<meta property="og:site_name" content="Spieletreff Tecklenburger Land" />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content={ogImage} />
 	<meta property="og:image:width" content="941" />

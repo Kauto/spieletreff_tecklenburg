@@ -61,6 +61,14 @@
 		}).format(d);
 	}
 
+	// Runden-Zettel (separate Seite von Detlev): Spiele anbieten und sich zu Runden eintragen
+	const RUNDEN_ZETTEL_URL = 'https://runden-zettel.pages.dev/';
+
+	function rundenZettelUrl(d: Date): string {
+		const abend = new Intl.DateTimeFormat('en-CA', { timeZone: TZ }).format(d); // JJJJ-MM-TT
+		return `${RUNDEN_ZETTEL_URL}?abend=${abend}`;
+	}
+
 	function formatHeroDate(d: Date): string {
 		return new Intl.DateTimeFormat('de-DE', {
 			timeZone: TZ,
@@ -72,14 +80,14 @@
 </script>
 
 <svelte:head>
-	<title>Spieletreff Tecklenburg – Brettspielgruppe im Tecklenburger Land</title>
+	<title>Spieletreff Tecklenburger Land – offene Brettspielgruppe</title>
 	<meta
 		name="description"
 		content="Brettspielgruppe im Tecklenburger Land – offen für alle. Jeden 1. und 3. Freitag in Mettingen und Brochterbeck. Kostenlos, einfach vorbeikommen."
 	/>
 	<meta
 		property="og:title"
-		content="Spieletreff Tecklenburg – Brettspielgruppe im Tecklenburger Land"
+		content="Spieletreff Tecklenburger Land – offene Brettspielgruppe"
 	/>
 	<meta
 		property="og:description"
@@ -102,8 +110,11 @@
 						>
 							Spieletreff Tecklenburger Land
 						</h1>
-						<p class="text-base text-on-surface-variant mb-8 md:mb-16">
+						<p class="text-base text-on-surface-variant">
 							Brettspielgruppe – offen für alle
+						</p>
+						<p class="mt-1 mb-8 font-headline text-lg font-extrabold tracking-tight text-primary md:mb-16">
+							Spielen für Toleranz
 						</p>
 					</div>
 				</div>
@@ -192,6 +203,17 @@
 									>
 										<Icon name="edit_note" class="text-base leading-none" />
 										Vorab anmelden <span class="font-normal opacity-70">(optional)</span>
+									</a>
+									<a
+										href={rundenZettelUrl(nextEvent.start)}
+										target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Runden-Zettel: Wer bringt welches Spiel mit? (öffnet extern)"
+										class="ui-button mb-2 inline-flex items-center gap-2 rounded-xl border border-primary/30 bg-primary/8 px-5 py-2.5 text-sm font-bold text-primary transition-colors hover:bg-primary/12 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+									>
+										<Icon name="casino" class="text-base leading-none" />
+										Wer bringt was mit? <span class="font-normal opacity-70">(Runden-Zettel)</span>
+										<Icon name="open_in_new" class="text-sm leading-none opacity-70" />
 									</a>
 								{:else}
 									<a
@@ -295,7 +317,7 @@
 	<!-- How it works -->
 	<section class="py-14 px-8 bg-surface-container">
 		<div class="max-w-7xl mx-auto">
-			<h2 class="text-sm font-bold text-secondary mb-8">Zum ersten Mal hier?</h2>
+			<h2 class="text-sm font-bold text-secondary-dim mb-8">Zum ersten Mal hier?</h2>
 			<ol class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 list-none m-0 p-0">
 				<li class="flex gap-5 items-start">
 					<span
@@ -506,7 +528,7 @@
 	<section class="py-16 px-8 bg-surface-container-low">
 		<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 			<div>
-				<h2 class="text-sm font-bold text-secondary mb-3 tracking-widest uppercase">
+				<h2 class="text-sm font-bold text-secondary-dim mb-3 tracking-widest uppercase">
 					Folge uns auf Instagram
 				</h2>
 				<p class="text-4xl font-extrabold font-headline text-on-surface leading-tight mb-4">
