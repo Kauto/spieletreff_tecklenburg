@@ -101,6 +101,42 @@
 		{ text: 'text-tertiary', dot: 'bg-tertiary' }
 	];
 
+	// Strukturierte Daten (schema.org/Event), damit Suchmaschinen die nächsten
+	// Spieleabende direkt im Suchergebnis anzeigen können.
+	const SITE_URL = 'https://www.spieletreff-tecklenburgerland.de/';
+	const eventJsonLd = $derived.by(() => {
+		const events = upcoming.slice(0, 10).map((event) => {
+			const location = locationOrUndefined(event.location);
+			const [placeName] = (location ?? '').split(',');
+			return {
+				'@type': 'Event',
+				name: displayEventTitle(event),
+				startDate: event.start.toISOString(),
+				endDate: event.end.toISOString(),
+				eventStatus: isCancelledEvent(event)
+					? 'https://schema.org/EventCancelled'
+					: 'https://schema.org/EventScheduled',
+				eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+				isAccessibleForFree: true,
+				description:
+					event.description ||
+					'Offener Brettspielabend des Spieletreffs Tecklenburger Land – kostenlos, einfach vorbeikommen.',
+				image: [new URL('images/spieletreff-hero.jpg', SITE_URL).href],
+				url: new URL('kalender/', SITE_URL).href,
+				...(location
+					? { location: { '@type': 'Place', name: placeName.trim(), address: location } }
+					: {}),
+				organizer: { '@type': 'Organization', name: 'Spieletreff Tecklenburger Land', url: SITE_URL }
+			};
+		});
+		if (events.length === 0) return '';
+		// "<" maskieren, damit kein Text aus dem Kalender das Script-Tag beenden kann
+		return JSON.stringify({ '@context': 'https://schema.org', '@graph': events }).replace(
+			/</g,
+			'\\u003c'
+		);
+	});
+
 	const reduceMotion = $derived(prefersReducedMotion.current);
 	const heroFlyY = $derived(reduceMotion ? 0 : 12);
 	const cardFlyY = $derived(reduceMotion ? 0 : 10);
@@ -109,6 +145,10 @@
 </script>
 
 <svelte:head>
+	{#if eventJsonLd}
+		<!-- eslint-disable-next-line svelte/no-at-html-tags -- JSON ist oben maskiert -->
+		{@html `<script type="application/ld+json">${eventJsonLd}</` + `script>`}
+	{/if}
 	<title>Kalender – Spieletreff Tecklenburger Land</title>
 	<meta
 		name="description"
