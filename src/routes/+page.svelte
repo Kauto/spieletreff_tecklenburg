@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { resolve } from '$app/paths';
+	import { asset, resolve } from '$app/paths';
 	import MapConsentDialog from '#lib/components/site/MapConsentDialog.svelte';
 	import imgMeeple from '#lib/assets/images/meeple.png?enhanced';
 	import imgHero from '#lib/assets/images/spieletreff-hero.jpg?enhanced';
@@ -85,10 +85,7 @@
 		name="description"
 		content="Brettspielgruppe im Tecklenburger Land – offen für alle. Jeden 1. und 3. Freitag in Mettingen und Brochterbeck. Kostenlos, einfach vorbeikommen."
 	/>
-	<meta
-		property="og:title"
-		content="Spieletreff Tecklenburger Land – offene Brettspielgruppe"
-	/>
+	<meta property="og:title" content="Spieletreff Tecklenburger Land – offene Brettspielgruppe" />
 	<meta
 		property="og:description"
 		content="Jeden 1. und 3. Freitag gemeinsam Brettspiele spielen. Offen für alle – kein Mitgliedsbeitrag, einfach vorbeikommen."
@@ -110,12 +107,23 @@
 						>
 							Spieletreff Tecklenburger Land
 						</h1>
-						<p class="text-base text-on-surface-variant">
-							Brettspielgruppe – offen für alle
-						</p>
-						<p class="mt-1 mb-8 font-headline text-lg font-extrabold tracking-tight text-primary md:mb-16">
-							Spielen für Toleranz
-						</p>
+						<p class="text-base text-on-surface-variant">Brettspielgruppe – offen für alle</p>
+						<a
+							href="https://www.spiel-des-jahres.de/spielend-fuer-toleranz/"
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label="Spielend für Toleranz – gegen Rassismus und Fremdenfeindlichkeit (öffnet extern)"
+							class="mt-3 mb-8 inline-block rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 md:mb-16"
+						>
+							<img
+								src={asset('images/spielend-fuer-toleranz.png')}
+								alt=""
+								aria-hidden="true"
+								width="3022"
+								height="2337"
+								class="h-auto w-64 sm:w-72"
+							/>
+						</a>
 					</div>
 				</div>
 				{#if nextCancellation || nextEvent}

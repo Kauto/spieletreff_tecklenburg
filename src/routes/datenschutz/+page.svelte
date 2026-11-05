@@ -10,7 +10,9 @@
 			>
 				Rechtliches
 			</div>
-			<h1 class="text-4xl md:text-5xl font-extrabold font-headline text-on-surface mb-8">
+			<h1
+				class="text-4xl md:text-5xl font-extrabold font-headline text-on-surface mb-8 break-words hyphens-auto"
+			>
 				Datenschutzerklärung
 			</h1>
 
