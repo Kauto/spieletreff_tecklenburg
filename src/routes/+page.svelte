@@ -108,22 +108,6 @@
 							Spieletreff Tecklenburger Land
 						</h1>
 						<p class="text-base text-on-surface-variant">Brettspielgruppe – offen für alle</p>
-						<a
-							href="https://www.spiel-des-jahres.de/spielend-fuer-toleranz/"
-							target="_blank"
-							rel="noopener noreferrer"
-							aria-label="Spielend für Toleranz – gegen Rassismus und Fremdenfeindlichkeit (öffnet extern)"
-							class="mt-3 mb-8 inline-block rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 md:mb-16"
-						>
-							<img
-								src={asset('images/spielend-fuer-toleranz.png')}
-								alt=""
-								aria-hidden="true"
-								width="3022"
-								height="2337"
-								class="h-auto w-64 sm:w-72"
-							/>
-						</a>
 					</div>
 				</div>
 				{#if nextCancellation || nextEvent}
@@ -264,6 +248,43 @@
 				</div>
 			</div>
 		</div>
+	</section>
+
+	<section class="mx-auto max-w-7xl px-8 pb-16" aria-label="Spielend für Toleranz">
+		<a
+			href="https://www.spiel-des-jahres.de/spielend-fuer-toleranz/"
+			target="_blank"
+			rel="noopener noreferrer"
+			aria-label="Zur Initiative Spielend für Toleranz (öffnet extern)"
+			class="group flex flex-col items-start gap-6 rounded-2xl bg-surface-container-low px-6 py-8 transition-colors hover:bg-surface-container focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 md:flex-row md:items-center md:gap-10 md:px-10"
+		>
+			<img
+				src={asset('images/spielend-fuer-toleranz.png')}
+				alt=""
+				aria-hidden="true"
+				width="3022"
+				height="2337"
+				class="h-auto w-52 shrink-0 md:w-60"
+			/>
+			<span class="block">
+				<span
+					class="block font-headline text-xs font-bold uppercase tracking-widest text-secondary-dim"
+				>
+					Gemeinsam spielen
+				</span>
+				<span
+					class="mt-2 block max-w-2xl font-headline text-xl font-bold leading-snug text-on-surface md:text-2xl"
+				>
+					Bei uns ist Platz für alle. Respekt und Toleranz gehören an jeden Spieltisch.
+				</span>
+				<span
+					class="mt-3 inline-flex items-center gap-1 text-sm font-bold text-primary group-hover:underline"
+				>
+					Mehr zur Initiative
+					<Icon name="arrow_outward" class="text-base" />
+				</span>
+			</span>
+		</a>
 	</section>
 
 	<!-- About -->
