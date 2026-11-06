@@ -83,12 +83,12 @@
 	<title>Spieletreff Tecklenburger Land – offene Brettspielgruppe</title>
 	<meta
 		name="description"
-		content="Brettspielgruppe im Tecklenburger Land – offen für alle. Jeden 1. und 3. Freitag in Mettingen und Brochterbeck. Kostenlos, einfach vorbeikommen."
+		content="Brettspielgruppe im Tecklenburger Land – offen für alle. Jeden 2. und letzten Freitag in Mettingen und Brochterbeck. Kostenlos, einfach vorbeikommen."
 	/>
 	<meta property="og:title" content="Spieletreff Tecklenburger Land – offene Brettspielgruppe" />
 	<meta
 		property="og:description"
-		content="Jeden 1. und 3. Freitag gemeinsam Brettspiele spielen. Offen für alle – kein Mitgliedsbeitrag, einfach vorbeikommen."
+		content="Jeden 2. und letzten Freitag gemeinsam Brettspiele spielen. Offen für alle – kein Mitgliedsbeitrag, einfach vorbeikommen."
 	/>
 </svelte:head>
 

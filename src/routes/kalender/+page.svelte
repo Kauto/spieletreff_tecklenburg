@@ -152,12 +152,12 @@
 	<title>Kalender – Spieletreff Tecklenburger Land</title>
 	<meta
 		name="description"
-		content="Alle Spieleabende und Termine des Spieletreffs Tecklenburg auf einen Blick. Wir treffen uns jeden 1. und 3. Freitag im Monat."
+		content="Alle Spieleabende und Termine des Spieletreffs Tecklenburg auf einen Blick. Wir treffen uns jeden 2. und letzten Freitag im Monat."
 	/>
 	<meta property="og:title" content="Kalender – Spieletreff Tecklenburger Land" />
 	<meta
 		property="og:description"
-		content="Alle Spieleabende und Termine auf einen Blick. Jeden 1. und 3. Freitag im Tecklenburger Land."
+		content="Alle Spieleabende und Termine auf einen Blick. Jeden 2. und letzten Freitag im Tecklenburger Land."
 	/>
 </svelte:head>
 
@@ -197,7 +197,7 @@
 				class="text-xl text-on-surface-variant max-w-2xl leading-relaxed"
 			>
 				Alle Spieleabende, Sondertermine und Turniere – immer auf einen Blick. Wir treffen uns jeden
-				1. und 3. Freitag im Monat.
+				2. und letzten Freitag im Monat.
 			</p>
 			<div
 				in:fly={{
