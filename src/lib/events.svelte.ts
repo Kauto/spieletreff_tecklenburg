@@ -34,14 +34,16 @@ export const calendarStore = {
 		_events = events.map(reviveEvent);
 	},
 
-	/** Upcoming events (today and later), sorted ascending — includes cancellations. */
+	/** Upcoming events through the end of next year, including cancellations. */
 	get upcoming(): CalendarEvent[] {
 		// These are transient snapshots used only for filtering, not reactive state.
 		// eslint-disable-next-line svelte/prefer-svelte-reactivity
 		const now = new Date();
 		// eslint-disable-next-line svelte/prefer-svelte-reactivity
 		const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-		return _events.filter((e) => e.start >= todayStart);
+		// eslint-disable-next-line svelte/prefer-svelte-reactivity
+		const startOfYearAfterNext = new Date(now.getFullYear() + 2, 0, 1);
+		return _events.filter((e) => e.start >= todayStart && e.start < startOfYearAfterNext);
 	},
 
 	/** Upcoming events that are not cancelled. */
